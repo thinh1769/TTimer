@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E02AE54AD100D0C155 /* AppDelegate.swift */; };
 		8297B8E32AE54AD100D0C155 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E22AE54AD100D0C155 /* SceneDelegate.swift */; };
-		8297B8E52AE54AD100D0C155 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E42AE54AD100D0C155 /* ViewController.swift */; };
-		8297B8E82AE54AD100D0C155 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8297B8E62AE54AD100D0C155 /* Main.storyboard */; };
+		8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E42AE54AD100D0C155 /* TimerViewController.swift */; };
 		8297B8EA2AE54AD800D0C155 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8297B8E92AE54AD800D0C155 /* Assets.xcassets */; };
 		8297B8ED2AE54AD800D0C155 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8297B8EB2AE54AD800D0C155 /* LaunchScreen.storyboard */; };
+		8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8F72AE54C0800D0C155 /* TimerViewModel.swift */; };
+		8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8FA2AE54C5900D0C155 /* TTViewController.swift */; };
+		8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8FD2AE54F1600D0C155 /* TTUtils.swift */; };
+		8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8297B8DD2AE54AD100D0C155 /* TTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8297B8E02AE54AD100D0C155 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8297B8E22AE54AD100D0C155 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8297B8E42AE54AD100D0C155 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8297B8E72AE54AD100D0C155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8297B8E42AE54AD100D0C155 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8297B8E92AE54AD800D0C155 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8297B8EC2AE54AD800D0C155 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8297B8EE2AE54AD800D0C155 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8297B8F72AE54C0800D0C155 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		8297B8FA2AE54C5900D0C155 /* TTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController.swift; sourceTree = "<group>"; };
+		8297B8FD2AE54F1600D0C155 /* TTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTUtils.swift; sourceTree = "<group>"; };
+		DD16B286B646F64960FEDA8D /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
+		FB5039F3953F74DEC324013D /* Pods-TTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.debug.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22F5CBBF5C835A9F6450105D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB5039F3953F74DEC324013D /* Pods-TTimer.debug.xcconfig */,
+				DD16B286B646F64960FEDA8D /* Pods-TTimer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8297B8D42AE54AD100D0C155 = {
 			isa = PBXGroup;
 			children = (
 				8297B8DF2AE54AD100D0C155 /* TTimer */,
 				8297B8DE2AE54AD100D0C155 /* Products */,
+				22F5CBBF5C835A9F6450105D /* Pods */,
+				93A9E9B2B40ECF1ADA9E9525 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +76,65 @@
 		8297B8DF2AE54AD100D0C155 /* TTimer */ = {
 			isa = PBXGroup;
 			children = (
-				8297B8E02AE54AD100D0C155 /* AppDelegate.swift */,
-				8297B8E22AE54AD100D0C155 /* SceneDelegate.swift */,
-				8297B8E42AE54AD100D0C155 /* ViewController.swift */,
-				8297B8E62AE54AD100D0C155 /* Main.storyboard */,
+				8297B8F42AE54B0B00D0C155 /* Application */,
+				8297B8F92AE54C1B00D0C155 /* BaseClass */,
+				8297B8F52AE54B8E00D0C155 /* Module */,
+				8297B8FC2AE54E5600D0C155 /* TTUtils */,
 				8297B8E92AE54AD800D0C155 /* Assets.xcassets */,
 				8297B8EB2AE54AD800D0C155 /* LaunchScreen.storyboard */,
 				8297B8EE2AE54AD800D0C155 /* Info.plist */,
 			);
 			path = TTimer;
+			sourceTree = "<group>";
+		};
+		8297B8F42AE54B0B00D0C155 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				8297B8E02AE54AD100D0C155 /* AppDelegate.swift */,
+				8297B8E22AE54AD100D0C155 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		8297B8F52AE54B8E00D0C155 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				8297B8F62AE54BCA00D0C155 /* Timer */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		8297B8F62AE54BCA00D0C155 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				8297B8E42AE54AD100D0C155 /* TimerViewController.swift */,
+				8297B8F72AE54C0800D0C155 /* TimerViewModel.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		8297B8F92AE54C1B00D0C155 /* BaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				8297B8FA2AE54C5900D0C155 /* TTViewController.swift */,
+			);
+			path = BaseClass;
+			sourceTree = "<group>";
+		};
+		8297B8FC2AE54E5600D0C155 /* TTUtils */ = {
+			isa = PBXGroup;
+			children = (
+				8297B8FD2AE54F1600D0C155 /* TTUtils.swift */,
+			);
+			path = TTUtils;
+			sourceTree = "<group>";
+		};
+		93A9E9B2B40ECF1ADA9E9525 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +144,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8297B8F12AE54AD800D0C155 /* Build configuration list for PBXNativeTarget "TTimer" */;
 			buildPhases = (
+				26901BE23DFE8E3DA9064504 /* [CP] Check Pods Manifest.lock */,
 				8297B8D92AE54AD100D0C155 /* Sources */,
 				8297B8DA2AE54AD100D0C155 /* Frameworks */,
 				8297B8DB2AE54AD100D0C155 /* Resources */,
+				C6575E00058D68C66909346A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,18 +199,62 @@
 			files = (
 				8297B8ED2AE54AD800D0C155 /* LaunchScreen.storyboard in Resources */,
 				8297B8EA2AE54AD800D0C155 /* Assets.xcassets in Resources */,
-				8297B8E82AE54AD100D0C155 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26901BE23DFE8E3DA9064504 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TTimer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6575E00058D68C66909346A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTimer/Pods-TTimer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TTimer/Pods-TTimer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTimer/Pods-TTimer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8297B8D92AE54AD100D0C155 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8297B8E52AE54AD100D0C155 /* ViewController.swift in Sources */,
+				8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */,
+				8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */,
+				8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */,
+				8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */,
 				8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */,
 				8297B8E32AE54AD100D0C155 /* SceneDelegate.swift in Sources */,
 			);
@@ -147,14 +263,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8297B8E62AE54AD100D0C155 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8297B8E72AE54AD100D0C155 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8297B8EB2AE54AD800D0C155 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +390,7 @@
 		};
 		8297B8F22AE54AD800D0C155 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB5039F3953F74DEC324013D /* Pods-TTimer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -292,9 +401,9 @@
 				INFOPLIST_FILE = TTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,6 +419,7 @@
 		};
 		8297B8F32AE54AD800D0C155 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD16B286B646F64960FEDA8D /* Pods-TTimer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -320,9 +430,9 @@
 				INFOPLIST_FILE = TTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
