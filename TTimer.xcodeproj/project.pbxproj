@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		828036B72AE6CA36001B55F4 /* PieceViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828036B62AE6CA36001B55F4 /* PieceViewCell.swift */; };
+		828036BA2AE6CBC2001B55F4 /* TTConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828036B92AE6CBC2001B55F4 /* TTConstant.swift */; };
 		8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E02AE54AD100D0C155 /* AppDelegate.swift */; };
 		8297B8E32AE54AD100D0C155 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E22AE54AD100D0C155 /* SceneDelegate.swift */; };
 		8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8E42AE54AD100D0C155 /* TimerViewController.swift */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TTimer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		828036B62AE6CA36001B55F4 /* PieceViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceViewCell.swift; sourceTree = "<group>"; };
+		828036B92AE6CBC2001B55F4 /* TTConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTConstant.swift; sourceTree = "<group>"; };
 		8297B8DD2AE54AD100D0C155 /* TTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8297B8E02AE54AD100D0C155 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8297B8E22AE54AD100D0C155 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		828036B52AE6C9FE001B55F4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				828036B62AE6CA36001B55F4 /* PieceViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		828036B82AE6CB9B001B55F4 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				828036B92AE6CBC2001B55F4 /* TTConstant.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		8297B8D42AE54AD100D0C155 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +98,8 @@
 			children = (
 				8297B8F42AE54B0B00D0C155 /* Application */,
 				8297B8F92AE54C1B00D0C155 /* BaseClass */,
+				828036B52AE6C9FE001B55F4 /* Cell */,
+				828036B82AE6CB9B001B55F4 /* Constant */,
 				8297B8F52AE54B8E00D0C155 /* Module */,
 				8297B8FC2AE54E5600D0C155 /* TTUtils */,
 				8297B8E92AE54AD800D0C155 /* Assets.xcassets */,
@@ -251,10 +273,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				828036B72AE6CA36001B55F4 /* PieceViewCell.swift in Sources */,
 				8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */,
 				8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */,
 				8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */,
 				8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */,
+				828036BA2AE6CBC2001B55F4 /* TTConstant.swift in Sources */,
 				8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */,
 				8297B8E32AE54AD100D0C155 /* SceneDelegate.swift in Sources */,
 			);
