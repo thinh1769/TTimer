@@ -102,6 +102,37 @@ class TimerViewModel {
         swapFourValueMultiSideGreen(yellowRow: 0, yellowCol: cubeType, orangeRow: cubeType, orangeCol: cubeType, whiteRow: cubeType, whiteCol: 0, redRow: 0, redCol: 0, isPrime: true)
     }
     
+    func turnL() {
+        swapFourValueOneSide(&orange, row1: 0, col1: 0, row2: 0, col2: cubeType, row3: cubeType, col3: cubeType, row4: cubeType, col4: 0)
+        
+        
+        swapFourValueOneSide(&orange, row1: 0, col1: cubeType - 1, row2: cubeType - 1, col2: cubeType, row3: cubeType, col3: cubeType - 1, row4: cubeType - 1, col4: 0)
+        
+        //Left corner
+        swapFourValueMultiSideOrange(yellowRow: cubeType, yellowCol: 0, blueRow: 0, blueCol: cubeType, whiteRow: cubeType, whiteCol: 0, greenRow: cubeType, greenCol: 0, isPrime: false)
+        
+        //Right corner
+        swapFourValueMultiSideOrange(yellowRow: 0, yellowCol: 0, blueRow: cubeType, blueCol: cubeType, whiteRow: 0, whiteCol: 0, greenRow: 0, greenCol: 0, isPrime: false)
+        
+        //Edge
+        swapFourValueMultiSideOrange(yellowRow: cubeType - 1, yellowCol: 0, blueRow: cubeType - 1, blueCol: cubeType, whiteRow: cubeType - 1, whiteCol: 0, greenRow: cubeType - 1, greenCol: 0, isPrime: false)
+    }
+    
+    func turnLPrime() {
+        swapFourValueOneSide(&orange, row1: 0, col1: 0, row2: cubeType, col2: 0, row3: cubeType, col3: cubeType, row4: 0, col4: cubeType)
+        
+        swapFourValueOneSide(&orange, row1: 0, col1: cubeType - 1, row2: cubeType - 1, col2: 0, row3: cubeType, col3: cubeType - 1, row4: cubeType - 1, col4: cubeType)
+        
+        //Left corner
+        swapFourValueMultiSideOrange(yellowRow: cubeType, yellowCol: 0, blueRow: 0, blueCol: cubeType, whiteRow: cubeType, whiteCol: 0, greenRow: cubeType, greenCol: 0, isPrime: true)
+        
+        //Right corner
+        swapFourValueMultiSideOrange(yellowRow: 0, yellowCol: 0, blueRow: cubeType, blueCol: cubeType, whiteRow: 0, whiteCol: 0, greenRow: 0, greenCol: 0, isPrime: true)
+        
+        //Edge
+        swapFourValueMultiSideOrange(yellowRow: cubeType - 1, yellowCol: 0, blueRow: cubeType - 1, blueCol: cubeType, whiteRow: cubeType - 1, whiteCol: 0, greenRow: cubeType - 1, greenCol: 0, isPrime: true)
+    }
+    
     func swapFourValueOneSide
 (_ matrix: inout [[PieceColor]], row1: Int, col1: Int, row2: Int, col2: Int, row3: Int, col3: Int, row4: Int, col4: Int) {
         let temp1 = matrix[row1][col1]
@@ -152,6 +183,26 @@ class TimerViewModel {
             orange[orangeRow][orangeCol] = temp3
             white[whiteRow][whiteCol] = temp4
             red[redRow][redCol] = temp1
+        }
+    }
+    
+    func swapFourValueMultiSideOrange
+    (yellowRow: Int, yellowCol: Int, blueRow: Int, blueCol: Int, whiteRow: Int, whiteCol: Int, greenRow: Int, greenCol: Int, isPrime: Bool) {
+        let temp1 = yellow[yellowRow][yellowCol]
+        let temp2 = blue[blueRow][blueCol]
+        let temp3 = white[whiteRow][whiteCol]
+        let temp4 = green[greenRow][greenCol]
+        
+        if !isPrime {
+            yellow[yellowRow][yellowCol] = temp4
+            blue[blueRow][blueCol] = temp1
+            white[whiteRow][whiteCol] = temp2
+            green[greenRow][greenCol] = temp3
+        } else {
+            yellow[yellowRow][yellowCol] = temp2
+            blue[blueRow][blueCol] = temp3
+            white[whiteRow][whiteCol] = temp4
+            green[greenRow][greenCol] = temp1
         }
     }
 }
