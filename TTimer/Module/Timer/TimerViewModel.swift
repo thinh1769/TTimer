@@ -56,7 +56,7 @@ class TimerViewModel {
     ]
     var cubeType = 2
     
-    func turnU(isPrime: Bool = false) {
+    func turnU(isPrime: Bool = false, isTwo: Bool = false) {
         ///White side
         //Corner
         swapFourCellsOneSide(&white,
@@ -68,7 +68,8 @@ class TimerViewModel {
                              col3: cubeType,
                              row4: cubeType,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         
         //Edge
         swapFourCellsOneSide(&white,
@@ -80,7 +81,8 @@ class TimerViewModel {
                              col3: cubeType / 2,
                              row4: cubeType / 2,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         
         ///Other side
         //Left corner
@@ -96,7 +98,8 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: 0,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Right corner
         swapFourCellsMultiSide(matrix1: &green,
                                matrix2: &orange,
@@ -110,7 +113,8 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: 0,
                                colMatrix4: cubeType,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Edge
         swapFourCellsMultiSide(matrix1: &green,
                                matrix2: &orange,
@@ -124,10 +128,11 @@ class TimerViewModel {
                                colMatrix3: cubeType / 2,
                                rowMatrix4: 0,
                                colMatrix4: cubeType / 2,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
     }
     
-    func turnF(isPrime: Bool = false) {
+    func turnF(isPrime: Bool = false, isTwo: Bool = false) {
         ///Green side
         //Corner
         swapFourCellsOneSide(&green,
@@ -139,7 +144,8 @@ class TimerViewModel {
                              col3: cubeType,
                              row4: cubeType,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         //Edge
         swapFourCellsOneSide(&green,
                              row1: 0,
@@ -150,7 +156,8 @@ class TimerViewModel {
                              col3: cubeType / 2,
                              row4: cubeType / 2,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         
         ///Other side
         //Left corner
@@ -166,7 +173,8 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: cubeType,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Right corner
         swapFourCellsMultiSide(matrix1: &yellow,
                                matrix2: &orange,
@@ -180,7 +188,8 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: 0,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Edge
         swapFourCellsMultiSide(matrix1: &yellow,
                                matrix2: &orange,
@@ -194,10 +203,11 @@ class TimerViewModel {
                                colMatrix3: cubeType / 2,
                                rowMatrix4: cubeType / 2,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
     }
 
-    func turnL(isPrime: Bool = false) {
+    func turnL(isPrime: Bool = false, isTwo: Bool = false) {
         ///Orange side
         //Corner
         swapFourCellsOneSide(&orange,
@@ -209,7 +219,8 @@ class TimerViewModel {
                              col3: cubeType,
                              row4: cubeType,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         //Edge
         swapFourCellsOneSide(&orange,
                              row1: 0,
@@ -220,7 +231,8 @@ class TimerViewModel {
                              col3: cubeType / 2,
                              row4: cubeType / 2,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         
         ///Other side
         //Left corner
@@ -236,7 +248,8 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: cubeType,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Right corner
         swapFourCellsMultiSide(matrix1: &yellow,
                                matrix2: &blue,
@@ -250,7 +263,8 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: 0,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Edge
         swapFourCellsMultiSide(matrix1: &yellow,
                                matrix2: &blue,
@@ -264,10 +278,11 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: cubeType / 2,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
     }
     
-    func turnR(isPrime: Bool = false) {
+    func turnR(isPrime: Bool = false, isTwo: Bool = false) {
         /// Orange side
         // Corner
         swapFourCellsOneSide(&red,
@@ -279,7 +294,8 @@ class TimerViewModel {
                              col3: cubeType,
                              row4: cubeType,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         // Edge
         swapFourCellsOneSide(&red,
                              row1: 0,
@@ -290,7 +306,8 @@ class TimerViewModel {
                              col3: cubeType / 2,
                              row4: cubeType / 2,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         
         ///Other side
         //Left corner
@@ -306,7 +323,8 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: cubeType,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Right corner
         swapFourCellsMultiSide(matrix1: &yellow,
                                matrix2: &green,
@@ -320,7 +338,8 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: 0,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Edge
         swapFourCellsMultiSide(matrix1: &yellow,
                                matrix2: &green,
@@ -334,10 +353,11 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: cubeType / 2,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
     }
     
-    func turnD(isPrime: Bool = false) {
+    func turnD(isPrime: Bool = false, isTwo: Bool = false) {
         /// Yellow side
         // Corner
         swapFourCellsOneSide(&yellow,
@@ -349,7 +369,8 @@ class TimerViewModel {
                              col3: cubeType,
                              row4: cubeType,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         // Edge
         swapFourCellsOneSide(&yellow,
                              row1: 0,
@@ -360,7 +381,8 @@ class TimerViewModel {
                              col3: cubeType / 2,
                              row4: cubeType / 2,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         
         ///Other side
         //Left corner
@@ -376,7 +398,8 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: cubeType,
                                colMatrix4: cubeType,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Right corner
         swapFourCellsMultiSide(matrix1: &blue,
                                matrix2: &orange,
@@ -390,7 +413,8 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: cubeType,
                                colMatrix4: 0,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Edge
         swapFourCellsMultiSide(matrix1: &blue,
                                matrix2: &orange,
@@ -404,10 +428,11 @@ class TimerViewModel {
                                colMatrix3: cubeType / 2,
                                rowMatrix4: cubeType,
                                colMatrix4: cubeType / 2,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
     }
     
-    func turnB(isPrime: Bool = false) {
+    func turnB(isPrime: Bool = false, isTwo: Bool = false) {
         /// Blue side
         // Corner
         swapFourCellsOneSide(&blue,
@@ -419,7 +444,8 @@ class TimerViewModel {
                              col3: cubeType,
                              row4: cubeType,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
         // Edge
         swapFourCellsOneSide(&blue,
                              row1: 0,
@@ -430,7 +456,8 @@ class TimerViewModel {
                              col3: cubeType / 2,
                              row4: cubeType / 2,
                              col4: 0,
-                             isPrime: isPrime)
+                             isPrime: isPrime,
+                             isTwo: isTwo)
 
         ///Other side
         //Left corner
@@ -446,7 +473,8 @@ class TimerViewModel {
                                colMatrix3: cubeType,
                                rowMatrix4: 0,
                                colMatrix4: cubeType,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Right corner
         swapFourCellsMultiSide(matrix1: &white,
                                matrix2: &orange,
@@ -460,7 +488,8 @@ class TimerViewModel {
                                colMatrix3: 0,
                                rowMatrix4: cubeType,
                                colMatrix4: cubeType,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
         //Edge
         swapFourCellsMultiSide(matrix1: &white,
                                matrix2: &orange,
@@ -474,7 +503,8 @@ class TimerViewModel {
                                colMatrix3: cubeType / 2,
                                rowMatrix4: cubeType / 2,
                                colMatrix4: cubeType,
-                               isPrime: isPrime)
+                               isPrime: isPrime,
+                               isTwo: isTwo)
     }
     
     func swapFourCellsOneSide(_ matrix: inout [[PieceColor]],
@@ -486,23 +516,30 @@ class TimerViewModel {
                               col3: Int,
                               row4: Int,
                               col4: Int,
-                              isPrime: Bool
+                              isPrime: Bool,
+                              isTwo: Bool
     ) {
-        let temp1 = matrix[row1][col1]
-        let temp2 = matrix[row2][col2]
-        let temp3 = matrix[row3][col3]
-        let temp4 = matrix[row4][col4]
+        let cell1 = matrix[row1][col1]
+        let cell2 = matrix[row2][col2]
+        let cell3 = matrix[row3][col3]
+        let cell4 = matrix[row4][col4]
         
-        if !isPrime {
-            matrix[row1][col1] = temp4
-            matrix[row2][col2] = temp1
-            matrix[row3][col3] = temp2
-            matrix[row4][col4] = temp3
+        if isPrime {
+            matrix[row4][col4] = cell1
+            matrix[row1][col1] = cell2
+            matrix[row2][col2] = cell3
+            matrix[row3][col3] = cell4
+        } else if isTwo {
+            matrix[row4][col4] = cell2
+            matrix[row1][col1] = cell3
+            matrix[row2][col2] = cell4
+            matrix[row3][col3] = cell1
+
         } else {
-            matrix[row4][col4] = temp1
-            matrix[row1][col1] = temp2
-            matrix[row2][col2] = temp3
-            matrix[row3][col3] = temp4
+            matrix[row1][col1] = cell4
+            matrix[row2][col2] = cell1
+            matrix[row3][col3] = cell2
+            matrix[row4][col4] = cell3
         }
     }
     
@@ -518,23 +555,29 @@ class TimerViewModel {
                                 colMatrix3: Int,
                                 rowMatrix4: Int,
                                 colMatrix4: Int,
-                                isPrime: Bool
+                                isPrime: Bool,
+                                isTwo: Bool
     ) {
-        let temp1 = matrix1[rowMatrix1][colMatrix1]
-        let temp2 = matrix2[rowMatrix2][colMatrix2]
-        let temp3 = matrix3[rowMatrix3][colMatrix3]
-        let temp4 = matrix4[rowMatrix4][colMatrix4]
+        let cell1 = matrix1[rowMatrix1][colMatrix1]
+        let cell2 = matrix2[rowMatrix2][colMatrix2]
+        let cell3 = matrix3[rowMatrix3][colMatrix3]
+        let cell4 = matrix4[rowMatrix4][colMatrix4]
 
-        if !isPrime {
-            matrix1[rowMatrix1][colMatrix1] = temp4
-            matrix2[rowMatrix2][colMatrix2] = temp1
-            matrix3[rowMatrix3][colMatrix3] = temp2
-            matrix4[rowMatrix4][colMatrix4] = temp3
+        if isPrime {
+            matrix1[rowMatrix1][colMatrix1] = cell2
+            matrix2[rowMatrix2][colMatrix2] = cell3
+            matrix3[rowMatrix3][colMatrix3] = cell4
+            matrix4[rowMatrix4][colMatrix4] = cell1
+        } else if isTwo {
+            matrix1[rowMatrix1][colMatrix1] = cell3
+            matrix2[rowMatrix2][colMatrix2] = cell4
+            matrix3[rowMatrix3][colMatrix3] = cell1
+            matrix4[rowMatrix4][colMatrix4] = cell2
         } else {
-            matrix1[rowMatrix1][colMatrix1] = temp2
-            matrix2[rowMatrix2][colMatrix2] = temp3
-            matrix3[rowMatrix3][colMatrix3] = temp4
-            matrix4[rowMatrix4][colMatrix4] = temp1
+            matrix1[rowMatrix1][colMatrix1] = cell4
+            matrix2[rowMatrix2][colMatrix2] = cell1
+            matrix3[rowMatrix3][colMatrix3] = cell2
+            matrix4[rowMatrix4][colMatrix4] = cell3
         }
     }
 }
