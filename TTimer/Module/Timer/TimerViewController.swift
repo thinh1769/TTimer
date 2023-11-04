@@ -37,11 +37,17 @@ class TimerViewController: TTViewController {
     
     private func parseData() {
         viewModel.turnU()
-        viewModel.turnUPrime()
+        viewModel.turnU(isPrime: true)
         viewModel.turnF()
-        viewModel.turnFPrime()
+        viewModel.turnF(isPrime: true)
         viewModel.turnL()
-        viewModel.turnLPrime()
+        viewModel.turnL(isPrime: true)
+        viewModel.turnR()
+        viewModel.turnR(isPrime: true)
+        viewModel.turnD()
+        viewModel.turnD(isPrime: true)
+        viewModel.turnB()
+        viewModel.turnB(isPrime: true)
         
         viewModel.blueData.accept(viewModel.blue[0] + viewModel.blue[1] + viewModel.blue[2])
         viewModel.whiteData.accept(viewModel.white[0] + viewModel.white[1] + viewModel.white[2])
