@@ -9,21 +9,27 @@ import Foundation
 import UIKit
 
 class TTUtils {
-    static func makeLabel(text: String, size: CGFloat, color: UIColor, textAlignment: NSTextAlignment?) -> UILabel {
+    static func makeLabel(text: String,
+                          size: CGFloat,
+                          color: UIColor,
+                          numberOfLine: Int = 0,
+                          textAlignment: NSTextAlignment = .left
+    ) -> UILabel {
         let label = UILabel()
         
         label.text = text
         label.font.withSize(size)
         label.textColor = color
-        
-        if let textAlignment = textAlignment {
-            label.textAlignment = textAlignment
-        }
+        label.numberOfLines = numberOfLine
+        label.textAlignment = textAlignment
         
         return label
     }
     
-    static func makeCollectionView(scrollDirection: UICollectionView.ScrollDirection, spacing: CGFloat, isScrollEnabled: Bool) -> UICollectionView {
+    static func makeCollectionView(scrollDirection: UICollectionView.ScrollDirection,
+                                   spacing: CGFloat,
+                                   isScrollEnabled: Bool
+    ) -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = scrollDirection
         layout.minimumLineSpacing = spacing
@@ -39,16 +45,44 @@ class TTUtils {
         return collectionView
     }
     
-    static func makeView(color: UIColor, cornerRadius: CGFloat?) -> UIView {
+    static func makeView(color: UIColor,
+                         cornerRadius: CGFloat = 0,
+                         borderColor: CGColor = UIColor.clear.cgColor,
+                         borderWidth: CGFloat = 0,
+                         clipToBounds: Bool = false,
+                         maskToBounds: Bool = false
+    ) -> UIView {
         let view = UIView()
         
         view.backgroundColor = color
-        
-        if let cornerRadius = cornerRadius {
-            view.layer.cornerRadius = cornerRadius
-        }
+        view.layer.cornerRadius = cornerRadius
+        view.layer.borderColor = borderColor
+        view.layer.borderWidth = borderWidth
+        view.layer.masksToBounds = maskToBounds
+        view.clipsToBounds = clipToBounds
         
         return view
+    }
+    
+    static func makeButton(title: String = "",
+                           textColor: UIColor = .black,
+                           textSize: CGFloat = 0,
+                           backgroundColor: UIColor = .clear,
+                           cornerRadius: CGFloat = 0,
+                           borderColor: CGColor = UIColor.clear.cgColor,
+                           borderWidth: CGFloat = 0
+    ) -> UIButton {
+        let button = UIButton()
+
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(textColor, for: .normal)
+        button.titleLabel?.font.withSize(textSize)
+        button.backgroundColor = backgroundColor
+        button.layer.cornerRadius = cornerRadius
+        button.layer.borderWidth = borderWidth
+        button.layer.borderColor = borderColor
+        
+        return button
     }
     
     static func bottomPadding(in viewController: UIViewController) -> CGFloat {

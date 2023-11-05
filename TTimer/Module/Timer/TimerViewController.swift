@@ -9,16 +9,33 @@ import UIKit
 import SnapKit
 
 class TimerViewController: TTViewController {
-    lazy private var whiteCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical, spacing: 0, isScrollEnabled: false)
-    lazy private var greenCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical, spacing: 0, isScrollEnabled: false)
-    lazy private var yellowCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical, spacing: 0, isScrollEnabled: false)
-    lazy private var orangeCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical, spacing: 0, isScrollEnabled: false)
-    lazy private var redCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical, spacing: 0, isScrollEnabled: false)
-    lazy private var blueCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical, spacing: 0, isScrollEnabled: false)
+    lazy private var scrambleLabel = TTUtils.makeLabel(text: "",
+                                                       size: 14,
+                                                       color: .black,
+                                                       textAlignment: .center)
+    lazy private var generateScrambleBtn = TTUtils.makeButton(title: "Next",
+                                                              textColor: .blue,
+                                                              textSize: 16)
+    lazy private var whiteCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                      spacing: 0,
+                                                                      isScrollEnabled: false)
+    lazy private var greenCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                      spacing: 0,
+                                                                      isScrollEnabled: false)
+    lazy private var yellowCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                       spacing: 0,
+                                                                       isScrollEnabled: false)
+    lazy private var orangeCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                       spacing: 0,
+                                                                       isScrollEnabled: false)
+    lazy private var redCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                    spacing: 0,
+                                                                    isScrollEnabled: false)
+    lazy private var blueCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                     spacing: 0,
+                                                                     isScrollEnabled: false)
     
     private let viewModel = TimerViewModel()
-    
-    let scramble = ["U"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,20 +53,7 @@ class TimerViewController: TTViewController {
     }
     
     private func parseData() {
-        viewModel.cubeType = .seven
-        viewModel.turnU()
-//        viewModel.turnU(isTwo: true)
-//        viewModel.turnF()
-        viewModel.turnF(isPrime: true)
-        viewModel.turnL()
-//        viewModel.turnL(isPrime: true)
-//        viewModel.turnR()
-        viewModel.turnR(isPrime: true)
-        viewModel.turnD()
-//        viewModel.turnD(isTwo: true)
-//        viewModel.turnB()
-        viewModel.turnB(isTwo: true)
-        
+        viewModel.cubeType = .five
         updateData()
     }
 
@@ -76,11 +80,23 @@ class TimerViewController: TTViewController {
         viewModel.orangeData.accept(combinedOrangeData.flatMap { $0 })
         viewModel.yellowData.accept(combinedYellowData.flatMap { $0 })
     }
+    
+    @objc private func didTapGenerateScramble() {
+        scrambleLabel.text = viewModel.generateRandomScrambleList()
+        
+        updateData()
+    }
 }
 
 extension TimerViewController {
     private func setupUI() {
+        didTapGenerateScramble()
+        generateScrambleBtn.addTarget(self, action: #selector(didTapGenerateScramble), for: .touchUpInside)
+        
         view.backgroundColor = .white
+        
+        view.addSubview(scrambleLabel)
+        view.addSubview(generateScrambleBtn)
         
         view.addSubview(whiteCollectionView)
         view.addSubview(greenCollectionView)
@@ -98,6 +114,18 @@ extension TimerViewController {
     }
     
     private func layout() {
+        scrambleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(TTUtils.topPadding(in: self) + 16)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+        }
+        
+        generateScrambleBtn.snp.makeConstraints { make in
+            make.width.equalTo(100)
+            make.height.equalTo(50)
+            make.center.equalToSuperview()
+        }
+        
         blueCollectionView.snp.makeConstraints { make in
             make.height.width.equalTo(viewModel.cubeSize)
             make.trailing.equalToSuperview().offset(-10)

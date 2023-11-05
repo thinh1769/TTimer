@@ -12,10 +12,11 @@ import RxSwift
 
 class TimerViewModel {
     let bag = DisposeBag()
+    var scrambleList = [String]()
     var cubeSize: CGFloat = 40
     var cubeType = CubeType.two {
         didSet {
-            updateFaceColors()
+            resetFaceColors()
             updateCubeSize()
         }
     }
@@ -34,7 +35,7 @@ class TimerViewModel {
     var red: [[PieceColor]] = Array(repeating: Array(repeating: .red, count: 3), count: 3)
     var blue: [[PieceColor]] = Array(repeating: Array(repeating: .blue, count: 3), count: 3)
     
-    private func updateFaceColors() {
+    private func resetFaceColors() {
         white = Array(repeating: Array(repeating: .white, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
         green = Array(repeating: Array(repeating: .green, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
         yellow = Array(repeating: Array(repeating: .yellow, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
@@ -57,6 +58,94 @@ class TimerViewModel {
             cubeSize = PieceSize.six.rawValue * CGFloat(cubeType.rawValue + 1)
         case .seven:
             cubeSize = PieceSize.seven.rawValue * CGFloat(cubeType.rawValue + 1)
+        }
+    }
+    
+    func generateRandomScrambleList() -> String {
+        resetFaceColors()
+        
+        var scramble = ""
+        var length = 0
+        let allScramble = Scramble.allCases
+        let allScramble2Layers = Scramble2Layers.allCases
+        let allScramble3Layers = Scramble3Layers.allCases
+        
+        var combinedCase = allScramble.map { "\($0.rawValue)" }
+        var usedScrambleCharacter = ""
+        
+        switch cubeType {
+        case .two:
+            length = ScrambleLength.two.rawValue
+        case .three:
+            length = ScrambleLength.three.rawValue
+        case .four:
+            length = ScrambleLength.four.rawValue
+            combinedCase += allScramble2Layers.map { "\($0.rawValue)" }
+        case .five:
+            length = ScrambleLength.five.rawValue
+            combinedCase += allScramble2Layers.map { "\($0.rawValue)" }
+        case .six:
+            length = ScrambleLength.six.rawValue
+            combinedCase += allScramble3Layers.map { "\($0.rawValue)" }
+        case .seven:
+            length = ScrambleLength.seven.rawValue
+            combinedCase += allScramble3Layers.map { "\($0.rawValue)" }
+        }
+        
+        while length > 0 {
+            let randomScramble = combinedCase.randomElement() ?? ""
+            if !randomScramble.contains(usedScrambleCharacter) {
+                scramble += "\(randomScramble) "
+                scrambleList.append(randomScramble)
+                turnScramble(randomScramble)
+                usedScrambleCharacter = randomScramble.filter { $0.isUppercase }
+                length -= 1
+            }
+        }
+
+        return String(scramble.dropLast())
+    }
+    
+    func turnScramble(_ scrambleCharacter: String) {
+        switch scrambleCharacter {
+        case Scramble.U.rawValue:
+            turnU()
+        case Scramble.UPrime.rawValue:
+            turnU(isPrime: true)
+        case Scramble.U2.rawValue:
+            turnU(isTwo: true)
+        case Scramble.F.rawValue:
+            turnF()
+        case Scramble.FPrime.rawValue:
+            turnF(isPrime: true)
+        case Scramble.F2.rawValue:
+            turnF(isTwo: true)
+        case Scramble.L.rawValue:
+            turnL()
+        case Scramble.LPrime.rawValue:
+            turnL(isPrime: true)
+        case Scramble.L2.rawValue:
+            turnL(isTwo: true)
+        case Scramble.R.rawValue:
+            turnR()
+        case Scramble.RPrime.rawValue:
+            turnR(isPrime: true)
+        case Scramble.R2.rawValue:
+            turnR(isTwo: true)
+        case Scramble.D.rawValue:
+            turnD()
+        case Scramble.DPrime.rawValue:
+            turnD(isPrime: true)
+        case Scramble.D2.rawValue:
+            turnD(isTwo: true)
+        case Scramble.B.rawValue:
+            turnB()
+        case Scramble.BPrime.rawValue:
+            turnB(isPrime: true)
+        case Scramble.B2.rawValue:
+            turnB(isTwo: true)
+        default:
+            return
         }
     }
     

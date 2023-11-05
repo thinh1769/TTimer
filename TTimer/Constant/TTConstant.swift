@@ -43,65 +43,84 @@ enum ScrambleLength: Int {
     case seven = 100
 }
 
-enum Scramble {
-    case U
-    case UPrime
-    case U2
-    case Uw
-    case UwPrime
-    case Uw2
-    case _3Uw
-    case _3UwPrime
-    case _3Uw2
+enum Scramble: String, CaseIterable {
+    case U = "U"
+    case UPrime = "U'"
+    case U2 = "U2"
     
-    case F
-    case FPrime
-    case F2
-    case Fw
-    case FwPrime
-    case Fw2
-    case _3Fw
-    case _3FwPrime
-    case _3Fw2
+    case F = "F"
+    case FPrime = "F'"
+    case F2 = "F2"
     
-    case L
-    case LPrime
-    case L2
-    case Lw
-    case LwPrime
-    case Lw2
-    case _3Lw
-    case _3LwPrime
-    case _3Lw2
+    case L = "L"
+    case LPrime = "L'"
+    case L2 = "L2"
     
-    case R
-    case RPrime
-    case R2
-    case Rw
-    case RwPrime
-    case Rw2
-    case _3Rw
-    case _3RwPrime
-    case _3Rw2
+    case R = "R"
+    case RPrime = "R'"
+    case R2 = "R2"
     
-    case D
-    case DPrime
-    case D2
-    case Dw
-    case DwPrime
-    case Dw2
-    case _3Dw
-    case _3DwPrime
-    case _3Dw2
+    case D = "D"
+    case DPrime = "D'"
+    case D2 = "D2"
     
-    case B
-    case BPrime
-    case B2
-    case Bw
-    case BwPrime
-    case Bw2
-    case _3Bw
-    case _3BwPrime
-    case _3Bw2
+    case B = "B"
+    case BPrime = "B'"
+    case B2 = "B2"
 }
+
+enum Scramble2Layers: String, CaseIterable {
+    case Uw = "Uw"
+    case UwPrime = "Uw'"
+    case Uw2 = "Uw2"
+    
+    case Fw = "Fw"
+    case FwPrime = "Fw'"
+    case Fw2 = "Fw2"
+    
+    case Lw = "Lw"
+    case LwPrime = "Lw'"
+    case Lw2 = "Lw2"
+
+    case Rw = "Rw"
+    case RwPrime = "Rw'"
+    case Rw2 = "Rw2"
+    
+    case Dw = "Dw"
+    case DwPrime = "Dw'"
+    case Dw2 = "Dw2"
+    
+    case Bw = "Bw"
+    case BwPrime = "Bw'"
+    case Bw2 = "Bw2"
+}
+
+enum Scramble3Layers: String, CaseIterable {
+    case _3Uw = "3Uw"
+    case _3UwPrime = "3Uw'"
+    case _3Uw2 = "3Uw2"
+
+    case _3Fw = "3Fw"
+    case _3FwPrime = "3Fw'"
+    case _3Fw2 = "3Fw2"
+
+    case _3Lw = "3Lw"
+    case _3LwPrime = "3L'"
+    case _3Lw2 = "3Lw2"
+
+    case _3Rw = "3Rw"
+    case _3RwPrime = "3Rw'"
+    case _3Rw2 = "3Rw2"
+
+    case _3Dw = "3Dw"
+    case _3DwPrime = "3Dw'"
+    case _3Dw2 = "3Dw2"
+
+    case _3Bw = "3Bw"
+    case _3BwPrime = "3Bw'"
+    case _3Bw2 = "3Bw2"
+}
+
+
+
 
