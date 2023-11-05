@@ -30,20 +30,7 @@ class PieceViewCell: UICollectionViewCell {
     }
     
     func config(color: PieceColor) {
-        switch color {
-        case .white:
-            backgroundColor = .white
-        case .green:
-            backgroundColor = .green
-        case .yellow:
-            backgroundColor = .yellow
-        case .orange:
-            backgroundColor = .orange
-        case .red:
-            backgroundColor = .red
-        case .blue:
-            backgroundColor = .blue
-        }
+        backgroundColor = UIColor(named: color.rawValue)
     }
 }
 

@@ -12,6 +12,14 @@ import RxSwift
 
 class TimerViewModel {
     let bag = DisposeBag()
+    var cubeSize: CGFloat = 40
+    var cubeType = CubeType.two {
+        didSet {
+            updateFaceColors()
+            updateCubeSize()
+        }
+    }
+    
     let whiteData = BehaviorRelay<[PieceColor]>(value: [])
     let greenData = BehaviorRelay<[PieceColor]>(value: [])
     let yellowData = BehaviorRelay<[PieceColor]>(value: [])
@@ -19,495 +27,488 @@ class TimerViewModel {
     let redData = BehaviorRelay<[PieceColor]>(value: [])
     let blueData = BehaviorRelay<[PieceColor]>(value: [])
     
-    var white : [[PieceColor]] = [
-        [.white, .white, .white],
-        [.white, .white, .white],
-        [.white, .white, .white]
-    ]
+    var white: [[PieceColor]] = Array(repeating: Array(repeating: .white, count: 3), count: 3)
+    var green: [[PieceColor]] = Array(repeating: Array(repeating: .green, count: 3), count: 3)
+    var yellow: [[PieceColor]] = Array(repeating: Array(repeating: .yellow, count: 3), count: 3)
+    var orange: [[PieceColor]] = Array(repeating: Array(repeating: .orange, count: 3), count: 3)
+    var red: [[PieceColor]] = Array(repeating: Array(repeating: .red, count: 3), count: 3)
+    var blue: [[PieceColor]] = Array(repeating: Array(repeating: .blue, count: 3), count: 3)
     
-    var green : [[PieceColor]] = [
-        [.green, .green, .green],
-        [.green, .green, .green],
-        [.green, .green, .green]
-    ]
+    private func updateFaceColors() {
+        white = Array(repeating: Array(repeating: .white, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
+        green = Array(repeating: Array(repeating: .green, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
+        yellow = Array(repeating: Array(repeating: .yellow, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
+        orange = Array(repeating: Array(repeating: .orange, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
+        red = Array(repeating: Array(repeating: .red, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
+        blue = Array(repeating: Array(repeating: .blue, count: cubeType.rawValue + 1), count: cubeType.rawValue + 1)
+    }
     
-    var yellow : [[PieceColor]] = [
-        [.yellow, .yellow, .yellow],
-        [.yellow, .yellow, .yellow],
-        [.yellow, .yellow, .yellow]
-    ]
-    
-    var orange : [[PieceColor]] = [
-        [.orange, .orange, .orange],
-        [.orange, .orange, .orange],
-        [.orange, .orange, .orange]
-    ]
-    
-    var red : [[PieceColor]] = [
-        [.red, .red, .red],
-        [.red, .red, .red],
-        [.red, .red, .red]
-    ]
-    
-    var blue : [[PieceColor]] = [
-        [.blue, .blue, .blue],
-        [.blue, .blue, .blue],
-        [.blue, .blue, .blue]
-    ]
-    var cubeType = 2
+    private func updateCubeSize() {
+        switch cubeType {
+        case .two:
+            cubeSize = PieceSize.two.rawValue * CGFloat(cubeType.rawValue + 1)
+        case .three:
+            cubeSize = PieceSize.three.rawValue * CGFloat(cubeType.rawValue + 1)
+        case .four:
+            cubeSize = PieceSize.four.rawValue * CGFloat(cubeType.rawValue + 1)
+        case .five:
+            cubeSize = PieceSize.five.rawValue * CGFloat(cubeType.rawValue + 1)
+        case .six:
+            cubeSize = PieceSize.six.rawValue * CGFloat(cubeType.rawValue + 1)
+        case .seven:
+            cubeSize = PieceSize.seven.rawValue * CGFloat(cubeType.rawValue + 1)
+        }
+    }
     
     func turnU(isPrime: Bool = false, isTwo: Bool = false) {
-        ///White side
+        ///White face
         //Corner
-        swapFourCellsOneSide(&white,
+        swapFourPiecesOneFace(&white,
                              row1: 0,
                              col1: 0,
                              row2: 0,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType,
-                             row4: cubeType,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue,
+                             row4: cubeType.rawValue,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
-        
         //Edge
-        swapFourCellsOneSide(&white,
+        swapFourPiecesOneFace(&white,
                              row1: 0,
-                             col1: cubeType / 2,
-                             row2: cubeType / 2,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType / 2,
-                             row4: cubeType / 2,
+                             col1: cubeType.rawValue / 2,
+                             row2: cubeType.rawValue / 2,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue / 2,
+                             row4: cubeType.rawValue / 2,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
-        
-        ///Other side
+        ///Other face
         //Left corner
-        swapFourCellsMultiSide(matrix1: &green,
-                               matrix2: &orange,
-                               matrix3: &blue,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: 0,
-                               rowMatrix2: 0,
-                               colMatrix2: 0,
-                               rowMatrix3: 0,
-                               colMatrix3: 0,
-                               rowMatrix4: 0,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &green,
+                               face2: &orange,
+                               face3: &blue,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: 0,
+                               rowFace2: 0,
+                               colFace2: 0,
+                               rowFace3: 0,
+                               colFace3: 0,
+                               rowFace4: 0,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Right corner
-        swapFourCellsMultiSide(matrix1: &green,
-                               matrix2: &orange,
-                               matrix3: &blue,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType,
-                               rowMatrix2: 0,
-                               colMatrix2: cubeType,
-                               rowMatrix3: 0,
-                               colMatrix3: cubeType,
-                               rowMatrix4: 0,
-                               colMatrix4: cubeType,
+        swapFourPiecesMultiFace(face1: &green,
+                               face2: &orange,
+                               face3: &blue,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: 0,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: 0,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: 0,
+                               colFace4: cubeType.rawValue,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Edge
-        swapFourCellsMultiSide(matrix1: &green,
-                               matrix2: &orange,
-                               matrix3: &blue,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType / 2,
-                               rowMatrix2: 0,
-                               colMatrix2: cubeType / 2,
-                               rowMatrix3: 0,
-                               colMatrix3: cubeType / 2,
-                               rowMatrix4: 0,
-                               colMatrix4: cubeType / 2,
+        swapFourPiecesMultiFace(face1: &green,
+                               face2: &orange,
+                               face3: &blue,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue / 2,
+                               rowFace2: 0,
+                               colFace2: cubeType.rawValue / 2,
+                               rowFace3: 0,
+                               colFace3: cubeType.rawValue / 2,
+                               rowFace4: 0,
+                               colFace4: cubeType.rawValue / 2,
                                isPrime: isPrime,
                                isTwo: isTwo)
     }
     
     func turnF(isPrime: Bool = false, isTwo: Bool = false) {
-        ///Green side
+        ///Green face
         //Corner
-        swapFourCellsOneSide(&green,
+        swapFourPiecesOneFace(&green,
                              row1: 0,
                              col1: 0,
                              row2: 0,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType,
-                             row4: cubeType,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue,
+                             row4: cubeType.rawValue,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         //Edge
-        swapFourCellsOneSide(&green,
+        swapFourPiecesOneFace(&green,
                              row1: 0,
-                             col1: cubeType / 2,
-                             row2: cubeType / 2,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType / 2,
-                             row4: cubeType / 2,
+                             col1: cubeType.rawValue / 2,
+                             row2: cubeType.rawValue / 2,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue / 2,
+                             row4: cubeType.rawValue / 2,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         
-        ///Other side
+        ///Other face
         //Left corner
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &orange,
-                               matrix3: &white,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: 0,
-                               rowMatrix2: 0,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType,
-                               rowMatrix4: cubeType,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &orange,
+                               face3: &white,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: 0,
+                               rowFace2: 0,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Right corner
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &orange,
-                               matrix3: &white,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType,
-                               rowMatrix2: cubeType,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType,
-                               colMatrix3: 0,
-                               rowMatrix4: 0,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &orange,
+                               face3: &white,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: 0,
+                               rowFace4: 0,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Edge
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &orange,
-                               matrix3: &white,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType / 2,
-                               rowMatrix2: cubeType / 2,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType / 2,
-                               rowMatrix4: cubeType / 2,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &orange,
+                               face3: &white,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue / 2,
+                               rowFace2: cubeType.rawValue / 2,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue / 2,
+                               rowFace4: cubeType.rawValue / 2,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
     }
-
+    
     func turnL(isPrime: Bool = false, isTwo: Bool = false) {
-        ///Orange side
+        ///Orange face
         //Corner
-        swapFourCellsOneSide(&orange,
+        swapFourPiecesOneFace(&orange,
                              row1: 0,
                              col1: 0,
                              row2: 0,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType,
-                             row4: cubeType,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue,
+                             row4: cubeType.rawValue,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         //Edge
-        swapFourCellsOneSide(&orange,
+        swapFourPiecesOneFace(&orange,
                              row1: 0,
-                             col1: cubeType / 2,
-                             row2: cubeType / 2,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType / 2,
-                             row4: cubeType / 2,
+                             col1: cubeType.rawValue / 2,
+                             row2: cubeType.rawValue / 2,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue / 2,
+                             row4: cubeType.rawValue / 2,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         
-        ///Other side
+        ///Other face
         //Left corner
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &blue,
-                               matrix3: &white,
-                               matrix4: &green,
-                               rowMatrix1: cubeType,
-                               colMatrix1: 0,
-                               rowMatrix2: 0,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType,
-                               colMatrix3: 0,
-                               rowMatrix4: cubeType,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &blue,
+                               face3: &white,
+                               face4: &green,
+                               rowFace1: cubeType.rawValue,
+                               colFace1: 0,
+                               rowFace2: 0,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: 0,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Right corner
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &blue,
-                               matrix3: &white,
-                               matrix4: &green,
-                               rowMatrix1: 0,
-                               colMatrix1: 0,
-                               rowMatrix2: cubeType,
-                               colMatrix2: cubeType,
-                               rowMatrix3: 0,
-                               colMatrix3: 0,
-                               rowMatrix4: 0,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &blue,
+                               face3: &white,
+                               face4: &green,
+                               rowFace1: 0,
+                               colFace1: 0,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: 0,
+                               colFace3: 0,
+                               rowFace4: 0,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Edge
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &blue,
-                               matrix3: &white,
-                               matrix4: &green,
-                               rowMatrix1: cubeType / 2,
-                               colMatrix1: 0,
-                               rowMatrix2: cubeType / 2,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType / 2,
-                               colMatrix3: 0,
-                               rowMatrix4: cubeType / 2,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &blue,
+                               face3: &white,
+                               face4: &green,
+                               rowFace1: cubeType.rawValue / 2,
+                               colFace1: 0,
+                               rowFace2: cubeType.rawValue / 2,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue / 2,
+                               colFace3: 0,
+                               rowFace4: cubeType.rawValue / 2,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
     }
     
     func turnR(isPrime: Bool = false, isTwo: Bool = false) {
-        /// Orange side
+        /// Orange face
         // Corner
-        swapFourCellsOneSide(&red,
+        swapFourPiecesOneFace(&red,
                              row1: 0,
                              col1: 0,
                              row2: 0,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType,
-                             row4: cubeType,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue,
+                             row4: cubeType.rawValue,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         // Edge
-        swapFourCellsOneSide(&red,
+        swapFourPiecesOneFace(&red,
                              row1: 0,
-                             col1: cubeType / 2,
-                             row2: cubeType / 2,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType / 2,
-                             row4: cubeType / 2,
+                             col1: cubeType.rawValue / 2,
+                             row2: cubeType.rawValue / 2,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue / 2,
+                             row4: cubeType.rawValue / 2,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         
-        ///Other side
+        ///Other face
         //Left corner
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &green,
-                               matrix3: &white,
-                               matrix4: &blue,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType,
-                               rowMatrix2: 0,
-                               colMatrix2: cubeType,
-                               rowMatrix3: 0,
-                               colMatrix3: cubeType,
-                               rowMatrix4: cubeType,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &green,
+                               face3: &white,
+                               face4: &blue,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: 0,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: 0,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Right corner
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &green,
-                               matrix3: &white,
-                               matrix4: &blue,
-                               rowMatrix1: cubeType,
-                               colMatrix1: cubeType,
-                               rowMatrix2: cubeType,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType,
-                               rowMatrix4: 0,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &green,
+                               face3: &white,
+                               face4: &blue,
+                               rowFace1: cubeType.rawValue,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: 0,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Edge
-        swapFourCellsMultiSide(matrix1: &yellow,
-                               matrix2: &green,
-                               matrix3: &white,
-                               matrix4: &blue,
-                               rowMatrix1: cubeType / 2,
-                               colMatrix1: cubeType,
-                               rowMatrix2: cubeType / 2,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType / 2,
-                               colMatrix3: cubeType,
-                               rowMatrix4: cubeType / 2,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &yellow,
+                               face2: &green,
+                               face3: &white,
+                               face4: &blue,
+                               rowFace1: cubeType.rawValue / 2,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: cubeType.rawValue / 2,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue / 2,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: cubeType.rawValue / 2,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
     }
     
     func turnD(isPrime: Bool = false, isTwo: Bool = false) {
-        /// Yellow side
+        /// Yellow face
         // Corner
-        swapFourCellsOneSide(&yellow,
+        swapFourPiecesOneFace(&yellow,
                              row1: 0,
                              col1: 0,
                              row2: 0,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType,
-                             row4: cubeType,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue,
+                             row4: cubeType.rawValue,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         // Edge
-        swapFourCellsOneSide(&yellow,
+        swapFourPiecesOneFace(&yellow,
                              row1: 0,
-                             col1: cubeType / 2,
-                             row2: cubeType / 2,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType / 2,
-                             row4: cubeType / 2,
+                             col1: cubeType.rawValue / 2,
+                             row2: cubeType.rawValue / 2,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue / 2,
+                             row4: cubeType.rawValue / 2,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
-        
-        ///Other side
+        ///Other face
         //Left corner
-        swapFourCellsMultiSide(matrix1: &blue,
-                               matrix2: &orange,
-                               matrix3: &green,
-                               matrix4: &red,
-                               rowMatrix1: cubeType,
-                               colMatrix1: cubeType,
-                               rowMatrix2: cubeType,
-                               colMatrix2: cubeType,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType,
-                               rowMatrix4: cubeType,
-                               colMatrix4: cubeType,
+        swapFourPiecesMultiFace(face1: &blue,
+                               face2: &orange,
+                               face3: &green,
+                               face4: &red,
+                               rowFace1: cubeType.rawValue,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: cubeType.rawValue,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: cubeType.rawValue,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Right corner
-        swapFourCellsMultiSide(matrix1: &blue,
-                               matrix2: &orange,
-                               matrix3: &green,
-                               matrix4: &red,
-                               rowMatrix1: cubeType,
-                               colMatrix1: 0,
-                               rowMatrix2: cubeType,
-                               colMatrix2: 0,
-                               rowMatrix3: cubeType,
-                               colMatrix3: 0,
-                               rowMatrix4: cubeType,
-                               colMatrix4: 0,
+        swapFourPiecesMultiFace(face1: &blue,
+                               face2: &orange,
+                               face3: &green,
+                               face4: &red,
+                               rowFace1: cubeType.rawValue,
+                               colFace1: 0,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: 0,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: 0,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Edge
-        swapFourCellsMultiSide(matrix1: &blue,
-                               matrix2: &orange,
-                               matrix3: &green,
-                               matrix4: &red,
-                               rowMatrix1: cubeType,
-                               colMatrix1: cubeType / 2,
-                               rowMatrix2: cubeType,
-                               colMatrix2: cubeType / 2,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType / 2,
-                               rowMatrix4: cubeType,
-                               colMatrix4: cubeType / 2,
+        swapFourPiecesMultiFace(face1: &blue,
+                               face2: &orange,
+                               face3: &green,
+                               face4: &red,
+                               rowFace1: cubeType.rawValue,
+                               colFace1: cubeType.rawValue / 2,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: cubeType.rawValue / 2,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue / 2,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: cubeType.rawValue / 2,
                                isPrime: isPrime,
                                isTwo: isTwo)
     }
     
     func turnB(isPrime: Bool = false, isTwo: Bool = false) {
-        /// Blue side
+        /// Blue face
         // Corner
-        swapFourCellsOneSide(&blue,
+        swapFourPiecesOneFace(&blue,
                              row1: 0,
                              col1: 0,
                              row2: 0,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType,
-                             row4: cubeType,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue,
+                             row4: cubeType.rawValue,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
         // Edge
-        swapFourCellsOneSide(&blue,
+        swapFourPiecesOneFace(&blue,
                              row1: 0,
-                             col1: cubeType / 2,
-                             row2: cubeType / 2,
-                             col2: cubeType,
-                             row3: cubeType,
-                             col3: cubeType / 2,
-                             row4: cubeType / 2,
+                             col1: cubeType.rawValue / 2,
+                             row2: cubeType.rawValue / 2,
+                             col2: cubeType.rawValue,
+                             row3: cubeType.rawValue,
+                             col3: cubeType.rawValue / 2,
+                             row4: cubeType.rawValue / 2,
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
-
-        ///Other side
+        
+        ///Other face
         //Left corner
-        swapFourCellsMultiSide(matrix1: &white,
-                               matrix2: &orange,
-                               matrix3: &yellow,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: 0,
-                               rowMatrix2: cubeType,
-                               colMatrix2: 0,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType,
-                               rowMatrix4: 0,
-                               colMatrix4: cubeType,
+        swapFourPiecesMultiFace(face1: &white,
+                               face2: &orange,
+                               face3: &yellow,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: 0,
+                               rowFace2: cubeType.rawValue,
+                               colFace2: 0,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue,
+                               rowFace4: 0,
+                               colFace4: cubeType.rawValue,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Right corner
-        swapFourCellsMultiSide(matrix1: &white,
-                               matrix2: &orange,
-                               matrix3: &yellow,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType,
-                               rowMatrix2: 0,
-                               colMatrix2: 0,
-                               rowMatrix3: cubeType,
-                               colMatrix3: 0,
-                               rowMatrix4: cubeType,
-                               colMatrix4: cubeType,
+        swapFourPiecesMultiFace(face1: &white,
+                               face2: &orange,
+                               face3: &yellow,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue,
+                               rowFace2: 0,
+                               colFace2: 0,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: 0,
+                               rowFace4: cubeType.rawValue,
+                               colFace4: cubeType.rawValue,
                                isPrime: isPrime,
                                isTwo: isTwo)
         //Edge
-        swapFourCellsMultiSide(matrix1: &white,
-                               matrix2: &orange,
-                               matrix3: &yellow,
-                               matrix4: &red,
-                               rowMatrix1: 0,
-                               colMatrix1: cubeType / 2,
-                               rowMatrix2: cubeType / 2,
-                               colMatrix2: 0,
-                               rowMatrix3: cubeType,
-                               colMatrix3: cubeType / 2,
-                               rowMatrix4: cubeType / 2,
-                               colMatrix4: cubeType,
+        swapFourPiecesMultiFace(face1: &white,
+                               face2: &orange,
+                               face3: &yellow,
+                               face4: &red,
+                               rowFace1: 0,
+                               colFace1: cubeType.rawValue / 2,
+                               rowFace2: cubeType.rawValue / 2,
+                               colFace2: 0,
+                               rowFace3: cubeType.rawValue,
+                               colFace3: cubeType.rawValue / 2,
+                               rowFace4: cubeType.rawValue / 2,
+                               colFace4: cubeType.rawValue,
                                isPrime: isPrime,
                                isTwo: isTwo)
     }
     
-    func swapFourCellsOneSide(_ matrix: inout [[PieceColor]],
+    func swapFourPiecesOneFace(_ face: inout [[PieceColor]],
                               row1: Int,
                               col1: Int,
                               row2: Int,
@@ -519,65 +520,64 @@ class TimerViewModel {
                               isPrime: Bool,
                               isTwo: Bool
     ) {
-        let cell1 = matrix[row1][col1]
-        let cell2 = matrix[row2][col2]
-        let cell3 = matrix[row3][col3]
-        let cell4 = matrix[row4][col4]
+        let cell1 = face[row1][col1]
+        let cell2 = face[row2][col2]
+        let cell3 = face[row3][col3]
+        let cell4 = face[row4][col4]
         
         if isPrime {
-            matrix[row4][col4] = cell1
-            matrix[row1][col1] = cell2
-            matrix[row2][col2] = cell3
-            matrix[row3][col3] = cell4
+            face[row4][col4] = cell1
+            face[row1][col1] = cell2
+            face[row2][col2] = cell3
+            face[row3][col3] = cell4
         } else if isTwo {
-            matrix[row4][col4] = cell2
-            matrix[row1][col1] = cell3
-            matrix[row2][col2] = cell4
-            matrix[row3][col3] = cell1
-
+            face[row4][col4] = cell2
+            face[row1][col1] = cell3
+            face[row2][col2] = cell4
+            face[row3][col3] = cell1
         } else {
-            matrix[row1][col1] = cell4
-            matrix[row2][col2] = cell1
-            matrix[row3][col3] = cell2
-            matrix[row4][col4] = cell3
+            face[row1][col1] = cell4
+            face[row2][col2] = cell1
+            face[row3][col3] = cell2
+            face[row4][col4] = cell3
         }
     }
     
-    func swapFourCellsMultiSide(matrix1: inout [[PieceColor]],
-                                matrix2: inout [[PieceColor]],
-                                matrix3: inout [[PieceColor]],
-                                matrix4: inout [[PieceColor]],
-                                rowMatrix1: Int,
-                                colMatrix1: Int,
-                                rowMatrix2: Int,
-                                colMatrix2: Int,
-                                rowMatrix3: Int,
-                                colMatrix3: Int,
-                                rowMatrix4: Int,
-                                colMatrix4: Int,
+    func swapFourPiecesMultiFace(face1: inout [[PieceColor]],
+                                face2: inout [[PieceColor]],
+                                face3: inout [[PieceColor]],
+                                face4: inout [[PieceColor]],
+                                rowFace1: Int,
+                                colFace1: Int,
+                                rowFace2: Int,
+                                colFace2: Int,
+                                rowFace3: Int,
+                                colFace3: Int,
+                                rowFace4: Int,
+                                colFace4: Int,
                                 isPrime: Bool,
                                 isTwo: Bool
     ) {
-        let cell1 = matrix1[rowMatrix1][colMatrix1]
-        let cell2 = matrix2[rowMatrix2][colMatrix2]
-        let cell3 = matrix3[rowMatrix3][colMatrix3]
-        let cell4 = matrix4[rowMatrix4][colMatrix4]
-
+        let cell1 = face1[rowFace1][colFace1]
+        let cell2 = face2[rowFace2][colFace2]
+        let cell3 = face3[rowFace3][colFace3]
+        let cell4 = face4[rowFace4][colFace4]
+        
         if isPrime {
-            matrix1[rowMatrix1][colMatrix1] = cell2
-            matrix2[rowMatrix2][colMatrix2] = cell3
-            matrix3[rowMatrix3][colMatrix3] = cell4
-            matrix4[rowMatrix4][colMatrix4] = cell1
+            face1[rowFace1][colFace1] = cell2
+            face2[rowFace2][colFace2] = cell3
+            face3[rowFace3][colFace3] = cell4
+            face4[rowFace4][colFace4] = cell1
         } else if isTwo {
-            matrix1[rowMatrix1][colMatrix1] = cell3
-            matrix2[rowMatrix2][colMatrix2] = cell4
-            matrix3[rowMatrix3][colMatrix3] = cell1
-            matrix4[rowMatrix4][colMatrix4] = cell2
+            face1[rowFace1][colFace1] = cell3
+            face2[rowFace2][colFace2] = cell4
+            face3[rowFace3][colFace3] = cell1
+            face4[rowFace4][colFace4] = cell2
         } else {
-            matrix1[rowMatrix1][colMatrix1] = cell4
-            matrix2[rowMatrix2][colMatrix2] = cell1
-            matrix3[rowMatrix3][colMatrix3] = cell2
-            matrix4[rowMatrix4][colMatrix4] = cell3
+            face1[rowFace1][colFace1] = cell4
+            face2[rowFace2][colFace2] = cell1
+            face3[rowFace3][colFace3] = cell2
+            face4[rowFace4][colFace4] = cell3
         }
     }
 }

@@ -36,27 +36,46 @@ class TimerViewController: TTViewController {
     }
     
     private func parseData() {
+        viewModel.cubeType = .seven
         viewModel.turnU()
-        viewModel.turnU(isTwo: true)
-        viewModel.turnF()
+//        viewModel.turnU(isTwo: true)
+//        viewModel.turnF()
         viewModel.turnF(isPrime: true)
         viewModel.turnL()
-        viewModel.turnL(isPrime: true)
-        viewModel.turnR()
+//        viewModel.turnL(isPrime: true)
+//        viewModel.turnR()
         viewModel.turnR(isPrime: true)
         viewModel.turnD()
-        viewModel.turnD(isTwo: true)
-        viewModel.turnB()
+//        viewModel.turnD(isTwo: true)
+//        viewModel.turnB()
         viewModel.turnB(isTwo: true)
         
-        viewModel.blueData.accept(viewModel.blue[0] + viewModel.blue[1] + viewModel.blue[2])
-        viewModel.whiteData.accept(viewModel.white[0] + viewModel.white[1] + viewModel.white[2])
-        viewModel.greenData.accept(viewModel.green[0] + viewModel.green[1] + viewModel.green[2])
-        viewModel.yellowData.accept(viewModel.yellow[0] + viewModel.yellow[1] + viewModel.yellow[2])
-        viewModel.redData.accept(viewModel.red[0] + viewModel.red[1] + viewModel.red[2])
-        viewModel.orangeData.accept(viewModel.orange[0] + viewModel.orange[1] + viewModel.orange[2])
+        updateData()
     }
 
+    private func updateData() {
+        var combinedBlueData: [[PieceColor]] = []
+        var combinedWhiteData: [[PieceColor]] = []
+        var combinedGreenData: [[PieceColor]] = []
+        var combinedRedData: [[PieceColor]] = []
+        var combinedOrangeData: [[PieceColor]] = []
+        var combinedYellowData: [[PieceColor]] = []
+        
+        for index in 0...viewModel.cubeType.rawValue {
+            combinedBlueData.append(viewModel.blue[index])
+            combinedWhiteData.append(viewModel.white[index])
+            combinedGreenData.append(viewModel.green[index])
+            combinedRedData.append(viewModel.red[index])
+            combinedOrangeData.append(viewModel.orange[index])
+            combinedYellowData.append(viewModel.yellow[index])
+        }
+        viewModel.blueData.accept(combinedBlueData.flatMap { $0 })
+        viewModel.whiteData.accept(combinedWhiteData.flatMap { $0 })
+        viewModel.greenData.accept(combinedGreenData.flatMap { $0 })
+        viewModel.redData.accept(combinedRedData.flatMap { $0 })
+        viewModel.orangeData.accept(combinedOrangeData.flatMap { $0 })
+        viewModel.yellowData.accept(combinedYellowData.flatMap { $0 })
+    }
 }
 
 extension TimerViewController {
@@ -80,37 +99,37 @@ extension TimerViewController {
     
     private func layout() {
         blueCollectionView.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(viewModel.cubeSize)
             make.trailing.equalToSuperview().offset(-10)
-            make.bottom.equalToSuperview().offset(-30-10-TTUtils.bottomPadding(in: self))
+            make.bottom.equalToSuperview().offset(-viewModel.cubeSize-10-TTUtils.bottomPadding(in: self))
         }
         
         redCollectionView.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(viewModel.cubeSize)
             make.trailing.equalTo(blueCollectionView.snp.leading).offset(-4)
             make.centerY.equalTo(blueCollectionView)
         }
         
         greenCollectionView.snp.makeConstraints { make in
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(viewModel.cubeSize)
             make.centerY.equalTo(redCollectionView)
             make.trailing.equalTo(redCollectionView.snp.leading).offset(-4)
         }
         
         yellowCollectionView.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(viewModel.cubeSize)
             make.centerX.equalTo(greenCollectionView)
             make.top.equalTo(greenCollectionView.snp.bottom).offset(4)
         }
         
         orangeCollectionView.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(viewModel.cubeSize)
             make.trailing.equalTo(greenCollectionView.snp.leading).offset(-4)
             make.centerY.equalTo(greenCollectionView)
         }
         
         whiteCollectionView.snp.makeConstraints { make in
-            make.height.width.equalTo(30)
+            make.height.width.equalTo(viewModel.cubeSize)
             make.centerX.equalTo(greenCollectionView)
             make.bottom.equalTo(greenCollectionView.snp.top).offset(-4)
         }
@@ -185,7 +204,7 @@ extension TimerViewController {
 
 extension TimerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 10, height: 10)
+        return CGSize(width: viewModel.cubeSize / CGFloat(viewModel.cubeType.rawValue + 1), height: viewModel.cubeSize / CGFloat(viewModel.cubeType.rawValue + 1))
     }
 }
 
