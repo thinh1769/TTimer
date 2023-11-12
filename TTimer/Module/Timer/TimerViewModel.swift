@@ -786,7 +786,7 @@ class TimerViewModel {
     
     func turnR(isPrime: Bool = false, isTwo: Bool = false) {
         /// Orange face
-        // Corner
+        //Corner one face
         swapFourPiecesOneFace(&red,
                              row1: 0,
                              col1: 0,
@@ -798,23 +798,8 @@ class TimerViewModel {
                              col4: 0,
                              isPrime: isPrime,
                              isTwo: isTwo)
-        //Center edge
-        if cubeType == .three || cubeType == .five || cubeType == .seven {
-            swapFourPiecesOneFace(&red,
-                                  row1: 0,
-                                  col1: cubeType.rawValue / 2,
-                                  row2: cubeType.rawValue / 2,
-                                  col2: cubeType.rawValue,
-                                  row3: cubeType.rawValue,
-                                  col3: cubeType.rawValue / 2,
-                                  row4: cubeType.rawValue / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
         
-        ///Other face
-        //Left corner
+        //Left corner multi face
         swapFourPiecesMultiFace(face1: &yellow,
                                face2: &green,
                                face3: &white,
@@ -829,7 +814,8 @@ class TimerViewModel {
                                colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
-        //Right corner
+        
+        //Right corner multi face
         swapFourPiecesMultiFace(face1: &yellow,
                                face2: &green,
                                face3: &white,
@@ -844,8 +830,22 @@ class TimerViewModel {
                                colFace4: 0,
                                isPrime: isPrime,
                                isTwo: isTwo)
-        //Center edge
+        
         if cubeType == .three || cubeType == .five || cubeType == .seven {
+            //Center edge one face
+            swapFourPiecesOneFace(&red,
+                                  row1: 0,
+                                  col1: cubeType.rawValue / 2,
+                                  row2: cubeType.rawValue / 2,
+                                  col2: cubeType.rawValue,
+                                  row3: cubeType.rawValue,
+                                  col3: cubeType.rawValue / 2,
+                                  row4: cubeType.rawValue / 2,
+                                  col4: 0,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //Center edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &green,
                                     face3: &white,
@@ -857,6 +857,139 @@ class TimerViewModel {
                                     rowFace3: cubeType.rawValue / 2,
                                     colFace3: cubeType.rawValue,
                                     rowFace4: cubeType.rawValue / 2,
+                                    colFace4: 0,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+        }
+        
+        if cubeType != .two && cubeType != .three {
+            //Corner of center one face
+            swapFourPiecesOneFace(&red,
+                                  row1: 1,
+                                  col1: 1,
+                                  row2: 1,
+                                  col2: cubeType.rawValue - 1,
+                                  row3: cubeType.rawValue - 1,
+                                  col3: cubeType.rawValue - 1,
+                                  row4: cubeType.rawValue - 1,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //Left edge one face
+            swapFourPiecesOneFace(&red,
+                                  row1: 0,
+                                  col1: 1,
+                                  row2: 1,
+                                  col2: cubeType.rawValue,
+                                  row3: cubeType.rawValue,
+                                  col3: cubeType.rawValue - 1,
+                                  row4: cubeType.rawValue - 1,
+                                  col4: 0,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //Right edge one face
+            swapFourPiecesOneFace(&red,
+                                  row1: 0,
+                                  col1: cubeType.rawValue - 1,
+                                  row2: cubeType.rawValue - 1,
+                                  col2: cubeType.rawValue,
+                                  row3: cubeType.rawValue,
+                                  col3: 1,
+                                  row4: 1,
+                                  col4: 0,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+
+            //Left edge multi face
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &green,
+                                    face3: &white,
+                                    face4: &blue,
+                                    rowFace1: 1,
+                                    colFace1: cubeType.rawValue,
+                                    rowFace2: 1,
+                                    colFace2: cubeType.rawValue,
+                                    rowFace3: 1,
+                                    colFace3: cubeType.rawValue,
+                                    rowFace4: cubeType.rawValue - 1,
+                                    colFace4: 0,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+
+            //Right edge multi face
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &green,
+                                    face3: &white,
+                                    face4: &blue,
+                                    rowFace1: cubeType.rawValue - 1,
+                                    colFace1: cubeType.rawValue,
+                                    rowFace2: cubeType.rawValue - 1,
+                                    colFace2: cubeType.rawValue,
+                                    rowFace3: cubeType.rawValue - 1,
+                                    colFace3: cubeType.rawValue,
+                                    rowFace4: 1,
+                                    colFace4: 0,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+        }
+
+        if cubeType == .six || cubeType == .seven {
+            //2rd piece left of the edge
+            swapFourPiecesOneFace(&red,
+                                  row1: 0,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: cubeType.rawValue,
+                                  row3: cubeType.rawValue,
+                                  col3: cubeType.rawValue - 2,
+                                  row4: cubeType.rawValue - 2,
+                                  col4: 0,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+
+            //2rd piece right of the edge
+            swapFourPiecesOneFace(&red,
+                                  row1: 0,
+                                  col1: cubeType.rawValue - 2,
+                                  row2: cubeType.rawValue - 2,
+                                  col2: cubeType.rawValue,
+                                  row3: cubeType.rawValue,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 0,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+
+            //2rd piece left of the edge multi face
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &green,
+                                    face3: &white,
+                                    face4: &blue,
+                                    rowFace1: 2,
+                                    colFace1: cubeType.rawValue,
+                                    rowFace2: 2,
+                                    colFace2: cubeType.rawValue,
+                                    rowFace3: 2,
+                                    colFace3: cubeType.rawValue,
+                                    rowFace4: cubeType.rawValue - 2,
+                                    colFace4: 0,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+
+            //2rd piece right of the edge multi face
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &green,
+                                    face3: &white,
+                                    face4: &blue,
+                                    rowFace1: cubeType.rawValue - 2,
+                                    colFace1: cubeType.rawValue,
+                                    rowFace2: cubeType.rawValue - 2,
+                                    colFace2: cubeType.rawValue,
+                                    rowFace3: cubeType.rawValue - 2,
+                                    colFace3: cubeType.rawValue,
+                                    rowFace4: 2,
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
