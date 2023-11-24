@@ -7,11 +7,4 @@ target 'TTimer' do
 
   # Pods for TTimer
 
-pod 'IQKeyboardManagerSwift'
-pod 'RxSwift'
-pod 'RxCocoa'
-pod 'MBProgressHUD'
-pod 'SVPullToRefresh'
-pod 'SnapKit'
-
 end

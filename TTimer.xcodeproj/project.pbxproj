@@ -18,6 +18,17 @@
 		8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8FA2AE54C5900D0C155 /* TTViewController.swift */; };
 		8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8FD2AE54F1600D0C155 /* TTUtils.swift */; };
 		8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */; };
+		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
+		B25C30652B1047CC00C46478 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */; };
+		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
+		B25C30692B1047CC00C46478 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30682B1047CC00C46478 /* RxCocoa-Dynamic */; };
+		B25C306B2B1047CC00C46478 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306A2B1047CC00C46478 /* RxRelay */; };
+		B25C306E2B10483300C46478 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306D2B10483300C46478 /* SnapKit */; };
+		B25C30702B10483300C46478 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306F2B10483300C46478 /* SnapKit-Dynamic */; };
+		B25C30732B10489A00C46478 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */; };
+		B25C30762B10493300C46478 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30752B10493300C46478 /* MBProgressHUD */; };
+		B25C307A2B1076BF00C46478 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30792B1076BF00C46478 /* SwiftLintFramework */; };
+		B25C307C2B1076BF00C46478 /* swiftlint in Frameworks */ = {isa = PBXBuildFile; productRef = B25C307B2B1076BF00C46478 /* swiftlint */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +45,8 @@
 		8297B8F72AE54C0800D0C155 /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		8297B8FA2AE54C5900D0C155 /* TTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController.swift; sourceTree = "<group>"; };
 		8297B8FD2AE54F1600D0C155 /* TTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTUtils.swift; sourceTree = "<group>"; };
-		DD16B286B646F64960FEDA8D /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
-		FB5039F3953F74DEC324013D /* Pods-TTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.debug.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.debug.xcconfig"; sourceTree = "<group>"; };
+		A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
+		DAA10B582E1D84420DCB822C /* Pods-TTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.debug.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,18 +54,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B25C306B2B1047CC00C46478 /* RxRelay in Frameworks */,
+				B25C307C2B1076BF00C46478 /* swiftlint in Frameworks */,
+				B25C30652B1047CC00C46478 /* RxBlocking-Dynamic in Frameworks */,
+				B25C30762B10493300C46478 /* MBProgressHUD in Frameworks */,
+				B25C30692B1047CC00C46478 /* RxCocoa-Dynamic in Frameworks */,
+				B25C30702B10483300C46478 /* SnapKit-Dynamic in Frameworks */,
+				B25C306E2B10483300C46478 /* SnapKit in Frameworks */,
+				B25C307A2B1076BF00C46478 /* SwiftLintFramework in Frameworks */,
+				B25C30732B10489A00C46478 /* IQKeyboardManagerSwift in Frameworks */,
 				8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */,
+				B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */,
+				B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22F5CBBF5C835A9F6450105D /* Pods */ = {
+		0767C6A532A0FC280A22C441 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FB5039F3953F74DEC324013D /* Pods-TTimer.debug.xcconfig */,
-				DD16B286B646F64960FEDA8D /* Pods-TTimer.release.xcconfig */,
+				DAA10B582E1D84420DCB822C /* Pods-TTimer.debug.xcconfig */,
+				A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -80,8 +102,8 @@
 			children = (
 				8297B8DF2AE54AD100D0C155 /* TTimer */,
 				8297B8DE2AE54AD100D0C155 /* Products */,
-				22F5CBBF5C835A9F6450105D /* Pods */,
 				93A9E9B2B40ECF1ADA9E9525 /* Frameworks */,
+				0767C6A532A0FC280A22C441 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,13 +192,25 @@
 				8297B8D92AE54AD100D0C155 /* Sources */,
 				8297B8DA2AE54AD100D0C155 /* Frameworks */,
 				8297B8DB2AE54AD100D0C155 /* Resources */,
-				C6575E00058D68C66909346A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TTimer;
+			packageProductDependencies = (
+				B25C30622B1047CC00C46478 /* RxBlocking */,
+				B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */,
+				B25C30662B1047CC00C46478 /* RxCocoa */,
+				B25C30682B1047CC00C46478 /* RxCocoa-Dynamic */,
+				B25C306A2B1047CC00C46478 /* RxRelay */,
+				B25C306D2B10483300C46478 /* SnapKit */,
+				B25C306F2B10483300C46478 /* SnapKit-Dynamic */,
+				B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */,
+				B25C30752B10493300C46478 /* MBProgressHUD */,
+				B25C30792B1076BF00C46478 /* SwiftLintFramework */,
+				B25C307B2B1076BF00C46478 /* swiftlint */,
+			);
 			productName = TTimer;
 			productReference = 8297B8DD2AE54AD100D0C155 /* TTimer.app */;
 			productType = "com.apple.product-type.application";
@@ -205,6 +239,13 @@
 				Base,
 			);
 			mainGroup = 8297B8D42AE54AD100D0C155;
+			packageReferences = (
+				B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				B25C30712B10489A00C46478 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				B25C30782B1076BF00C46478 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = 8297B8DE2AE54AD100D0C155 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -247,23 +288,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C6575E00058D68C66909346A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTimer/Pods-TTimer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TTimer/Pods-TTimer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TTimer/Pods-TTimer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -414,7 +438,7 @@
 		};
 		8297B8F22AE54AD800D0C155 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB5039F3953F74DEC324013D /* Pods-TTimer.debug.xcconfig */;
+			baseConfigurationReference = DAA10B582E1D84420DCB822C /* Pods-TTimer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -443,7 +467,7 @@
 		};
 		8297B8F32AE54AD800D0C155 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DD16B286B646F64960FEDA8D /* Pods-TTimer.release.xcconfig */;
+			baseConfigurationReference = A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -492,6 +516,107 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
+		B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		B25C30712B10489A00C46478 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.16;
+			};
+		};
+		B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+		B25C30782B1076BF00C46478 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B25C30622B1047CC00C46478 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		B25C30662B1047CC00C46478 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B25C30682B1047CC00C46478 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		B25C306A2B1047CC00C46478 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		B25C306D2B10483300C46478 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		B25C306F2B10483300C46478 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30712B10489A00C46478 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		B25C30752B10493300C46478 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+		B25C30792B1076BF00C46478 /* SwiftLintFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30782B1076BF00C46478 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = SwiftLintFramework;
+		};
+		B25C307B2B1076BF00C46478 /* swiftlint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B25C30782B1076BF00C46478 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = swiftlint;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8297B8D52AE54AD100D0C155 /* Project object */;
 }
