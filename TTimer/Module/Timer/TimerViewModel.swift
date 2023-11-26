@@ -694,6 +694,127 @@ class TimerViewModel {
         }
     }
     
+    func turnFw(isPrime: Bool = false, isTwo: Bool = false) {
+        turnF(isPrime: isPrime, isTwo: isTwo)
+        
+        //Left Edge
+        swapFourPiecesMultiFace(face1: &yellow,
+                                face2: &orange,
+                                face3: &white,
+                                face4: &red,
+                                rowFace1: 1,
+                                colFace1: 0,
+                                rowFace2: 0,
+                                colFace2: cubeType.rawValue - 1,
+                                rowFace3: cubeType.rawValue - 1,
+                                colFace3: cubeType.rawValue,
+                                rowFace4: cubeType.rawValue,
+                                colFace4: 1,
+                                isPrime: isPrime,
+                                isTwo: isTwo)
+        
+        //Right Edge
+        swapFourPiecesMultiFace(face1: &yellow,
+                                face2: &orange,
+                                face3: &white,
+                                face4: &red,
+                                rowFace1: 1,
+                                colFace1: cubeType.rawValue,
+                                rowFace2: cubeType.rawValue,
+                                colFace2: cubeType.rawValue - 1,
+                                rowFace3: cubeType.rawValue - 1,
+                                colFace3: 0,
+                                rowFace4: 0,
+                                colFace4: 1,
+                                isPrime: isPrime,
+                                isTwo: isTwo)
+        
+        //Left corner center
+        swapFourPiecesMultiFace(face1: &yellow,
+                                face2: &orange,
+                                face3: &white,
+                                face4: &red,
+                                rowFace1: 1,
+                                colFace1: 1,
+                                rowFace2: 1,
+                                colFace2: cubeType.rawValue - 1,
+                                rowFace3: cubeType.rawValue - 1,
+                                colFace3: cubeType.rawValue - 1,
+                                rowFace4: cubeType.rawValue - 1,
+                                colFace4: 1,
+                                isPrime: isPrime,
+                                isTwo: isTwo)
+        
+        //Right corner center
+        swapFourPiecesMultiFace(face1: &yellow,
+                                face2: &orange,
+                                face3: &white,
+                                face4: &red,
+                                rowFace1: 1,
+                                colFace1: cubeType.rawValue - 1,
+                                rowFace2: cubeType.rawValue - 1,
+                                colFace2: cubeType.rawValue - 1,
+                                rowFace3: cubeType.rawValue - 1,
+                                colFace3: 1,
+                                rowFace4: 1,
+                                colFace4: 1,
+                                isPrime: isPrime,
+                                isTwo: isTwo)
+        
+        //Center of the center
+        if cubeType == .five || cubeType == .seven {
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &orange,
+                                    face3: &white,
+                                    face4: &red,
+                                    rowFace1: 1,
+                                    colFace1: cubeType.rawValue / 2,
+                                    rowFace2: cubeType.rawValue / 2,
+                                    colFace2: cubeType.rawValue - 1,
+                                    rowFace3: cubeType.rawValue - 1,
+                                    colFace3: cubeType.rawValue / 2,
+                                    rowFace4: cubeType.rawValue / 2,
+                                    colFace4: 1,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+            
+        }
+        
+        if cubeType == .six || cubeType == .seven {
+            //Left center of the center
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &orange,
+                                    face3: &white,
+                                    face4: &red,
+                                    rowFace1: 1,
+                                    colFace1: 2,
+                                    rowFace2: 2,
+                                    colFace2: cubeType.rawValue - 1,
+                                    rowFace3: cubeType.rawValue - 1,
+                                    colFace3: cubeType.rawValue - 2,
+                                    rowFace4: cubeType.rawValue - 2,
+                                    colFace4: 1,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+            
+            //Right center of the center
+            swapFourPiecesMultiFace(face1: &yellow,
+                                    face2: &orange,
+                                    face3: &white,
+                                    face4: &red,
+                                    rowFace1: 1,
+                                    colFace1: cubeType.rawValue - 2,
+                                    rowFace2: cubeType.rawValue - 2,
+                                    colFace2: cubeType.rawValue - 1,
+                                    rowFace3: cubeType.rawValue - 1,
+                                    colFace3: 2,
+                                    rowFace4: 2,
+                                    colFace4: 1,
+                                    isPrime: isPrime,
+                                    isTwo: isTwo)
+        }
+    }
+    
     func turnL(isPrime: Bool = false, isTwo: Bool = false) {
         ///Orange face
         //Corner one face
