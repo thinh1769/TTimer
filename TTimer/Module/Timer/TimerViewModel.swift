@@ -254,7 +254,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
             
-            //Right edge onde face
+            //Right edge one face
             swapFourPiecesOneFace(&white,
                                   row1: 0,
                                   col1: cubeType.rawValue - 1,
@@ -301,7 +301,7 @@ class TimerViewModel {
         }
         
         if cubeType == .six || cubeType == .seven {
-            //2rd piece left of the edge
+            //2nd piece left of the edge
             swapFourPiecesOneFace(&white,
                                   row1: 0,
                                   col1: 2,
@@ -314,7 +314,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
             
-            //2rd piece right of the edge
+            //2nd piece right of the edge
             swapFourPiecesOneFace(&white,
                                   row1: 0,
                                   col1: cubeType.rawValue - 2,
@@ -327,7 +327,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
             
-            //2rd piece left of the edge multi face
+            //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(face1: &green,
                                     face2: &orange,
                                     face3: &blue,
@@ -343,7 +343,7 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
             
-            //2rd piece right of the edge multi face
+            //2nd piece right of the edge multi face
             swapFourPiecesMultiFace(face1: &green,
                                     face2: &orange,
                                     face3: &blue,
@@ -358,6 +358,47 @@ class TimerViewModel {
                                     colFace4: cubeType.rawValue - 2,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swapFourPiecesOneFace(&white,
+                                  row1: 1,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: cubeType.rawValue - 1,
+                                  row3: cubeType.rawValue - 1,
+                                  col3: cubeType.rawValue - 2,
+                                  row4: cubeType.rawValue - 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swapFourPiecesOneFace(&white,
+                                  row1: 1,
+                                  col1: cubeType.rawValue - 2,
+                                  row2: cubeType.rawValue - 2,
+                                  col2: cubeType.rawValue - 1,
+                                  row3: cubeType.rawValue - 1,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if cubeType == .five || cubeType == .seven {
+            swapFourPiecesOneFace(&white, 
+                                  row1: 1,
+                                  col1: cubeType.rawValue / 2,
+                                  row2: cubeType.rawValue / 2,
+                                  col2: cubeType.rawValue - 1,
+                                  row3: cubeType.rawValue - 1,
+                                  col3: cubeType.rawValue / 2,
+                                  row4: cubeType.rawValue / 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
         }
     }
     
@@ -634,7 +675,7 @@ class TimerViewModel {
         }
 
         if cubeType == .six || cubeType == .seven {
-            //2rd piece left of the edge
+            //2nd piece left of the edge
             swapFourPiecesOneFace(&green,
                                   row1: 0,
                                   col1: 2,
@@ -647,7 +688,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece right of the edge
+            //2nd piece right of the edge
             swapFourPiecesOneFace(&green,
                                   row1: 0,
                                   col1: cubeType.rawValue - 2,
@@ -660,7 +701,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece left of the edge multi face
+            //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &orange,
                                     face3: &white,
@@ -676,7 +717,7 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
 
-            //2rd piece right of the edge multi face
+            //2nd piece right of the edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &orange,
                                     face3: &white,
@@ -966,7 +1007,7 @@ class TimerViewModel {
         }
 
         if cubeType == .six || cubeType == .seven {
-            //2rd piece left of the edge
+            //2nd piece left of the edge
             swapFourPiecesOneFace(&orange,
                                   row1: 0,
                                   col1: 2,
@@ -979,7 +1020,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece right of the edge
+            //2nd piece right of the edge
             swapFourPiecesOneFace(&orange,
                                   row1: 0,
                                   col1: cubeType.rawValue - 2,
@@ -992,7 +1033,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece left of the edge multi face
+            //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &blue,
                                     face3: &white,
@@ -1008,7 +1049,7 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
 
-            //2rd piece right of the edge multi face
+            //2nd piece right of the edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &blue,
                                     face3: &white,
@@ -1299,7 +1340,7 @@ class TimerViewModel {
         }
 
         if cubeType == .six || cubeType == .seven {
-            //2rd piece left of the edge
+            //2nd piece left of the edge
             swapFourPiecesOneFace(&red,
                                   row1: 0,
                                   col1: 2,
@@ -1312,7 +1353,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece right of the edge
+            //2nd piece right of the edge
             swapFourPiecesOneFace(&red,
                                   row1: 0,
                                   col1: cubeType.rawValue - 2,
@@ -1325,7 +1366,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece left of the edge multi face
+            //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &green,
                                     face3: &white,
@@ -1341,7 +1382,7 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
 
-            //2rd piece right of the edge multi face
+            //2nd piece right of the edge multi face
             swapFourPiecesMultiFace(face1: &yellow,
                                     face2: &green,
                                     face3: &white,
@@ -1511,7 +1552,7 @@ class TimerViewModel {
         }
 
         if cubeType == .six || cubeType == .seven {
-            //2rd piece left of the edge
+            //2nd piece left of the edge
             swapFourPiecesOneFace(&yellow,
                                   row1: 0,
                                   col1: 2,
@@ -1524,7 +1565,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece right of the edge
+            //2nd piece right of the edge
             swapFourPiecesOneFace(&yellow,
                                   row1: 0,
                                   col1: cubeType.rawValue - 2,
@@ -1537,7 +1578,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece left of the edge multi face
+            //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(face1: &blue,
                                     face2: &orange,
                                     face3: &green,
@@ -1553,7 +1594,7 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
 
-            //2rd piece right of the edge multi face
+            //2nd piece right of the edge multi face
             swapFourPiecesMultiFace(face1: &blue,
                                     face2: &orange,
                                     face3: &green,
@@ -1723,7 +1764,7 @@ class TimerViewModel {
         }
 
         if cubeType == .six || cubeType == .seven {
-            //2rd piece left of the edge
+            //2nd piece left of the edge
             swapFourPiecesOneFace(&blue,
                                   row1: 0,
                                   col1: 2,
@@ -1736,7 +1777,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece right of the edge
+            //2nd piece right of the edge
             swapFourPiecesOneFace(&blue,
                                   row1: 0,
                                   col1: cubeType.rawValue - 2,
@@ -1749,7 +1790,7 @@ class TimerViewModel {
                                   isPrime: isPrime,
                                   isTwo: isTwo)
 
-            //2rd piece left of the edge multi face
+            //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(face1: &white,
                                     face2: &orange,
                                     face3: &yellow,
@@ -1765,7 +1806,7 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
 
-            //2rd piece right of the edge multi face
+            //2nd piece right of the edge multi face
             swapFourPiecesMultiFace(face1: &white,
                                     face2: &orange,
                                     face3: &yellow,
