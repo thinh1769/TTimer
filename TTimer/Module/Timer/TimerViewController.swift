@@ -53,8 +53,8 @@ class TimerViewController: TTViewController {
     }
     
     private func parseData() {
-        viewModel.cubeType = .six
-        viewModel.turnUw(isPrime: true)
+        viewModel.cubeType = .seven
+        viewModel.turnRw()
         updateData()
     }
 
@@ -66,7 +66,7 @@ class TimerViewController: TTViewController {
         var combinedOrangeData: [[PieceColor]] = []
         var combinedYellowData: [[PieceColor]] = []
         
-        for index in 0...viewModel.cubeType.rawValue {
+        for index in 0...viewModel.indexCubeType {
             combinedBlueData.append(viewModel.blue[index])
             combinedWhiteData.append(viewModel.white[index])
             combinedGreenData.append(viewModel.green[index])
@@ -233,7 +233,7 @@ extension TimerViewController {
 
 extension TimerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: viewModel.cubeSize / CGFloat(viewModel.cubeType.rawValue + 1), height: viewModel.cubeSize / CGFloat(viewModel.cubeType.rawValue + 1))
+        return CGSize(width: viewModel.cubeSize / CGFloat(viewModel.cubeType.rawValue), height: viewModel.cubeSize / CGFloat(viewModel.cubeType.rawValue))
     }
 }
 

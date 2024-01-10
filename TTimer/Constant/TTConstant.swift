@@ -17,12 +17,12 @@ enum PieceColor: String {
 }
 
 enum CubeType: Int {
-    case two = 1
-    case three = 2
-    case four = 3
-    case five = 4
-    case six = 5
-    case seven = 6
+    case two = 2
+    case three = 3
+    case four = 4
+    case five = 5
+    case six = 6
+    case seven = 7
 }
 
 enum PieceSize: CGFloat {
