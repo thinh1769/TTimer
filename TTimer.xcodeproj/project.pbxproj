@@ -27,6 +27,8 @@
 		B25C30702B10483300C46478 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306F2B10483300C46478 /* SnapKit-Dynamic */; };
 		B25C30732B10489A00C46478 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */; };
 		B25C30762B10493300C46478 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30752B10493300C46478 /* MBProgressHUD */; };
+		B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */; };
+		B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		8297B8FA2AE54C5900D0C155 /* TTViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController.swift; sourceTree = "<group>"; };
 		8297B8FD2AE54F1600D0C155 /* TTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTUtils.swift; sourceTree = "<group>"; };
 		A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
+		B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController_Previews.swift; sourceTree = "<group>"; };
+		B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTView_Previews.swift; sourceTree = "<group>"; };
 		DAA10B582E1D84420DCB822C /* Pods-TTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.debug.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				8297B8FA2AE54C5900D0C155 /* TTViewController.swift */,
+				B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */,
+				B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -291,8 +297,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				828036B72AE6CA36001B55F4 /* PieceViewCell.swift in Sources */,
+				B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */,
 				8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */,
 				8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */,
+				B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */,
 				8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */,
 				8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */,
 				828036BA2AE6CBC2001B55F4 /* TTConstant.swift in Sources */,

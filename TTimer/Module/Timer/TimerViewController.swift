@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SwiftUI
 
 class TimerViewController: TTViewController {
     lazy private var scrambleLabel = TTUtils.makeLabel(text: "",
@@ -54,7 +55,7 @@ class TimerViewController: TTViewController {
     
     private func parseData() {
         viewModel.cubeType = .seven
-        viewModel.turnRw()
+        viewModel.turnDw(isPrime: true)
         updateData()
     }
 
@@ -237,3 +238,8 @@ extension TimerViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+#Preview(body: {
+    TTViewControllerPreview {
+        TimerViewController()
+    }
+})
