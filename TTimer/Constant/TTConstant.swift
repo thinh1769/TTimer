@@ -7,6 +7,15 @@
 
 import Foundation
 
+enum FaceColor {
+    case white
+    case green
+    case yellow
+    case orange
+    case red
+    case blue
+}
+
 enum PieceColor: String {
     case white = "white_piece"
     case green = "green_piece"
