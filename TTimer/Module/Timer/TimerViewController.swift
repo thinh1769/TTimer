@@ -59,7 +59,7 @@ class TimerViewController: TTViewController {
 //        viewModel.turnUw()
 //        viewModel.turnF()
 //        viewModel.turnFw()
-        viewModel.turnL()
+        viewModel.turnLw()
 //        viewModel.turnB()
 //        viewModel.turnDw()
 //        viewModel.turnFw()
