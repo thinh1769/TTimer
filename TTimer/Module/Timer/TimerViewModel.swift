@@ -586,10 +586,10 @@ class TimerViewModel {
         swapFourPiecesMultiFace(.orange,
                                 rowFace1: indexCubeType,
                                 colFace1: 0,
-                                rowFace2: 0,
-                                colFace2: indexCubeType,
-                                rowFace3: indexCubeType,
-                                colFace3: 0,
+                                rowFace2: indexCubeType,
+                                colFace2: 0,
+                                rowFace3: 0,
+                                colFace3: indexCubeType,
                                 rowFace4: indexCubeType,
                                 colFace4: 0,
                                 isPrime: isPrime,
@@ -599,10 +599,10 @@ class TimerViewModel {
         swapFourPiecesMultiFace(.orange,
                                 rowFace1: 0,
                                 colFace1: 0,
-                                rowFace2: indexCubeType,
-                                colFace2: indexCubeType,
-                                rowFace3: 0,
-                                colFace3: 0,
+                                rowFace2: 0,
+                                colFace2: 0,
+                                rowFace3: indexCubeType,
+                                colFace3: indexCubeType,
                                 rowFace4: 0,
                                 colFace4: 0,
                                 isPrime: isPrime,
@@ -614,9 +614,9 @@ class TimerViewModel {
                                     rowFace1: indexCubeType / 2,
                                     colFace1: 0,
                                     rowFace2: indexCubeType / 2,
-                                    colFace2: indexCubeType,
+                                    colFace2: 0,
                                     rowFace3: indexCubeType / 2,
-                                    colFace3: 0,
+                                    colFace3: indexCubeType,
                                     rowFace4: indexCubeType / 2,
                                     colFace4: 0,
                                     isPrime: isPrime,
@@ -628,10 +628,10 @@ class TimerViewModel {
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: indexCubeType - 1,
                                     colFace1: 0,
-                                    rowFace2: 1,
-                                    colFace2: indexCubeType,
-                                    rowFace3: indexCubeType - 1,
-                                    colFace3: 0,
+                                    rowFace2: indexCubeType - 1,
+                                    colFace2: 0,
+                                    rowFace3: 1,
+                                    colFace3: indexCubeType,
                                     rowFace4: indexCubeType - 1,
                                     colFace4: 0,
                                     isPrime: isPrime,
@@ -641,10 +641,10 @@ class TimerViewModel {
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: 1,
                                     colFace1: 0,
-                                    rowFace2: indexCubeType - 1,
-                                    colFace2: indexCubeType,
-                                    rowFace3: 1,
-                                    colFace3: 0,
+                                    rowFace2: 1,
+                                    colFace2: 0,
+                                    rowFace3: indexCubeType - 1,
+                                    colFace3: indexCubeType,
                                     rowFace4: 1,
                                     colFace4: 0,
                                     isPrime: isPrime,
@@ -656,10 +656,10 @@ class TimerViewModel {
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: indexCubeType - 2,
                                     colFace1: 0,
-                                    rowFace2: 2,
-                                    colFace2: indexCubeType,
-                                    rowFace3: indexCubeType - 2,
-                                    colFace3: 0,
+                                    rowFace2: indexCubeType - 2,
+                                    colFace2: 0,
+                                    rowFace3: 2,
+                                    colFace3: indexCubeType,
                                     rowFace4: indexCubeType - 2,
                                     colFace4: 0,
                                     isPrime: isPrime,
@@ -669,10 +669,10 @@ class TimerViewModel {
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: 2,
                                     colFace1: 0,
-                                    rowFace2: indexCubeType - 2,
-                                    colFace2: indexCubeType,
-                                    rowFace3: 2,
-                                    colFace3: 0,
+                                    rowFace2: 2,
+                                    colFace2: 0,
+                                    rowFace3: indexCubeType - 2,
+                                    colFace3: indexCubeType,
                                     rowFace4: 2,
                                     colFace4: 0,
                                     isPrime: isPrime,
@@ -1656,23 +1656,23 @@ class TimerViewModel {
             let cell1 = green[rowFace1][colFace1]
             let cell2 = yellow[rowFace2][colFace2]
             let cell3 = blue[rowFace3][colFace3]
-            let cell4 = red[rowFace4][colFace4]
+            let cell4 = white[rowFace4][colFace4]
             
             if isPrime {
                 green[rowFace1][colFace1] = cell2
                 yellow[rowFace2][colFace2] = cell3
                 blue[rowFace3][colFace3] = cell4
-                red[rowFace4][colFace4] = cell1
+                white[rowFace4][colFace4] = cell1
             } else if isTwo {
                 green[rowFace1][colFace1] = cell3
                 yellow[rowFace2][colFace2] = cell4
                 blue[rowFace3][colFace3] = cell1
-                red[rowFace4][colFace4] = cell2
+                white[rowFace4][colFace4] = cell2
             } else {
                 green[rowFace1][colFace1] = cell4
                 yellow[rowFace2][colFace2] = cell1
                 blue[rowFace3][colFace3] = cell2
-                red[rowFace4][colFace4] = cell3
+                white[rowFace4][colFace4] = cell3
             }
             
         case .red:
