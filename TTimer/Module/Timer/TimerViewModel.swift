@@ -688,6 +688,47 @@ class TimerViewModel {
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swapFourPiecesOneFace(&green,
+                                  row1: 1,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType - 2,
+                                  row4: indexCubeType - 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swapFourPiecesOneFace(&green,
+                                  row1: 1,
+                                  col1: indexCubeType - 2,
+                                  row2: indexCubeType - 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if is5x5Or7x7Cube() {
+            swapFourPiecesOneFace(&green,
+                                  row1: 1,
+                                  col1: indexCubeType / 2,
+                                  row2: indexCubeType / 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType / 2,
+                                  row4: indexCubeType / 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
         }
     }
     
@@ -978,6 +1019,47 @@ class TimerViewModel {
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swapFourPiecesOneFace(&orange,
+                                  row1: 1,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType - 2,
+                                  row4: indexCubeType - 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swapFourPiecesOneFace(&orange,
+                                  row1: 1,
+                                  col1: indexCubeType - 2,
+                                  row2: indexCubeType - 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if is5x5Or7x7Cube() {
+            swapFourPiecesOneFace(&orange,
+                                  row1: 1,
+                                  col1: indexCubeType / 2,
+                                  row2: indexCubeType / 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType / 2,
+                                  row4: indexCubeType / 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
         }
     }
     
@@ -1269,6 +1351,47 @@ class TimerViewModel {
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swapFourPiecesOneFace(&red,
+                                  row1: 1,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType - 2,
+                                  row4: indexCubeType - 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swapFourPiecesOneFace(&red,
+                                  row1: 1,
+                                  col1: indexCubeType - 2,
+                                  row2: indexCubeType - 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if is5x5Or7x7Cube() {
+            swapFourPiecesOneFace(&red,
+                                  row1: 1,
+                                  col1: indexCubeType / 2,
+                                  row2: indexCubeType / 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType / 2,
+                                  row4: indexCubeType / 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
         }
     }
     
@@ -1560,6 +1683,47 @@ class TimerViewModel {
                                     colFace4: 2,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swapFourPiecesOneFace(&yellow,
+                                  row1: 1,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType - 2,
+                                  row4: indexCubeType - 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swapFourPiecesOneFace(&yellow,
+                                  row1: 1,
+                                  col1: indexCubeType - 2,
+                                  row2: indexCubeType - 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if is5x5Or7x7Cube() {
+            swapFourPiecesOneFace(&yellow,
+                                  row1: 1,
+                                  col1: indexCubeType / 2,
+                                  row2: indexCubeType / 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType / 2,
+                                  row4: indexCubeType / 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
         }
     }
     
@@ -1851,6 +2015,47 @@ class TimerViewModel {
                                     colFace4: indexCubeType,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swapFourPiecesOneFace(&blue,
+                                  row1: 1,
+                                  col1: 2,
+                                  row2: 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType - 2,
+                                  row4: indexCubeType - 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swapFourPiecesOneFace(&blue,
+                                  row1: 1,
+                                  col1: indexCubeType - 2,
+                                  row2: indexCubeType - 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: 2,
+                                  row4: 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if is5x5Or7x7Cube() {
+            swapFourPiecesOneFace(&blue,
+                                  row1: 1,
+                                  col1: indexCubeType / 2,
+                                  row2: indexCubeType / 2,
+                                  col2: indexCubeType - 1,
+                                  row3: indexCubeType - 1,
+                                  col3: indexCubeType / 2,
+                                  row4: indexCubeType / 2,
+                                  col4: 1,
+                                  isPrime: isPrime,
+                                  isTwo: isTwo)
         }
     }
     

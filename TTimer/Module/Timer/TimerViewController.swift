@@ -55,8 +55,8 @@ class TimerViewController: TTViewController {
     
     private func parseData() {
         viewModel.cubeType = .seven
-        viewModel.turnU()
-        viewModel.turnFw()
+        viewModel.turnRw()
+        viewModel.turnB()
         updateData()
     }
 
