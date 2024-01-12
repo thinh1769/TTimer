@@ -792,10 +792,10 @@ class TimerViewModel {
                                 colFace1: indexCubeType,
                                 rowFace2: 0,
                                 colFace2: indexCubeType,
-                                rowFace3: 0,
-                                colFace3: indexCubeType,
-                                rowFace4: indexCubeType,
-                                colFace4: 0,
+                                rowFace3: indexCubeType,
+                                colFace3: 0,
+                                rowFace4: 0,
+                                colFace4: indexCubeType,
                                 isPrime: isPrime,
                                 isTwo: isTwo)
         
@@ -805,10 +805,10 @@ class TimerViewModel {
                                 colFace1: indexCubeType,
                                 rowFace2: indexCubeType,
                                 colFace2: indexCubeType,
-                                rowFace3: indexCubeType,
-                                colFace3: indexCubeType,
-                                rowFace4: 0,
-                                colFace4: 0,
+                                rowFace3: 0,
+                                colFace3: 0,
+                                rowFace4: indexCubeType,
+                                colFace4: indexCubeType,
                                 isPrime: isPrime,
                                 isTwo: isTwo)
         
@@ -820,9 +820,9 @@ class TimerViewModel {
                                     rowFace2: indexCubeType / 2,
                                     colFace2: indexCubeType,
                                     rowFace3: indexCubeType / 2,
-                                    colFace3: indexCubeType,
+                                    colFace3: 0,
                                     rowFace4: indexCubeType / 2,
-                                    colFace4: 0,
+                                    colFace4: indexCubeType,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
         }
@@ -834,10 +834,10 @@ class TimerViewModel {
                                     colFace1: indexCubeType,
                                     rowFace2: 1,
                                     colFace2: indexCubeType,
-                                    rowFace3: 1,
-                                    colFace3: indexCubeType,
-                                    rowFace4: indexCubeType - 1,
-                                    colFace4: 0,
+                                    rowFace3: indexCubeType - 1,
+                                    colFace3: 0,
+                                    rowFace4: 1,
+                                    colFace4: indexCubeType,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
             
@@ -847,10 +847,10 @@ class TimerViewModel {
                                     colFace1: indexCubeType,
                                     rowFace2: indexCubeType - 1,
                                     colFace2: indexCubeType,
-                                    rowFace3: indexCubeType - 1,
-                                    colFace3: indexCubeType,
-                                    rowFace4: 1,
-                                    colFace4: 0,
+                                    rowFace3: 1,
+                                    colFace3: 0,
+                                    rowFace4: indexCubeType - 1,
+                                    colFace4: indexCubeType,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
         }
@@ -862,10 +862,10 @@ class TimerViewModel {
                                     colFace1: indexCubeType,
                                     rowFace2: 2,
                                     colFace2: indexCubeType,
-                                    rowFace3: 2,
-                                    colFace3: indexCubeType,
-                                    rowFace4: indexCubeType - 2,
-                                    colFace4: 0,
+                                    rowFace3: indexCubeType - 2,
+                                    colFace3: 0,
+                                    rowFace4: 2,
+                                    colFace4: indexCubeType,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
             
@@ -875,10 +875,10 @@ class TimerViewModel {
                                     colFace1: indexCubeType,
                                     rowFace2: indexCubeType - 2,
                                     colFace2: indexCubeType,
-                                    rowFace3: indexCubeType - 2,
-                                    colFace3: indexCubeType,
-                                    rowFace4: 2,
-                                    colFace4: 0,
+                                    rowFace3: 2,
+                                    colFace3: 0,
+                                    rowFace4: indexCubeType - 2,
+                                    colFace4: indexCubeType,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
         }
@@ -893,10 +893,10 @@ class TimerViewModel {
                                 colFace1: indexCubeType - 1,
                                 rowFace2: 0,
                                 colFace2: indexCubeType - 1,
-                                rowFace3: 0,
-                                colFace3: indexCubeType - 1,
-                                rowFace4: indexCubeType,
-                                colFace4: 1,
+                                rowFace3: indexCubeType,
+                                colFace3: 1,
+                                rowFace4: 0,
+                                colFace4: indexCubeType - 1,
                                 isPrime: isPrime,
                                 isTwo: isTwo)
         
@@ -906,10 +906,10 @@ class TimerViewModel {
                                 colFace1: indexCubeType - 1,
                                 rowFace2: indexCubeType,
                                 colFace2: indexCubeType - 1,
-                                rowFace3: indexCubeType,
-                                colFace3: indexCubeType - 1,
-                                rowFace4: 0,
-                                colFace4: 1,
+                                rowFace3: 0,
+                                colFace3: 1,
+                                rowFace4: indexCubeType,
+                                colFace4: indexCubeType - 1,
                                 isPrime: isPrime,
                                 isTwo: isTwo)
         
@@ -919,10 +919,10 @@ class TimerViewModel {
                                 colFace1: indexCubeType - 1,
                                 rowFace2: 1,
                                 colFace2: indexCubeType - 1,
-                                rowFace3: 1,
-                                colFace3: indexCubeType - 1,
-                                rowFace4: indexCubeType - 1,
-                                colFace4: 1,
+                                rowFace3: indexCubeType - 1,
+                                colFace3: 1,
+                                rowFace4: 1,
+                                colFace4: indexCubeType - 1,
                                 isPrime: isPrime,
                                 isTwo: isTwo)
         
@@ -932,10 +932,10 @@ class TimerViewModel {
                                 colFace1: indexCubeType - 1,
                                 rowFace2: indexCubeType - 1,
                                 colFace2: indexCubeType - 1,
-                                rowFace3: indexCubeType - 1,
-                                colFace3: indexCubeType - 1,
-                                rowFace4: 1,
-                                colFace4: 1,
+                                rowFace3: 1,
+                                colFace3: 1,
+                                rowFace4: indexCubeType - 1,
+                                colFace4: indexCubeType - 1,
                                 isPrime: isPrime,
                                 isTwo: isTwo)
         
@@ -947,9 +947,9 @@ class TimerViewModel {
                                     rowFace2: indexCubeType / 2,
                                     colFace2: indexCubeType - 1,
                                     rowFace3: indexCubeType / 2,
-                                    colFace3: indexCubeType - 1,
+                                    colFace3: 1,
                                     rowFace4: indexCubeType / 2,
-                                    colFace4: 1,
+                                    colFace4: indexCubeType - 1,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
             
@@ -962,10 +962,10 @@ class TimerViewModel {
                                     colFace1: indexCubeType - 1,
                                     rowFace2: 2,
                                     colFace2: indexCubeType - 1,
-                                    rowFace3: 2,
-                                    colFace3: indexCubeType - 1,
-                                    rowFace4: indexCubeType - 2,
-                                    colFace4: 1,
+                                    rowFace3: indexCubeType - 2,
+                                    colFace3: 1,
+                                    rowFace4: 2,
+                                    colFace4: indexCubeType - 1,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
             
@@ -975,10 +975,10 @@ class TimerViewModel {
                                     colFace1: indexCubeType - 1,
                                     rowFace2: indexCubeType - 2,
                                     colFace2: indexCubeType - 1,
-                                    rowFace3: indexCubeType - 2,
-                                    colFace3: indexCubeType - 1,
-                                    rowFace4: 2,
-                                    colFace4: 1,
+                                    rowFace3: 2,
+                                    colFace3: 1,
+                                    rowFace4: indexCubeType - 2,
+                                    colFace4: indexCubeType - 1,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
         }
