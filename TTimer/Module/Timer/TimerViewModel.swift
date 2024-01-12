@@ -170,16 +170,7 @@ class TimerViewModel {
     
     func turnU(isPrime: Bool = false, isTwo: Bool = false) {
         ///White face
-        //Corner one face
         swapFourPiecesOneFace(&white,
-                              row1: 0,
-                              col1: 0,
-                              row2: 0,
-                              col2: indexCubeType,
-                              row3: indexCubeType,
-                              col3: indexCubeType,
-                              row4: indexCubeType,
-                              col4: 0,
                               isPrime: isPrime,
                               isTwo: isTwo)
         
@@ -210,19 +201,6 @@ class TimerViewModel {
                                 isTwo: isTwo)
         
         if isOddCube() {
-            //Center edge one face
-            swapFourPiecesOneFace(&white,
-                                  row1: 0,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Center edge multi face
             swapFourPiecesMultiFace(.white,
                                     rowFace1: 0,
@@ -238,45 +216,6 @@ class TimerViewModel {
         }
         
         if isBigCube() {
-            //Corner of center one face
-            swapFourPiecesOneFace(&white,
-                                  row1: 1,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Left edge one face
-            swapFourPiecesOneFace(&white,
-                                  row1: 0,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Right edge one face
-            swapFourPiecesOneFace(&white,
-                                  row1: 0,
-                                  col1: indexCubeType - 1,
-                                  row2: indexCubeType - 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 1,
-                                  row4: 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Left edge multi face
             swapFourPiecesMultiFace(.white,
                                     rowFace1: 0,
@@ -305,32 +244,6 @@ class TimerViewModel {
         }
         
         if is6x6Or7x7Cube() {
-            //2nd piece left of the edge
-            swapFourPiecesOneFace(&white,
-                                  row1: 0,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd piece right of the edge
-            swapFourPiecesOneFace(&white,
-                                  row1: 0,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(.white,
                                     rowFace1: 0,
@@ -356,47 +269,6 @@ class TimerViewModel {
                                     colFace4: indexCubeType - 2,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
-            
-            //2nd left of the center second layer
-            swapFourPiecesOneFace(&white,
-                                  row1: 1,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd right of the center second layer
-            swapFourPiecesOneFace(&white,
-                                  row1: 1,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
-        
-        //Center of the center second layer
-        if is5x5Or7x7Cube() {
-            swapFourPiecesOneFace(&white,
-                                  row1: 1,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
         }
     }
     
@@ -502,16 +374,7 @@ class TimerViewModel {
     
     func turnF(isPrime: Bool = false, isTwo: Bool = false) {
         ///Green face
-        //Corner one face
         swapFourPiecesOneFace(&green,
-                              row1: 0,
-                              col1: 0,
-                              row2: 0,
-                              col2: indexCubeType,
-                              row3: indexCubeType,
-                              col3: indexCubeType,
-                              row4: indexCubeType,
-                              col4: 0,
                               isPrime: isPrime,
                               isTwo: isTwo)
         
@@ -542,19 +405,6 @@ class TimerViewModel {
                                 isTwo: isTwo)
         
         if isOddCube() {
-            //Center edge one face
-            swapFourPiecesOneFace(&green,
-                                  row1: 0,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Center edge multi face
             swapFourPiecesMultiFace(.green,
                                     rowFace1: 0,
@@ -570,45 +420,6 @@ class TimerViewModel {
         }
         
         if isBigCube() {
-            //Corner of center one face
-            swapFourPiecesOneFace(&green,
-                                  row1: 1,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Left edge one face
-            swapFourPiecesOneFace(&green,
-                                  row1: 0,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Right edge one face
-            swapFourPiecesOneFace(&green,
-                                  row1: 0,
-                                  col1: indexCubeType - 1,
-                                  row2: indexCubeType - 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 1,
-                                  row4: 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Left edge multi face
             swapFourPiecesMultiFace(.green,
                                     rowFace1: 0,
@@ -637,32 +448,6 @@ class TimerViewModel {
         }
         
         if is6x6Or7x7Cube() {
-            //2nd piece left of the edge
-            swapFourPiecesOneFace(&green,
-                                  row1: 0,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd piece right of the edge
-            swapFourPiecesOneFace(&green,
-                                  row1: 0,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(.green,
                                     rowFace1: 0,
@@ -688,47 +473,6 @@ class TimerViewModel {
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
-            
-            //2nd left of the center second layer
-            swapFourPiecesOneFace(&green,
-                                  row1: 1,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd right of the center second layer
-            swapFourPiecesOneFace(&green,
-                                  row1: 1,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
-        
-        //Center of the center second layer
-        if is5x5Or7x7Cube() {
-            swapFourPiecesOneFace(&green,
-                                  row1: 1,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
         }
     }
     
@@ -834,16 +578,7 @@ class TimerViewModel {
     
     func turnL(isPrime: Bool = false, isTwo: Bool = false) {
         ///Orange face
-        //Corner one face
         swapFourPiecesOneFace(&orange,
-                              row1: 0,
-                              col1: 0,
-                              row2: 0,
-                              col2: indexCubeType,
-                              row3: indexCubeType,
-                              col3: indexCubeType,
-                              row4: indexCubeType,
-                              col4: 0,
                               isPrime: isPrime,
                               isTwo: isTwo)
         
@@ -874,19 +609,6 @@ class TimerViewModel {
                                 isTwo: isTwo)
         
         if isOddCube() {
-            //Center edge one face
-            swapFourPiecesOneFace(&orange,
-                                  row1: 0,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Center edge of multi face
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: indexCubeType / 2,
@@ -902,44 +624,6 @@ class TimerViewModel {
         }
         
         if isBigCube() {
-            //Corner of center one face
-            swapFourPiecesOneFace(&orange,
-                                  row1: 1,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            //Left edge one face
-            swapFourPiecesOneFace(&orange,
-                                  row1: 0,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Right edge one face
-            swapFourPiecesOneFace(&orange,
-                                  row1: 0,
-                                  col1: indexCubeType - 1,
-                                  row2: indexCubeType - 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 1,
-                                  row4: 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Left edge multi face
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: indexCubeType - 1,
@@ -968,32 +652,6 @@ class TimerViewModel {
         }
         
         if is6x6Or7x7Cube() {
-            //2nd piece left of the edge
-            swapFourPiecesOneFace(&orange,
-                                  row1: 0,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd piece right of the edge
-            swapFourPiecesOneFace(&orange,
-                                  row1: 0,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(.orange,
                                     rowFace1: indexCubeType - 2,
@@ -1019,47 +677,6 @@ class TimerViewModel {
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
-            
-            //2nd left of the center second layer
-            swapFourPiecesOneFace(&orange,
-                                  row1: 1,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd right of the center second layer
-            swapFourPiecesOneFace(&orange,
-                                  row1: 1,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
-        
-        //Center of the center second layer
-        if is5x5Or7x7Cube() {
-            swapFourPiecesOneFace(&orange,
-                                  row1: 1,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
         }
     }
     
@@ -1165,16 +782,7 @@ class TimerViewModel {
     
     func turnR(isPrime: Bool = false, isTwo: Bool = false) {
         /// Orange face
-        //Corner one face
         swapFourPiecesOneFace(&red,
-                              row1: 0,
-                              col1: 0,
-                              row2: 0,
-                              col2: indexCubeType,
-                              row3: indexCubeType,
-                              col3: indexCubeType,
-                              row4: indexCubeType,
-                              col4: 0,
                               isPrime: isPrime,
                               isTwo: isTwo)
         
@@ -1205,19 +813,6 @@ class TimerViewModel {
                                 isTwo: isTwo)
         
         if isOddCube() {
-            //Center edge one face
-            swapFourPiecesOneFace(&red,
-                                  row1: 0,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Center edge multi face
             swapFourPiecesMultiFace(.red,
                                     rowFace1: indexCubeType / 2,
@@ -1233,45 +828,6 @@ class TimerViewModel {
         }
         
         if isBigCube() {
-            //Corner of center one face
-            swapFourPiecesOneFace(&red,
-                                  row1: 1,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Left edge one face
-            swapFourPiecesOneFace(&red,
-                                  row1: 0,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Right edge one face
-            swapFourPiecesOneFace(&red,
-                                  row1: 0,
-                                  col1: indexCubeType - 1,
-                                  row2: indexCubeType - 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 1,
-                                  row4: 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Left edge multi face
             swapFourPiecesMultiFace(.red,
                                     rowFace1: 1,
@@ -1300,32 +856,6 @@ class TimerViewModel {
         }
         
         if is6x6Or7x7Cube() {
-            //2nd piece left of the edge
-            swapFourPiecesOneFace(&red,
-                                  row1: 0,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd piece right of the edge
-            swapFourPiecesOneFace(&red,
-                                  row1: 0,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(.red,
                                     rowFace1: 2,
@@ -1351,47 +881,6 @@ class TimerViewModel {
                                     colFace4: 0,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
-            
-            //2nd left of the center second layer
-            swapFourPiecesOneFace(&red,
-                                  row1: 1,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd right of the center second layer
-            swapFourPiecesOneFace(&red,
-                                  row1: 1,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
-        
-        //Center of the center second layer
-        if is5x5Or7x7Cube() {
-            swapFourPiecesOneFace(&red,
-                                  row1: 1,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
         }
     }
     
@@ -1497,16 +986,7 @@ class TimerViewModel {
     
     func turnD(isPrime: Bool = false, isTwo: Bool = false) {
         /// Yellow face
-        //Corner one face
         swapFourPiecesOneFace(&yellow,
-                              row1: 0,
-                              col1: 0,
-                              row2: 0,
-                              col2: indexCubeType,
-                              row3: indexCubeType,
-                              col3: indexCubeType,
-                              row4: indexCubeType,
-                              col4: 0,
                               isPrime: isPrime,
                               isTwo: isTwo)
         
@@ -1537,19 +1017,6 @@ class TimerViewModel {
                                 isTwo: isTwo)
         
         if isOddCube() {
-            //Center edge one face
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 0,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Center edge multi face
             swapFourPiecesMultiFace(.yellow,
                                     rowFace1: indexCubeType,
@@ -1565,45 +1032,6 @@ class TimerViewModel {
         }
         
         if isBigCube() {
-            //Corner of center one face
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 1,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Left edge one face
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 0,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Right edge one face
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 0,
-                                  col1: indexCubeType - 1,
-                                  row2: indexCubeType - 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 1,
-                                  row4: 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Left edge multi face
             swapFourPiecesMultiFace(.yellow,
                                     rowFace1: indexCubeType,
@@ -1632,32 +1060,6 @@ class TimerViewModel {
         }
         
         if is6x6Or7x7Cube() {
-            //2nd piece left of the edge
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 0,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd piece right of the edge
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 0,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(.yellow,
                                     rowFace1: indexCubeType,
@@ -1683,47 +1085,6 @@ class TimerViewModel {
                                     colFace4: 2,
                                     isPrime: isPrime,
                                     isTwo: isTwo)
-            
-            //2nd left of the center second layer
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 1,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd right of the center second layer
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 1,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
-        
-        //Center of the center second layer
-        if is5x5Or7x7Cube() {
-            swapFourPiecesOneFace(&yellow,
-                                  row1: 1,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
         }
     }
     
@@ -1829,16 +1190,7 @@ class TimerViewModel {
     
     func turnB(isPrime: Bool = false, isTwo: Bool = false) {
         /// Blue face
-        //Corner one face
         swapFourPiecesOneFace(&blue,
-                              row1: 0,
-                              col1: 0,
-                              row2: 0,
-                              col2: indexCubeType,
-                              row3: indexCubeType,
-                              col3: indexCubeType,
-                              row4: indexCubeType,
-                              col4: 0,
                               isPrime: isPrime,
                               isTwo: isTwo)
         
@@ -1869,19 +1221,6 @@ class TimerViewModel {
                                 isTwo: isTwo)
         
         if isOddCube() {
-            //Center edge one face
-            swapFourPiecesOneFace(&blue,
-                                  row1: 0,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Center edge multi face
             swapFourPiecesMultiFace(.blue,
                                     rowFace1: 0,
@@ -1897,45 +1236,6 @@ class TimerViewModel {
         }
         
         if isBigCube() {
-            //Corner of center one face
-            swapFourPiecesOneFace(&blue,
-                                  row1: 1,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Left edge one face
-            swapFourPiecesOneFace(&blue,
-                                  row1: 0,
-                                  col1: 1,
-                                  row2: 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 1,
-                                  row4: indexCubeType - 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //Right edge one face
-            swapFourPiecesOneFace(&blue,
-                                  row1: 0,
-                                  col1: indexCubeType - 1,
-                                  row2: indexCubeType - 1,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 1,
-                                  row4: 1,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //Left edge multi face
             swapFourPiecesMultiFace(.blue,
                                     rowFace1: 0,
@@ -1964,32 +1264,6 @@ class TimerViewModel {
         }
         
         if is6x6Or7x7Cube() {
-            //2nd piece left of the edge
-            swapFourPiecesOneFace(&blue,
-                                  row1: 0,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd piece right of the edge
-            swapFourPiecesOneFace(&blue,
-                                  row1: 0,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType,
-                                  row3: indexCubeType,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 0,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
             //2nd piece left of the edge multi face
             swapFourPiecesMultiFace(.blue,
                                     rowFace1: 0,
@@ -2016,46 +1290,6 @@ class TimerViewModel {
                                     isPrime: isPrime,
                                     isTwo: isTwo)
             
-            //2nd left of the center second layer
-            swapFourPiecesOneFace(&blue,
-                                  row1: 1,
-                                  col1: 2,
-                                  row2: 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType - 2,
-                                  row4: indexCubeType - 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-            
-            //2nd right of the center second layer
-            swapFourPiecesOneFace(&blue,
-                                  row1: 1,
-                                  col1: indexCubeType - 2,
-                                  row2: indexCubeType - 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: 2,
-                                  row4: 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
-        }
-        
-        //Center of the center second layer
-        if is5x5Or7x7Cube() {
-            swapFourPiecesOneFace(&blue,
-                                  row1: 1,
-                                  col1: indexCubeType / 2,
-                                  row2: indexCubeType / 2,
-                                  col2: indexCubeType - 1,
-                                  row3: indexCubeType - 1,
-                                  col3: indexCubeType / 2,
-                                  row4: indexCubeType / 2,
-                                  col4: 1,
-                                  isPrime: isPrime,
-                                  isTwo: isTwo)
         }
     }
     
@@ -2159,17 +1393,160 @@ class TimerViewModel {
     }
     
     func swapFourPiecesOneFace(_ face: inout [[PieceColor]],
-                               row1: Int,
-                               col1: Int,
-                               row2: Int,
-                               col2: Int,
-                               row3: Int,
-                               col3: Int,
-                               row4: Int,
-                               col4: Int,
                                isPrime: Bool,
                                isTwo: Bool
     ) {
+        //Corner
+        swap4Value(&face,
+                   row1: 0,
+                   col1: 0,
+                   row2: 0,
+                   col2: indexCubeType,
+                   row3: indexCubeType,
+                   col3: indexCubeType,
+                   row4: indexCubeType,
+                   col4: 0,
+                   isPrime: isPrime,
+                   isTwo: isTwo)
+        
+        //Center edge
+        if isOddCube() {
+            swap4Value(&face,
+                       row1: 0,
+                       col1: indexCubeType / 2,
+                       row2: indexCubeType / 2,
+                       col2: indexCubeType,
+                       row3: indexCubeType,
+                       col3: indexCubeType / 2,
+                       row4: indexCubeType / 2,
+                       col4: 0,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+        }
+        
+        if isBigCube() {
+            //Corner of center
+            swap4Value(&face,
+                       row1: 1,
+                       col1: 1,
+                       row2: 1,
+                       col2: indexCubeType - 1,
+                       row3: indexCubeType - 1,
+                       col3: indexCubeType - 1,
+                       row4: indexCubeType - 1,
+                       col4: 1,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+            
+            //Left edge
+            swap4Value(&face,
+                       row1: 0,
+                       col1: 1,
+                       row2: 1,
+                       col2: indexCubeType,
+                       row3: indexCubeType,
+                       col3: indexCubeType - 1,
+                       row4: indexCubeType - 1,
+                       col4: 0,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+            
+            //Right edge
+            swap4Value(&face,
+                       row1: 0,
+                       col1: indexCubeType - 1,
+                       row2: indexCubeType - 1,
+                       col2: indexCubeType,
+                       row3: indexCubeType,
+                       col3: 1,
+                       row4: 1,
+                       col4: 0,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+        }
+        
+        if is6x6Or7x7Cube() {
+            //2nd piece left of the edge
+            swap4Value(&face,
+                       row1: 0,
+                       col1: 2,
+                       row2: 2,
+                       col2: indexCubeType,
+                       row3: indexCubeType,
+                       col3: indexCubeType - 2,
+                       row4: indexCubeType - 2,
+                       col4: 0,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+            
+            //2nd piece right of the edge
+            swap4Value(&face,
+                       row1: 0,
+                       col1: indexCubeType - 2,
+                       row2: indexCubeType - 2,
+                       col2: indexCubeType,
+                       row3: indexCubeType,
+                       col3: 2,
+                       row4: 2,
+                       col4: 0,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+            
+            //2nd left of the center second layer
+            swap4Value(&face,
+                       row1: 1,
+                       col1: 2,
+                       row2: 2,
+                       col2: indexCubeType - 1,
+                       row3: indexCubeType - 1,
+                       col3: indexCubeType - 2,
+                       row4: indexCubeType - 2,
+                       col4: 1,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+            
+            //2nd right of the center second layer
+            swap4Value(&face,
+                       row1: 1,
+                       col1: indexCubeType - 2,
+                       row2: indexCubeType - 2,
+                       col2: indexCubeType - 1,
+                       row3: indexCubeType - 1,
+                       col3: 2,
+                       row4: 2,
+                       col4: 1,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+        }
+        
+        //Center of the center second layer
+        if is5x5Or7x7Cube() {
+            swap4Value(&face,
+                       row1: 1,
+                       col1: indexCubeType / 2,
+                       row2: indexCubeType / 2,
+                       col2: indexCubeType - 1,
+                       row3: indexCubeType - 1,
+                       col3: indexCubeType / 2,
+                       row4: indexCubeType / 2,
+                       col4: 1,
+                       isPrime: isPrime,
+                       isTwo: isTwo)
+        }
+    }
+    
+    private func swap4Value(_ face: inout [[PieceColor]],
+                            row1: Int,
+                            col1: Int,
+                            row2: Int,
+                            col2: Int,
+                            row3: Int,
+                            col3: Int,
+                            row4: Int,
+                            col4: Int,
+                            isPrime: Bool,
+                            isTwo: Bool) {
+        
         let cell1 = face[row1][col1]
         let cell2 = face[row2][col2]
         let cell3 = face[row3][col3]
