@@ -7,6 +7,12 @@
 
 import Foundation
 
+typealias SwapResult = (mainFace: [[PieceColor]]?,
+                        face1: [[PieceColor]],
+                        face2: [[PieceColor]],
+                        face3: [[PieceColor]],
+                        face4: [[PieceColor]])
+
 enum FaceColor {
     case white
     case green
