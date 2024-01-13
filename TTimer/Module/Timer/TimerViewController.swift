@@ -54,14 +54,15 @@ class TimerViewController: TTViewController {
     }
     
     private func parseData() {
-        viewModel.cubeType = .five
-        viewModel.turnF()
-        viewModel.turnU()
-        viewModel.turnF()
-        viewModel.turnL(is2Layers: true)
-        viewModel.turnR()
-        viewModel.turnD(is2Layers: true, isPrime: true)
-        viewModel.turnB()
+        viewModel.cubeType = .seven
+//        viewModel.turnU(.third)
+//        viewModel.turnU(.second)
+//        viewModel.turnU()
+        viewModel.turnF(.three)
+//        viewModel.turnL(is2Layers: true)
+//        viewModel.turnR()
+//        viewModel.turnD(is2Layers: true, isPrime: true)
+//        viewModel.turnB()
         updateData()
     }
 

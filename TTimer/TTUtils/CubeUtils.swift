@@ -15,13 +15,17 @@ class CubeUtils {
     static func isBigCube(_ cubeType: CubeType) -> Bool {
         return cubeType != .two && cubeType != .three
     }
-
+    
     static func is6x6Or7x7Cube(_ cubeType: CubeType) -> Bool {
         return cubeType == .six || cubeType == .seven
     }
     
     static func is5x5Or7x7Cube(_ cubeType: CubeType) -> Bool {
         return cubeType == .five || cubeType == .seven
+    }
+    
+    static func is7x7Cube(_ cubeType: CubeType) -> Bool {
+        return cubeType == .seven
     }
     
     static func swapIn1Face(_ face: inout [[PieceColor]],
@@ -46,126 +50,152 @@ class CubeUtils {
         //Center edge
         if isOddCube(cubeType) {
             face = swap4Value(&face,
-                       row1: 0,
-                       col1: indexCubeType / 2,
-                       row2: indexCubeType / 2,
-                       col2: indexCubeType,
-                       row3: indexCubeType,
-                       col3: indexCubeType / 2,
-                       row4: indexCubeType / 2,
-                       col4: 0,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 0,
+                              col1: indexCubeType / 2,
+                              row2: indexCubeType / 2,
+                              col2: indexCubeType,
+                              row3: indexCubeType,
+                              col3: indexCubeType / 2,
+                              row4: indexCubeType / 2,
+                              col4: 0,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
         }
         
         if isBigCube(cubeType) {
             //Corner of center
             face = swap4Value(&face,
-                       row1: 1,
-                       col1: 1,
-                       row2: 1,
-                       col2: indexCubeType - 1,
-                       row3: indexCubeType - 1,
-                       col3: indexCubeType - 1,
-                       row4: indexCubeType - 1,
-                       col4: 1,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 1,
+                              col1: 1,
+                              row2: 1,
+                              col2: indexCubeType - 1,
+                              row3: indexCubeType - 1,
+                              col3: indexCubeType - 1,
+                              row4: indexCubeType - 1,
+                              col4: 1,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
             
             //Left edge
             face = swap4Value(&face,
-                       row1: 0,
-                       col1: 1,
-                       row2: 1,
-                       col2: indexCubeType,
-                       row3: indexCubeType,
-                       col3: indexCubeType - 1,
-                       row4: indexCubeType - 1,
-                       col4: 0,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 0,
+                              col1: 1,
+                              row2: 1,
+                              col2: indexCubeType,
+                              row3: indexCubeType,
+                              col3: indexCubeType - 1,
+                              row4: indexCubeType - 1,
+                              col4: 0,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
             
             //Right edge
             face = swap4Value(&face,
-                       row1: 0,
-                       col1: indexCubeType - 1,
-                       row2: indexCubeType - 1,
-                       col2: indexCubeType,
-                       row3: indexCubeType,
-                       col3: 1,
-                       row4: 1,
-                       col4: 0,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 0,
+                              col1: indexCubeType - 1,
+                              row2: indexCubeType - 1,
+                              col2: indexCubeType,
+                              row3: indexCubeType,
+                              col3: 1,
+                              row4: 1,
+                              col4: 0,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
         }
         
         if is6x6Or7x7Cube(cubeType) {
             //2nd piece left of the edge
             face = swap4Value(&face,
-                       row1: 0,
-                       col1: 2,
-                       row2: 2,
-                       col2: indexCubeType,
-                       row3: indexCubeType,
-                       col3: indexCubeType - 2,
-                       row4: indexCubeType - 2,
-                       col4: 0,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 0,
+                              col1: 2,
+                              row2: 2,
+                              col2: indexCubeType,
+                              row3: indexCubeType,
+                              col3: indexCubeType - 2,
+                              row4: indexCubeType - 2,
+                              col4: 0,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
             
             //2nd piece right of the edge
             face = swap4Value(&face,
-                       row1: 0,
-                       col1: indexCubeType - 2,
-                       row2: indexCubeType - 2,
-                       col2: indexCubeType,
-                       row3: indexCubeType,
-                       col3: 2,
-                       row4: 2,
-                       col4: 0,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 0,
+                              col1: indexCubeType - 2,
+                              row2: indexCubeType - 2,
+                              col2: indexCubeType,
+                              row3: indexCubeType,
+                              col3: 2,
+                              row4: 2,
+                              col4: 0,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
             
             //2nd left of the center second layer
             face = swap4Value(&face,
-                       row1: 1,
-                       col1: 2,
-                       row2: 2,
-                       col2: indexCubeType - 1,
-                       row3: indexCubeType - 1,
-                       col3: indexCubeType - 2,
-                       row4: indexCubeType - 2,
-                       col4: 1,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 1,
+                              col1: 2,
+                              row2: 2,
+                              col2: indexCubeType - 1,
+                              row3: indexCubeType - 1,
+                              col3: indexCubeType - 2,
+                              row4: indexCubeType - 2,
+                              col4: 1,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
             
             //2nd right of the center second layer
             face = swap4Value(&face,
-                       row1: 1,
-                       col1: indexCubeType - 2,
-                       row2: indexCubeType - 2,
-                       col2: indexCubeType - 1,
-                       row3: indexCubeType - 1,
-                       col3: 2,
-                       row4: 2,
-                       col4: 1,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 1,
+                              col1: indexCubeType - 2,
+                              row2: indexCubeType - 2,
+                              col2: indexCubeType - 1,
+                              row3: indexCubeType - 1,
+                              col3: 2,
+                              row4: 2,
+                              col4: 1,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
+            
+            face = swap4Value(&face,
+                              row1: 2,
+                              col1: 2,
+                              row2: 2,
+                              col2: indexCubeType - 2,
+                              row3: indexCubeType - 2,
+                              col3: indexCubeType - 2,
+                              row4: indexCubeType - 2,
+                              col4: 2,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
         }
         
         //Center of the center second layer
         if is5x5Or7x7Cube(cubeType) {
             face = swap4Value(&face,
-                       row1: 1,
-                       col1: indexCubeType / 2,
-                       row2: indexCubeType / 2,
-                       col2: indexCubeType - 1,
-                       row3: indexCubeType - 1,
-                       col3: indexCubeType / 2,
-                       row4: indexCubeType / 2,
-                       col4: 1,
-                       isPrime: isPrime,
-                       isTwo: isTwo)
+                              row1: 1,
+                              col1: indexCubeType / 2,
+                              row2: indexCubeType / 2,
+                              col2: indexCubeType - 1,
+                              row3: indexCubeType - 1,
+                              col3: indexCubeType / 2,
+                              row4: indexCubeType / 2,
+                              col4: 1,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
+        }
+        
+        if is7x7Cube(cubeType) {
+            face = swap4Value(&face,
+                              row1: 2,
+                              col1: indexCubeType / 2,
+                              row2: indexCubeType / 2,
+                              col2: indexCubeType - 2,
+                              row3: indexCubeType - 2,
+                              col3: indexCubeType / 2,
+                              row4: indexCubeType / 2,
+                              col4: 2,
+                              isPrime: isPrime,
+                              isTwo: isTwo)
         }
         
         return face

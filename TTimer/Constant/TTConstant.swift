@@ -7,6 +7,12 @@
 
 import Foundation
 
+enum Layer: Int {
+    case one = 0
+    case two = 1
+    case three = 2
+}
+
 typealias SwapResult = (mainFace: [[PieceColor]]?,
                         face1: [[PieceColor]],
                         face2: [[PieceColor]],
