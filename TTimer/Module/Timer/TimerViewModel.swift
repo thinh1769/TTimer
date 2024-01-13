@@ -12,13 +12,34 @@ import RxSwift
 import SwiftUI
 
 class TimerViewModel {
+    var turnUp: TurnUService?
+    var turnFront: TurnFService?
+    var turnLeft: TurnLService?
+    var turnRight: TurnRService?
+    var turnDown: TurnDService?
+    var turnBack: TurnBService?
+    
+    var white: [[PieceColor]] = Array(repeating: Array(repeating: .white, count: 3), count: 3)
+    var green: [[PieceColor]] = Array(repeating: Array(repeating: .green, count: 3), count: 3)
+    var yellow: [[PieceColor]] = Array(repeating: Array(repeating: .yellow, count: 3), count: 3)
+    var orange: [[PieceColor]] = Array(repeating: Array(repeating: .orange, count: 3), count: 3)
+    var red: [[PieceColor]] = Array(repeating: Array(repeating: .red, count: 3), count: 3)
+    var blue: [[PieceColor]] = Array(repeating: Array(repeating: .blue, count: 3), count: 3)
+    
+    let whiteData = BehaviorRelay<[PieceColor]>(value: [])
+    let greenData = BehaviorRelay<[PieceColor]>(value: [])
+    let yellowData = BehaviorRelay<[PieceColor]>(value: [])
+    let orangeData = BehaviorRelay<[PieceColor]>(value: [])
+    let redData = BehaviorRelay<[PieceColor]>(value: [])
+    let blueData = BehaviorRelay<[PieceColor]>(value: [])
+    
     let bag = DisposeBag()
     var scrambleList: [String]
     var cubeSize: CGFloat
     var indexCubeType: Int
     var cubeType: CubeType {
         didSet {
-            resetFaceColors()
+            resetAllFacesColor()
             updateCubeSize()
             indexCubeType = cubeType.rawValue - 1
             
@@ -66,51 +87,14 @@ class TimerViewModel {
         }
     }
     
-    let whiteData = BehaviorRelay<[PieceColor]>(value: [])
-    let greenData = BehaviorRelay<[PieceColor]>(value: [])
-    let yellowData = BehaviorRelay<[PieceColor]>(value: [])
-    let orangeData = BehaviorRelay<[PieceColor]>(value: [])
-    let redData = BehaviorRelay<[PieceColor]>(value: [])
-    let blueData = BehaviorRelay<[PieceColor]>(value: [])
-    
-    var white: [[PieceColor]] = Array(repeating: Array(repeating: .white, count: 3), count: 3)
-    var green: [[PieceColor]] = Array(repeating: Array(repeating: .green, count: 3), count: 3)
-    var yellow: [[PieceColor]] = Array(repeating: Array(repeating: .yellow, count: 3), count: 3)
-    var orange: [[PieceColor]] = Array(repeating: Array(repeating: .orange, count: 3), count: 3)
-    var red: [[PieceColor]] = Array(repeating: Array(repeating: .red, count: 3), count: 3)
-    var blue: [[PieceColor]] = Array(repeating: Array(repeating: .blue, count: 3), count: 3)
-    
-    var turnUp: TurnUService?
-    var turnFront: TurnFService?
-    var turnLeft: TurnLService?
-    var turnRight: TurnRService?
-    var turnDown: TurnDService?
-    var turnBack: TurnBService?
-    
-    init(scrambleList: [String] = [""],
-         cubeSize: CGFloat = 40,
-         cubeType: CubeType = CubeType.two,
-         indexCubeType: Int = 0,
-         white: [[PieceColor]] = [[]],
-         green: [[PieceColor]] = [[]],
-         yellow: [[PieceColor]] = [[]],
-         orange: [[PieceColor]] = [[]],
-         red: [[PieceColor]] = [[]],
-         blue: [[PieceColor]] = [[]])
-    {
-        self.scrambleList = scrambleList
-        self.cubeSize = cubeSize
-        self.cubeType = cubeType
-        self.indexCubeType = indexCubeType
-        self.white = white
-        self.green = green
-        self.yellow = yellow
-        self.orange = orange
-        self.red = red
-        self.blue = blue
+    init() {
+        scrambleList = [""]
+        cubeSize = 40
+        cubeType = CubeType.two
+        indexCubeType = cubeType.rawValue - 1
     }
     
-    private func resetFaceColors() {
+    private func resetAllFacesColor() {
         white = Array(repeating: Array(repeating: .white, count: cubeType.rawValue), count: cubeType.rawValue)
         green = Array(repeating: Array(repeating: .green, count: cubeType.rawValue), count: cubeType.rawValue)
         yellow = Array(repeating: Array(repeating: .yellow, count: cubeType.rawValue), count: cubeType.rawValue)
@@ -137,7 +121,7 @@ class TimerViewModel {
     }
     
     func generateRandomScrambleList() -> String {
-        resetFaceColors()
+        resetAllFacesColor()
         
         var scramble = ""
         var length = 0
@@ -182,46 +166,120 @@ class TimerViewModel {
     }
     
     func turnScramble(_ scrambleCharacter: String) {
-        //        switch scrambleCharacter {
-        //        case Scramble.U.rawValue:
-        //            turnU()
-        //        case Scramble.UPrime.rawValue:
-        //            turnU(isPrime: true)
-        //        case Scramble.U2.rawValue:
-        //            turnU(isTwo: true)
-        //        case Scramble.F.rawValue:
-        //            turnF()
-        //        case Scramble.FPrime.rawValue:
-        //            turnF(isPrime: true)
-        //        case Scramble.F2.rawValue:
-        //            turnF(isTwo: true)
-        //        case Scramble.L.rawValue:
-        //            turnL()
-        //        case Scramble.LPrime.rawValue:
-        //            turnL(isPrime: true)
-        //        case Scramble.L2.rawValue:
-        //            turnL(isTwo: true)
-        //        case Scramble.R.rawValue:
-        //            turnR()
-        //        case Scramble.RPrime.rawValue:
-        //            turnR(isPrime: true)
-        //        case Scramble.R2.rawValue:
-        //            turnR(isTwo: true)
-        //        case Scramble.D.rawValue:
-        //            turnD()
-        //        case Scramble.DPrime.rawValue:
-        //            turnD(isPrime: true)
-        //        case Scramble.D2.rawValue:
-        //            turnD(isTwo: true)
-        //        case Scramble.B.rawValue:
-        //            turnB()
-        //        case Scramble.BPrime.rawValue:
-        //            turnB(isPrime: true)
-        //        case Scramble.B2.rawValue:
-        //            turnB(isTwo: true)
-        //        default:
-        //            return
-        //        }
+        switch scrambleCharacter {
+            
+            /// U
+        case Scramble.U.rawValue:
+            turnU()
+        case Scramble.UPrime.rawValue:
+            turnU(isPrime: true)
+        case Scramble.U2.rawValue:
+            turnU(isTwo: true)
+            
+            /// Uw
+        case Scramble2Layers.Uw.rawValue:
+            turnU(is2Layers: true)
+        case Scramble2Layers.UwPrime.rawValue:
+            turnU(is2Layers: true,
+                  isPrime: true)
+        case Scramble2Layers.Uw2.rawValue:
+            turnU(is2Layers: true,
+                  isTwo: true)
+            
+            /// F
+        case Scramble.F.rawValue:
+            turnF()
+        case Scramble.FPrime.rawValue:
+            turnF(isPrime: true)
+        case Scramble.F2.rawValue:
+            turnF(isTwo: true)
+            
+            /// Fw
+        case Scramble2Layers.Fw.rawValue:
+            turnF(is2Layers: true)
+        case Scramble2Layers.FwPrime.rawValue:
+            turnF(is2Layers: true,
+                  isPrime: true)
+        case Scramble2Layers.Fw2.rawValue:
+            turnF(is2Layers: true,
+                  isTwo: true)
+            
+            /// L
+        case Scramble.L.rawValue:
+            turnL()
+        case Scramble.LPrime.rawValue:
+            turnL(isPrime: true)
+        case Scramble.L2.rawValue:
+            turnL(isTwo: true)
+            
+            /// Lw
+        case Scramble2Layers.Lw.rawValue:
+            turnL(is2Layers: true)
+        case Scramble2Layers.LwPrime.rawValue:
+            turnL(is2Layers: true,
+                  isPrime: true)
+        case Scramble2Layers.Lw2.rawValue:
+            turnL(is2Layers: true,
+                  isTwo: true)
+            
+            /// R
+        case Scramble.R.rawValue:
+            turnR()
+        case Scramble.RPrime.rawValue:
+            turnR(isPrime: true)
+        case Scramble.R2.rawValue:
+            turnR(isTwo: true)
+            
+            /// Rw
+        case Scramble2Layers.Rw.rawValue:
+            turnR(is2Layers: true)
+        case Scramble2Layers.RwPrime.rawValue:
+            turnR(is2Layers: true,
+                  isPrime: true)
+        case Scramble2Layers.Rw2.rawValue:
+            turnR(is2Layers: true,
+                  isTwo: true)
+            
+            /// D
+        case Scramble.D.rawValue:
+            turnD()
+        case Scramble.DPrime.rawValue:
+            turnD(isPrime: true)
+        case Scramble.D2.rawValue:
+            turnD(isTwo: true)
+            
+            /// Dw
+        case Scramble2Layers.Dw.rawValue:
+            turnD(is2Layers: true)
+        case Scramble2Layers.DwPrime.rawValue:
+            turnD(is2Layers: true,
+                  isPrime: true)
+        case Scramble2Layers.Dw2.rawValue:
+            turnD(is2Layers: true,
+                  isTwo: true)
+            
+            /// B
+        case Scramble.B.rawValue:
+            turnB()
+        case Scramble.BPrime.rawValue:
+            turnB(isPrime: true)
+        case Scramble.B2.rawValue:
+            turnB(isTwo: true)
+            
+            /// Bw
+        case Scramble2Layers.Bw.rawValue:
+            turnB(is2Layers: true)
+        case Scramble2Layers.BwPrime.rawValue:
+            turnB(is2Layers: true,
+                  isPrime: true)
+        case Scramble2Layers.Bw2.rawValue:
+            turnB(is2Layers: true,
+                  isTwo: true)
+        default:
+            return
+        }
+        
+        
     }
     
     func turnU(is2Layers: Bool = false,
@@ -343,42 +401,107 @@ class TimerViewModel {
     {
         switch face {
         case .white:
+            if let mainFaceResult = result.mainFace {
+                white = mainFaceResult
+            }
             green = result.face1
             orange = result.face2
             blue = result.face3
             red = result.face4
             
         case .green:
+            if let mainFaceResult = result.mainFace {
+                green = mainFaceResult
+            }
             yellow = result.face1
             orange = result.face2
             white = result.face3
             red = result.face4
             
         case .yellow:
+            if let mainFaceResult = result.mainFace {
+                yellow = mainFaceResult
+            }
             blue = result.face1
             orange = result.face2
             green = result.face3
             red = result.face4
             
         case .orange:
+            if let mainFaceResult = result.mainFace {
+                orange = mainFaceResult
+            }
             green = result.face1
             yellow = result.face2
             blue = result.face3
             white = result.face4
             
         case .red:
+            if let mainFaceResult = result.mainFace {
+                red = mainFaceResult
+            }
             green = result.face1
             white = result.face2
             blue = result.face3
             yellow = result.face4
             
         case .blue:
+            if let mainFaceResult = result.mainFace {
+                blue = mainFaceResult
+            }
             white = result.face1
             orange = result.face2
             yellow = result.face3
             red = result.face4
         }
         
+        if face != .white {
+            turnUp?.reassignFace(SwapResult(mainFace: white,
+                                            face1: green,
+                                            face2: orange,
+                                            face3: blue,
+                                            face4: red))
+        }
+        
+        if face != .green {
+            turnFront?.reassignFace(SwapResult(mainFace: green,
+                                               face1: yellow,
+                                               face2: orange,
+                                               face3: white,
+                                               face4: red))
+        }
+        
+        if face != .orange {
+            turnLeft?.reassignFace(SwapResult(mainFace: orange,
+                                              face1: green,
+                                              face2: yellow,
+                                              face3: blue,
+                                              face4: white))
+        }
+        
+        if face != .red {
+            turnRight?.reassignFace(SwapResult(mainFace: red,
+                                               face1: green,
+                                               face2: white,
+                                               face3: blue,
+                                               face4: yellow))
+        }
+        
+        if face != .yellow {
+            turnDown?.reassignFace(SwapResult(mainFace: yellow,
+                                              face1: blue,
+                                              face2: orange,
+                                              face3: green,
+                                              face4: red))
+        }
+        
+        if face != .blue {
+            turnBack?.reassignFace(SwapResult(mainFace: blue,
+                                              face1: white,
+                                              face2: orange,
+                                              face3: yellow,
+                                              face4: red))
+        }
     }
 }
 

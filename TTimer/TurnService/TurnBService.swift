@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 protocol TurnBInterface {
-    var mainFace: [[PieceColor]] { get }
-    var face1: [[PieceColor]] { get }
-    var face2: [[PieceColor]] { get }
-    var face3: [[PieceColor]] { get }
-    var face4: [[PieceColor]] { get }
+    var mainBlue: [[PieceColor]] { get }
+    var white: [[PieceColor]] { get }
+    var orange: [[PieceColor]] { get }
+    var yellow: [[PieceColor]] { get }
+    var red: [[PieceColor]] { get }
     var cubeType: CubeType { get }
     
     mutating func turnB(isPrime: Bool,
@@ -30,11 +30,11 @@ protocol TurnBInterface {
 }
 
 struct TurnBService: TurnBInterface {
-    var mainFace: [[PieceColor]]
-    var face1: [[PieceColor]]
-    var face2: [[PieceColor]]
-    var face3: [[PieceColor]]
-    var face4: [[PieceColor]]
+    var mainBlue: [[PieceColor]]
+    var white: [[PieceColor]]
+    var orange: [[PieceColor]]
+    var yellow: [[PieceColor]]
+    var red: [[PieceColor]]
     var cubeType: CubeType
     
     mutating func turnB(isPrime: Bool,
@@ -43,16 +43,16 @@ struct TurnBService: TurnBInterface {
         
         let indexCubeType = cubeType.rawValue - 1
         
-        mainFace = CubeUtils.swapIn1Face(&mainFace,
+        mainBlue = CubeUtils.swapIn1Face(&mainBlue,
                                          cubeType: cubeType,
                                          isPrime: isPrime,
                                          isTwo: isTwo)
         
         //Left corner multi face
-        var result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+        var result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 0,
                                                     colFace1: 0,
                                                     rowFace2: indexCubeType,
@@ -67,10 +67,10 @@ struct TurnBService: TurnBInterface {
         reassignFace(result)
         
         //Right corner multi face
-        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                face2: &face2,
-                                                face3: &face3,
-                                                face4: &face4,
+        result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                face2: &orange,
+                                                face3: &yellow,
+                                                face4: &red,
                                                 rowFace1: 0,
                                                 colFace1: indexCubeType,
                                                 rowFace2: 0,
@@ -86,10 +86,10 @@ struct TurnBService: TurnBInterface {
         
         if CubeUtils.isOddCube(cubeType) {
             //Center edge multi face
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 0,
                                                     colFace1: indexCubeType / 2,
                                                     rowFace2: indexCubeType / 2,
@@ -106,10 +106,10 @@ struct TurnBService: TurnBInterface {
         
         if CubeUtils.isBigCube(cubeType) {
             //Left edge multi face
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 0,
                                                     colFace1: 1,
                                                     rowFace2: indexCubeType - 1,
@@ -124,10 +124,10 @@ struct TurnBService: TurnBInterface {
             reassignFace(result)
             
             //Right edge multi face
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 0,
                                                     colFace1: indexCubeType - 1,
                                                     rowFace2: 1,
@@ -144,10 +144,10 @@ struct TurnBService: TurnBInterface {
         
         if CubeUtils.is6x6Or7x7Cube(cubeType) {
             //2nd piece left of the edge multi face
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 0,
                                                     colFace1: 2,
                                                     rowFace2: indexCubeType - 2,
@@ -162,10 +162,10 @@ struct TurnBService: TurnBInterface {
             reassignFace(result)
             
             //2nd piece right of the edge multi face
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 0,
                                                     colFace1: indexCubeType - 2,
                                                     rowFace2: 2,
@@ -180,11 +180,11 @@ struct TurnBService: TurnBInterface {
             reassignFace(result)
         }
         
-        return SwapResult(mainFace: mainFace,
-                          face1: face1,
-                          face2: face2,
-                          face3: face3,
-                          face4: face4)
+        return SwapResult(mainFace: mainBlue,
+                          face1: white,
+                          face2: orange,
+                          face3: yellow,
+                          face4: red)
     }
     
     mutating func turnBw(isPrime: Bool,
@@ -192,10 +192,10 @@ struct TurnBService: TurnBInterface {
     -> SwapResult {
         let indexCubeType = cubeType.rawValue - 1
         //Left Edge
-        var result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+        var result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 1,
                                                     colFace1: 0,
                                                     rowFace2: indexCubeType,
@@ -210,10 +210,10 @@ struct TurnBService: TurnBInterface {
         reassignFace(result)
         
         //Right Edge
-        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                face2: &face2,
-                                                face3: &face3,
-                                                face4: &face4,
+        result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                face2: &orange,
+                                                face3: &yellow,
+                                                face4: &red,
                                                 rowFace1: 1,
                                                 colFace1: indexCubeType,
                                                 rowFace2: 0,
@@ -228,10 +228,10 @@ struct TurnBService: TurnBInterface {
         reassignFace(result)
         
         //Left corner center
-        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                face2: &face2,
-                                                face3: &face3,
-                                                face4: &face4,
+        result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                face2: &orange,
+                                                face3: &yellow,
+                                                face4: &red,
                                                 rowFace1: 1,
                                                 colFace1: 1,
                                                 rowFace2: indexCubeType - 1,
@@ -246,10 +246,10 @@ struct TurnBService: TurnBInterface {
         reassignFace(result)
         
         //Right corner center
-        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                face2: &face2,
-                                                face3: &face3,
-                                                face4: &face4,
+        result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                face2: &orange,
+                                                face3: &yellow,
+                                                face4: &red,
                                                 rowFace1: 1,
                                                 colFace1: indexCubeType - 1,
                                                 rowFace2: 1,
@@ -265,10 +265,10 @@ struct TurnBService: TurnBInterface {
         
         //Center of the center
         if CubeUtils.is5x5Or7x7Cube(cubeType) {
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 1,
                                                     colFace1: indexCubeType / 2,
                                                     rowFace2: indexCubeType / 2,
@@ -285,10 +285,10 @@ struct TurnBService: TurnBInterface {
         
         if CubeUtils.is6x6Or7x7Cube(cubeType) {
             //Left center of the center
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 1,
                                                     colFace1: 2,
                                                     rowFace2: indexCubeType - 2,
@@ -303,10 +303,10 @@ struct TurnBService: TurnBInterface {
             reassignFace(result)
             
             //Right center of the center
-            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
-                                                    face2: &face2,
-                                                    face3: &face3,
-                                                    face4: &face4,
+            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                    face2: &orange,
+                                                    face3: &yellow,
+                                                    face4: &red,
                                                     rowFace1: 1,
                                                     colFace1: indexCubeType - 2,
                                                     rowFace2: 2,
@@ -321,11 +321,11 @@ struct TurnBService: TurnBInterface {
             reassignFace(result)
         }
         
-        return SwapResult(mainFace: mainFace,
-                          face1: face1,
-                          face2: face2,
-                          face3: face3,
-                          face4: face4)
+        return SwapResult(mainFace: mainBlue,
+                          face1: white,
+                          face2: orange,
+                          face3: yellow,
+                          face4: red)
     }
     
     func turn3Bw() {
@@ -333,10 +333,13 @@ struct TurnBService: TurnBInterface {
     }
     
     mutating func reassignFace(_ result: SwapResult) {
-        face1 = result.face1
-        face2 = result.face2
-        face3 = result.face3
-        face4 = result.face4
+        if let blueFace = result.mainFace {
+            mainBlue = blueFace
+        }
+        white = result.face1
+        orange = result.face2
+        yellow = result.face3
+        red = result.face4
     }
     
     init(mainFace: [[PieceColor]],
@@ -346,11 +349,11 @@ struct TurnBService: TurnBInterface {
          face4: [[PieceColor]],
          cubeType: CubeType)
     {
-        self.mainFace = mainFace
-        self.face1 = face1
-        self.face2 = face2
-        self.face3 = face3
-        self.face4 = face4
+        self.mainBlue = mainFace
+        self.white = face1
+        self.orange = face2
+        self.yellow = face3
+        self.red = face4
         self.cubeType = cubeType
     }
 }
