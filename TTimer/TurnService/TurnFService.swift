@@ -20,7 +20,9 @@ protocol TurnFInterface {
                         isTwo: Bool)
     -> SwapResult
     
-    func turnFw()
+    mutating func turnFw(isPrime: Bool,
+                         isTwo: Bool)
+    -> SwapResult
     
     func turn3Fw()
     
@@ -184,8 +186,146 @@ struct TurnFService: TurnFInterface {
                           face4: face4)
     }
     
-    func turnFw() {
+    mutating func turnFw(isPrime: Bool,
+                         isTwo: Bool)
+    -> SwapResult {
+        let indexCubeType = cubeType.rawValue - 1
         
+        //Left Edge
+        var result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                    face2: &face2,
+                                                    face3: &face3,
+                                                    face4: &face4,
+                                                    rowFace1: 1,
+                                                    colFace1: 0,
+                                                    rowFace2: 0,
+                                                    colFace2: indexCubeType - 1,
+                                                    rowFace3: indexCubeType - 1,
+                                                    colFace3: indexCubeType,
+                                                    rowFace4: indexCubeType,
+                                                    colFace4: 1,
+                                                    isPrime: isPrime,
+                                                    isTwo: isTwo)
+        
+        reassignFace(result)
+        
+        //Right Edge
+        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                face2: &face2,
+                                                face3: &face3,
+                                                face4: &face4,
+                                                rowFace1: 1,
+                                                colFace1: indexCubeType,
+                                                rowFace2: indexCubeType,
+                                                colFace2: indexCubeType - 1,
+                                                rowFace3: indexCubeType - 1,
+                                                colFace3: 0,
+                                                rowFace4: 0,
+                                                colFace4: 1,
+                                                isPrime: isPrime,
+                                                isTwo: isTwo)
+        
+        reassignFace(result)
+        
+        //Left corner center
+        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                face2: &face2,
+                                                face3: &face3,
+                                                face4: &face4,
+                                                rowFace1: 1,
+                                                colFace1: 1,
+                                                rowFace2: 1,
+                                                colFace2: indexCubeType - 1,
+                                                rowFace3: indexCubeType - 1,
+                                                colFace3: indexCubeType - 1,
+                                                rowFace4: indexCubeType - 1,
+                                                colFace4: 1,
+                                                isPrime: isPrime,
+                                                isTwo: isTwo)
+        
+        reassignFace(result)
+        
+        //Right corner center
+        result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                face2: &face2,
+                                                face3: &face3,
+                                                face4: &face4,
+                                                rowFace1: 1,
+                                                colFace1: indexCubeType - 1,
+                                                rowFace2: indexCubeType - 1,
+                                                colFace2: indexCubeType - 1,
+                                                rowFace3: indexCubeType - 1,
+                                                colFace3: 1,
+                                                rowFace4: 1,
+                                                colFace4: 1,
+                                                isPrime: isPrime,
+                                                isTwo: isTwo)
+        
+        reassignFace(result)
+        
+        //Center of the center
+        if CubeUtils.is5x5Or7x7Cube(cubeType) {
+            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                    face2: &face2,
+                                                    face3: &face3,
+                                                    face4: &face4,
+                                                    rowFace1: 1,
+                                                    colFace1: indexCubeType / 2,
+                                                    rowFace2: indexCubeType / 2,
+                                                    colFace2: indexCubeType - 1,
+                                                    rowFace3: indexCubeType - 1,
+                                                    colFace3: indexCubeType / 2,
+                                                    rowFace4: indexCubeType / 2,
+                                                    colFace4: 1,
+                                                    isPrime: isPrime,
+                                                    isTwo: isTwo)
+            
+            reassignFace(result)
+        }
+        
+        if CubeUtils.is6x6Or7x7Cube(cubeType) {
+            //Left center of the center
+            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                    face2: &face2,
+                                                    face3: &face3,
+                                                    face4: &face4,
+                                                    rowFace1: 1,
+                                                    colFace1: 2,
+                                                    rowFace2: 2,
+                                                    colFace2: indexCubeType - 1,
+                                                    rowFace3: indexCubeType - 1,
+                                                    colFace3: indexCubeType - 2,
+                                                    rowFace4: indexCubeType - 2,
+                                                    colFace4: 1,
+                                                    isPrime: isPrime,
+                                                    isTwo: isTwo)
+            
+            reassignFace(result)
+            
+            //Right center of the center
+            result = CubeUtils.swap4PiecesMultiFace(face1: &face1,
+                                                    face2: &face2,
+                                                    face3: &face3,
+                                                    face4: &face4,
+                                                    rowFace1: 1,
+                                                    colFace1: indexCubeType - 2,
+                                                    rowFace2: indexCubeType - 2,
+                                                    colFace2: indexCubeType - 1,
+                                                    rowFace3: indexCubeType - 1,
+                                                    colFace3: 2,
+                                                    rowFace4: 2,
+                                                    colFace4: 1,
+                                                    isPrime: isPrime,
+                                                    isTwo: isTwo)
+            
+            reassignFace(result)
+        }
+        
+        return SwapResult(mainFace: mainFace,
+                          face1: face1,
+                          face2: face2,
+                          face3: face3,
+                          face4: face4)
     }
     
     func turn3Fw() {
@@ -204,7 +344,7 @@ struct TurnFService: TurnFInterface {
          face2: [[PieceColor]],
          face3: [[PieceColor]],
          face4: [[PieceColor]],
-         cubeType: CubeType) 
+         cubeType: CubeType)
     {
         self.mainFace = mainFace
         self.face1 = face1

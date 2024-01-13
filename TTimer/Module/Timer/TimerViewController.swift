@@ -36,7 +36,7 @@ class TimerViewController: TTViewController {
                                                                      spacing: 0,
                                                                      isScrollEnabled: false)
     
-    private let viewModel = TimerViewModel()
+    private let viewModel = TimerViewModel.init()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -56,17 +56,17 @@ class TimerViewController: TTViewController {
     private func parseData() {
         viewModel.cubeType = .seven
 //        viewModel.turnU()
-//        viewModel.turnUw()
+//        viewModel.turnU(is2Layers: true)
 //        viewModel.turnF()
-//        viewModel.turnFw()
+//        viewModel.turnF(is2Layers: true)
 //        viewModel.turnL()
-//        viewModel.turnLw()
+//        viewModel.turnL(is2Layers: true)
 //        viewModel.turnR()
-//        viewModel.turnRw()
+//        viewModel.turnR(is2Layers: true)
 //        viewModel.turnD()
-//        viewModel.turnDw()
-        viewModel.turnB()
-//        viewModel.turnBw()
+//        viewModel.turnD(is2Layers: true, isPrime: true)
+//        viewModel.turnB()
+        viewModel.turnB(is2Layers: true)
         updateData()
     }
 
