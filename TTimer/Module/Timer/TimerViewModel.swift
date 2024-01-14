@@ -178,14 +178,14 @@ class TimerViewModel {
             
             /// Uw
         case Scramble2Layers.Uw.rawValue:
-            turnU(.two)
+            turnU(layer: .two)
             return
         case Scramble2Layers.UwPrime.rawValue:
-            turnU(.two,
+            turnU(layer: .two,
                   isPrime: true)
             return
         case Scramble2Layers.Uw2.rawValue:
-            turnU(.two,
+            turnU(layer: .two,
                   isPrime: true,
                   isTwo: true)
             return
@@ -200,12 +200,12 @@ class TimerViewModel {
             
             /// Fw
         case Scramble2Layers.Fw.rawValue:
-            turnF(.two)
+            turnF(layer: .two)
         case Scramble2Layers.FwPrime.rawValue:
-            turnF(.two,
+            turnF(layer: .two,
                   isPrime: true)
         case Scramble2Layers.Fw2.rawValue:
-            turnF(.two,
+            turnF(layer: .two,
                   isTwo: true)
             
             /// L
@@ -218,12 +218,12 @@ class TimerViewModel {
             
             /// Lw
         case Scramble2Layers.Lw.rawValue:
-            turnL(is2Layers: true)
+            turnL(layer: .two)
         case Scramble2Layers.LwPrime.rawValue:
-            turnL(is2Layers: true,
+            turnL(layer: .two,
                   isPrime: true)
         case Scramble2Layers.Lw2.rawValue:
-            turnL(is2Layers: true,
+            turnL(layer: .two,
                   isTwo: true)
             
             /// R
@@ -236,12 +236,12 @@ class TimerViewModel {
             
             /// Rw
         case Scramble2Layers.Rw.rawValue:
-            turnR(is2Layers: true)
+            turnR(layer: .two)
         case Scramble2Layers.RwPrime.rawValue:
-            turnR(is2Layers: true,
+            turnR(layer: .two,
                   isPrime: true)
         case Scramble2Layers.Rw2.rawValue:
-            turnR(is2Layers: true,
+            turnR(layer: .two,
                   isTwo: true)
             
             /// D
@@ -254,12 +254,12 @@ class TimerViewModel {
             
             /// Dw
         case Scramble2Layers.Dw.rawValue:
-            turnD(is2Layers: true)
+            turnD(layer: .two)
         case Scramble2Layers.DwPrime.rawValue:
-            turnD(is2Layers: true,
+            turnD(layer: .two,
                   isPrime: true)
         case Scramble2Layers.Dw2.rawValue:
-            turnD(is2Layers: true,
+            turnD(layer: .two,
                   isTwo: true)
             
             /// B
@@ -272,12 +272,12 @@ class TimerViewModel {
             
             /// Bw
         case Scramble2Layers.Bw.rawValue:
-            turnB(is2Layers: true)
+            turnB(layer: .two)
         case Scramble2Layers.BwPrime.rawValue:
-            turnB(is2Layers: true,
+            turnB(layer: .two,
                   isPrime: true)
         case Scramble2Layers.Bw2.rawValue:
-            turnB(is2Layers: true,
+            turnB(layer: .two,
                   isTwo: true)
         default:
             return
@@ -286,7 +286,7 @@ class TimerViewModel {
         
     }
     
-    func turnU(_ layer: Layer = .one,
+    func turnU(layer: Layer = .one,
                isPrime: Bool = false,
                isTwo: Bool = false)
     {
@@ -298,7 +298,7 @@ class TimerViewModel {
         reassignFace(result, face: .white)
     }
     
-    func turnF(_ layer: Layer = .one,
+    func turnF(layer: Layer = .one,
                isPrime: Bool = false,
                isTwo: Bool = false)
     {
@@ -310,80 +310,52 @@ class TimerViewModel {
         reassignFace(result, face: .green)
     }
     
-    func turnL(is2Layers: Bool = false,
+    func turnL(layer: Layer = .one,
                isPrime: Bool = false,
                isTwo: Bool = false)
     {
-        guard let result = turnLeft?.turnL(isPrime: isPrime,
+        guard let result = turnLeft?.turnL(layer,
+                                           isPrime: isPrime,
                                            isTwo: isTwo)
         else { return }
         
         reassignFace(result, face: .orange)
-        
-        if is2Layers {
-            guard let result2Layer = turnLeft?.turnLw(isPrime: isPrime,
-                                                      isTwo: isTwo)
-            else { return }
-            
-            reassignFace(result2Layer, face: .orange)
-        }
     }
     
-    func turnR(is2Layers: Bool = false,
+    func turnR(layer: Layer = .one,
                isPrime: Bool = false,
                isTwo: Bool = false)
     {
-        guard let result = turnRight?.turnR(isPrime: isPrime,
+        guard let result = turnRight?.turnR(layer,
+                                            isPrime: isPrime,
                                             isTwo: isTwo)
         else { return }
         
         reassignFace(result, face: .red)
-        
-        if is2Layers {
-            guard let result2Layer = turnRight?.turnRw(isPrime: isPrime,
-                                                       isTwo: isTwo)
-            else { return }
-            
-            reassignFace(result2Layer, face: .red)
-        }
     }
     
-    func turnD(is2Layers: Bool = false,
+    func turnD(layer: Layer = .one,
                isPrime: Bool = false,
                isTwo: Bool = false)
     {
-        guard let result = turnDown?.turnD(isPrime: isPrime,
+        guard let result = turnDown?.turnD(layer,
+                                           isPrime: isPrime,
                                            isTwo: isTwo)
         else { return }
         
         reassignFace(result, face: .yellow)
-        
-        if is2Layers {
-            guard let result2Layer = turnDown?.turnDw(isPrime: isPrime,
-                                                      isTwo: isTwo)
-            else { return }
-            
-            reassignFace(result2Layer, face: .yellow)
-        }
     }
     
-    func turnB(is2Layers: Bool = false,
+    func turnB(layer: Layer = .one,
                isPrime: Bool = false,
                isTwo: Bool = false)
     {
-        guard let result = turnBack?.turnB(isPrime: isPrime,
+        guard let result = turnBack?.turnB(layer,
+                                           isPrime: isPrime,
                                            isTwo: isTwo)
         else { return }
         
         reassignFace(result, face: .blue)
-        
-        if is2Layers {
-            guard let result2Layer = turnBack?.turnBw(isPrime: isPrime,
-                                                      isTwo: isTwo)
-            else { return }
-            
-            reassignFace(result2Layer, face: .blue)
-        }
     }
     
     private func reassignFace(_ result: SwapResult,

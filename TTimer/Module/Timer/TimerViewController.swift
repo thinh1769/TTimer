@@ -58,11 +58,11 @@ class TimerViewController: TTViewController {
 //        viewModel.turnU(.third)
 //        viewModel.turnU(.second)
 //        viewModel.turnU()
-        viewModel.turnF(.three)
-//        viewModel.turnL(is2Layers: true)
-//        viewModel.turnR()
-//        viewModel.turnD(is2Layers: true, isPrime: true)
-//        viewModel.turnB()
+//        viewModel.turnF(layer: .three)
+//        viewModel.turnL(layer: .three)
+//        viewModel.turnR(layer: .three)
+//        viewModel.turnD(layer: .three)
+        viewModel.turnB(layer: .three)
         updateData()
     }
 
