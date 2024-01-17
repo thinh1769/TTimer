@@ -54,7 +54,7 @@ class TimerViewController: TTViewController {
     }
     
     private func parseData() {
-        viewModel.cubeType = .seven
+        viewModel.cubeType = .six
 //        viewModel.turnU(.third)
 //        viewModel.turnU(.second)
 //        viewModel.turnU()
@@ -62,7 +62,7 @@ class TimerViewController: TTViewController {
 //        viewModel.turnL(layer: .three)
 //        viewModel.turnR(layer: .three)
 //        viewModel.turnD(layer: .three)
-        viewModel.turnB(layer: .three)
+        viewModel.turnU(isPrime: true)
         updateData()
     }
 
