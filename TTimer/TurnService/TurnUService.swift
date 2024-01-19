@@ -65,25 +65,19 @@ struct TurnUService: TurnUInterface {
                                                             isPrime: isPrime,
                                                             isTwo: isTwo)
                     reassignFace(result)
-                }
-            }
-            
-            for indexCol in (indexCubeType - 2)...indexCubeType {
-                if indexCol == indexCubeType ||
-                    indexCol == indexCubeType - 1 && CubeUtils.isBigCube(cubeType) ||
-                    indexCol == indexCubeType - 2 && CubeUtils.is6x6Or7x7Cube(cubeType) {
+                    
                     result = CubeUtils.swap4PiecesMultiFace(face1: &green,
                                                             face2: &orange,
                                                             face3: &blue,
                                                             face4: &red,
                                                             rowFace1: indexRow,
-                                                            colFace1: indexCol,
+                                                            colFace1: indexCubeType - indexCol,
                                                             rowFace2: indexRow,
-                                                            colFace2: indexCol,
+                                                            colFace2: indexCubeType - indexCol,
                                                             rowFace3: indexRow,
-                                                            colFace3: indexCol,
+                                                            colFace3: indexCubeType - indexCol,
                                                             rowFace4: indexRow,
-                                                            colFace4: indexCol,
+                                                            colFace4: indexCubeType - indexCol,
                                                             isPrime: isPrime,
                                                             isTwo: isTwo)
                     reassignFace(result)
