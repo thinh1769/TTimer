@@ -45,44 +45,47 @@ struct TurnBService: TurnBInterface {
                                          isTwo: isTwo)
         
         for index in 0...layer.rawValue {
-            //Left corner multi face
-            var result = CubeUtils.swap4PiecesMultiFace(face1: &white,
-                                                        face2: &orange,
-                                                        face3: &yellow,
-                                                        face4: &red,
-                                                        rowFace1: index,
-                                                        colFace1: 0,
-                                                        rowFace2: indexCubeType,
-                                                        colFace2: index,
-                                                        rowFace3: indexCubeType - index,
-                                                        colFace3: indexCubeType,
-                                                        rowFace4: 0,
-                                                        colFace4: indexCubeType - index,
-                                                        isPrime: isPrime,
-                                                        isTwo: isTwo)
+            var result: SwapResult
             
-            reassignFace(result)
-            
-            //Right corner multi face
-            result = CubeUtils.swap4PiecesMultiFace(face1: &white,
-                                                    face2: &orange,
-                                                    face3: &yellow,
-                                                    face4: &red,
-                                                    rowFace1: index,
-                                                    colFace1: indexCubeType,
-                                                    rowFace2: 0,
-                                                    colFace2: index,
-                                                    rowFace3: indexCubeType - index,
-                                                    colFace3: 0,
-                                                    rowFace4: indexCubeType,
-                                                    colFace4: indexCubeType - index,
-                                                    isPrime: isPrime,
-                                                    isTwo: isTwo)
-            
-            reassignFace(result)
+            for indexCol in 0...2 {
+                if indexCol == 0 ||
+                    indexCol == 1 && CubeUtils.isBigCube(cubeType) ||
+                    indexCol == 2 && CubeUtils.is6x6Or7x7Cube(cubeType) {
+                    result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                            face2: &orange,
+                                                            face3: &yellow,
+                                                            face4: &red,
+                                                            rowFace1: index,
+                                                            colFace1: indexCol,
+                                                            rowFace2: indexCubeType - indexCol,
+                                                            colFace2: index,
+                                                            rowFace3: indexCubeType - index,
+                                                            colFace3: indexCubeType - indexCol,
+                                                            rowFace4: indexCol,
+                                                            colFace4: indexCubeType - index,
+                                                            isPrime: isPrime,
+                                                            isTwo: isTwo)
+                    reassignFace(result)
+                    
+                    result = CubeUtils.swap4PiecesMultiFace(face1: &white,
+                                                            face2: &orange,
+                                                            face3: &yellow,
+                                                            face4: &red,
+                                                            rowFace1: index,
+                                                            colFace1: indexCubeType - indexCol,
+                                                            rowFace2: indexCol,
+                                                            colFace2: index,
+                                                            rowFace3: indexCubeType - index,
+                                                            colFace3: indexCol,
+                                                            rowFace4: indexCubeType - indexCol,
+                                                            colFace4: indexCubeType - index,
+                                                            isPrime: isPrime,
+                                                            isTwo: isTwo)
+                    reassignFace(result)
+                }
+            }
             
             if CubeUtils.isOddCube(cubeType) {
-                //Center edge multi face
                 result = CubeUtils.swap4PiecesMultiFace(face1: &white,
                                                         face2: &orange,
                                                         face3: &yellow,
@@ -97,83 +100,6 @@ struct TurnBService: TurnBInterface {
                                                         colFace4: indexCubeType - index,
                                                         isPrime: isPrime,
                                                         isTwo: isTwo)
-                
-                reassignFace(result)
-            }
-            
-            if CubeUtils.isBigCube(cubeType) {
-                //Left edge multi face
-                result = CubeUtils.swap4PiecesMultiFace(face1: &white,
-                                                        face2: &orange,
-                                                        face3: &yellow,
-                                                        face4: &red,
-                                                        rowFace1: index,
-                                                        colFace1: 1,
-                                                        rowFace2: indexCubeType - 1,
-                                                        colFace2: index,
-                                                        rowFace3: indexCubeType - index,
-                                                        colFace3: indexCubeType - 1,
-                                                        rowFace4: 1,
-                                                        colFace4: indexCubeType - index,
-                                                        isPrime: isPrime,
-                                                        isTwo: isTwo)
-                
-                reassignFace(result)
-                
-                //Right edge multi face
-                result = CubeUtils.swap4PiecesMultiFace(face1: &white,
-                                                        face2: &orange,
-                                                        face3: &yellow,
-                                                        face4: &red,
-                                                        rowFace1: index,
-                                                        colFace1: indexCubeType - 1,
-                                                        rowFace2: 1,
-                                                        colFace2: index,
-                                                        rowFace3: indexCubeType - index,
-                                                        colFace3: 1,
-                                                        rowFace4: indexCubeType - 1,
-                                                        colFace4: indexCubeType - index,
-                                                        isPrime: isPrime,
-                                                        isTwo: isTwo)
-                
-                reassignFace(result)
-            }
-            
-            if CubeUtils.is6x6Or7x7Cube(cubeType) {
-                //2nd piece left of the edge multi face
-                result = CubeUtils.swap4PiecesMultiFace(face1: &white,
-                                                        face2: &orange,
-                                                        face3: &yellow,
-                                                        face4: &red,
-                                                        rowFace1: index,
-                                                        colFace1: 2,
-                                                        rowFace2: indexCubeType - 2,
-                                                        colFace2: index,
-                                                        rowFace3: indexCubeType - index,
-                                                        colFace3: indexCubeType - 2,
-                                                        rowFace4: 2,
-                                                        colFace4: indexCubeType - index,
-                                                        isPrime: isPrime,
-                                                        isTwo: isTwo)
-                
-                reassignFace(result)
-                
-                //2nd piece right of the edge multi face
-                result = CubeUtils.swap4PiecesMultiFace(face1: &white,
-                                                        face2: &orange,
-                                                        face3: &yellow,
-                                                        face4: &red,
-                                                        rowFace1: index,
-                                                        colFace1: indexCubeType - 2,
-                                                        rowFace2: 2,
-                                                        colFace2: index,
-                                                        rowFace3: indexCubeType - index,
-                                                        colFace3: 2,
-                                                        rowFace4: indexCubeType - 2,
-                                                        colFace4: indexCubeType - index,
-                                                        isPrime: isPrime,
-                                                        isTwo: isTwo)
-                
                 reassignFace(result)
             }
         }
