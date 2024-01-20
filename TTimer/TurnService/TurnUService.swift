@@ -99,7 +99,6 @@ struct TurnUService: TurnUInterface {
                                                         colFace4: indexCubeType / 2,
                                                         isPrime: isPrime,
                                                         isTwo: isTwo)
-                
                 reassignFace(result)
             }
         }

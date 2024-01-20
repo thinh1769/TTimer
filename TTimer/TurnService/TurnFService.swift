@@ -99,7 +99,6 @@ struct TurnFService: TurnFInterface {
                                                         colFace4: indexRow,
                                                         isPrime: isPrime,
                                                         isTwo: isTwo)
-                
                 reassignFace(result)
             }
         }
