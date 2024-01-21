@@ -1,23 +1,37 @@
 //
-//  TimerViewModel.swift
+//  ScrambleView.swift
 //  TTimer
 //
-//  Created by Nguyễn Thịnh on 22/10/2023.
+//  Created by Thịnh Nguyễn on 20/01/2024.
 //
 
 import Foundation
+import UIKit
+import RxSwift
 import RxCocoa
 import RxRelay
-import RxSwift
+import SnapKit
 import SwiftUI
 
-class TimerViewModel {
-    var turnUp: TurnUService?
-    var turnFront: TurnFService?
-    var turnLeft: TurnLService?
-    var turnRight: TurnRService?
-    var turnDown: TurnDService?
-    var turnBack: TurnBService?
+class ScrambleView: UIView {
+    lazy private var whiteCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                      spacing: 0,
+                                                                      isScrollEnabled: false)
+    lazy private var greenCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                      spacing: 0,
+                                                                      isScrollEnabled: false)
+    lazy private var yellowCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                       spacing: 0,
+                                                                       isScrollEnabled: false)
+    lazy private var orangeCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                       spacing: 0,
+                                                                       isScrollEnabled: false)
+    lazy private var redCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                    spacing: 0,
+                                                                    isScrollEnabled: false)
+    lazy private var blueCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
+                                                                     spacing: 0,
+                                                                     isScrollEnabled: false)
     
     var white: [[PieceColor]] = Array(repeating: Array(repeating: .white, count: 3), count: 3)
     var green: [[PieceColor]] = Array(repeating: Array(repeating: .green, count: 3), count: 3)
@@ -33,8 +47,14 @@ class TimerViewModel {
     let redData = BehaviorRelay<[PieceColor]>(value: [])
     let blueData = BehaviorRelay<[PieceColor]>(value: [])
     
+    var turnUp: TurnUService?
+    var turnFront: TurnFService?
+    var turnLeft: TurnLService?
+    var turnRight: TurnRService?
+    var turnDown: TurnDService?
+    var turnBack: TurnBService?
+    
     let bag = DisposeBag()
-    var scrambleList: [String]
     var cubeSize: CGFloat
     var indexCubeType: Int
     var cubeType: CubeType {
@@ -87,14 +107,47 @@ class TimerViewModel {
         }
     }
     
-    init() {
-        scrambleList = [""]
+    override init(frame: CGRect) {
         cubeSize = 40
-        cubeType = CubeType.two
+        cubeType = CubeType.three
         indexCubeType = cubeType.rawValue - 1
+        super.init(frame: frame)
+        setupUI()
+        layout()
     }
     
-    private func resetAllFacesColor() {
+    required init?(coder: NSCoder) {
+        cubeSize = 40
+        cubeType = .three
+        indexCubeType = cubeType.rawValue - 1
+        super.init(coder: coder)
+    }
+    
+    func updateData() {
+        var combinedBlueData: [[PieceColor]] = []
+        var combinedWhiteData: [[PieceColor]] = []
+        var combinedGreenData: [[PieceColor]] = []
+        var combinedRedData: [[PieceColor]] = []
+        var combinedOrangeData: [[PieceColor]] = []
+        var combinedYellowData: [[PieceColor]] = []
+        
+        for index in 0...(cubeType.rawValue - 1) {
+            combinedBlueData.append(blue[index])
+            combinedWhiteData.append(white[index])
+            combinedGreenData.append(green[index])
+            combinedRedData.append(red[index])
+            combinedOrangeData.append(orange[index])
+            combinedYellowData.append(yellow[index])
+        }
+        blueData.accept(combinedBlueData.flatMap { $0 })
+        whiteData.accept(combinedWhiteData.flatMap { $0 })
+        greenData.accept(combinedGreenData.flatMap { $0 })
+        redData.accept(combinedRedData.flatMap { $0 })
+        orangeData.accept(combinedOrangeData.flatMap { $0 })
+        yellowData.accept(combinedYellowData.flatMap { $0 })
+    }
+    
+    func resetAllFacesColor() {
         white = Array(repeating: Array(repeating: .white, count: cubeType.rawValue), count: cubeType.rawValue)
         green = Array(repeating: Array(repeating: .green, count: cubeType.rawValue), count: cubeType.rawValue)
         yellow = Array(repeating: Array(repeating: .yellow, count: cubeType.rawValue), count: cubeType.rawValue)
@@ -103,7 +156,7 @@ class TimerViewModel {
         blue = Array(repeating: Array(repeating: .blue, count: cubeType.rawValue), count: cubeType.rawValue)
     }
     
-    private func updateCubeSize() {
+    func updateCubeSize() {
         switch cubeType {
         case .two:
             cubeSize = PieceSize.two.rawValue * CGFloat(cubeType.rawValue)
@@ -118,56 +171,12 @@ class TimerViewModel {
         case .seven:
             cubeSize = PieceSize.seven.rawValue * CGFloat(cubeType.rawValue)
         }
-    }
-    
-    func generateRandomScrambleList() -> String {
-        resetAllFacesColor()
         
-        var scramble = ""
-        var length = 0
-        let allScramble = Scramble.allCases
-        let allScramble2Layers = Scramble2Layers.allCases
-        let allScramble3Layers = Scramble3Layers.allCases
-        
-        var combinedCase = allScramble.map { "\($0.rawValue)" }
-        var usedScrambleCharacter = ""
-        
-        switch cubeType {
-        case .two:
-            length = ScrambleLength.two.rawValue
-        case .three:
-            length = ScrambleLength.three.rawValue
-        case .four:
-            length = ScrambleLength.four.rawValue
-            combinedCase += allScramble2Layers.map { "\($0.rawValue)" }
-        case .five:
-            length = ScrambleLength.five.rawValue
-            combinedCase += allScramble2Layers.map { "\($0.rawValue)" }
-        case .six:
-            length = ScrambleLength.six.rawValue
-            combinedCase += allScramble3Layers.map { "\($0.rawValue)" }
-        case .seven:
-            length = ScrambleLength.seven.rawValue
-            combinedCase += allScramble3Layers.map { "\($0.rawValue)" }
-        }
-        
-        while length > 0 {
-            let randomScramble = combinedCase.randomElement() ?? ""
-            if !randomScramble.contains(usedScrambleCharacter) {
-                scramble += "\(randomScramble) "
-                scrambleList.append(randomScramble)
-                turnScramble(randomScramble)
-                usedScrambleCharacter = randomScramble.filter { $0.isUppercase }
-                length -= 1
-            }
-        }
-        
-        return String(scramble.dropLast())
+        layoutSubviews()
     }
     
     func turnScramble(_ scrambleCharacter: String) {
         switch scrambleCharacter {
-            
             /// U
         case Scramble.U.rawValue:
             turnU()
@@ -186,9 +195,20 @@ class TimerViewModel {
             return
         case Scramble2Layers.Uw2.rawValue:
             turnU(layer: .two,
-                  isPrime: true,
                   isTwo: true)
             return
+            
+            ///3Uw
+        case Scramble3Layers._3Uw.rawValue:
+            turnU(layer: .three)
+            return
+        case Scramble3Layers._3UwPrime.rawValue:
+            turnU(layer: .three,
+                  isPrime: true)
+            return
+        case Scramble3Layers._3Uw2.rawValue:
+            turnU(layer: .three,
+                  isTwo: true)
             
             /// F
         case Scramble.F.rawValue:
@@ -206,6 +226,18 @@ class TimerViewModel {
                   isPrime: true)
         case Scramble2Layers.Fw2.rawValue:
             turnF(layer: .two,
+                  isTwo: true)
+            
+            ///3Fw
+        case Scramble3Layers._3Fw.rawValue:
+            turnF(layer: .three)
+            return
+        case Scramble3Layers._3FwPrime.rawValue:
+            turnF(layer: .three,
+                  isPrime: true)
+            return
+        case Scramble3Layers._3Fw2.rawValue:
+            turnF(layer: .three,
                   isTwo: true)
             
             /// L
@@ -226,6 +258,18 @@ class TimerViewModel {
             turnL(layer: .two,
                   isTwo: true)
             
+            ///3Lw
+        case Scramble3Layers._3Lw.rawValue:
+            turnL(layer: .three)
+            return
+        case Scramble3Layers._3LwPrime.rawValue:
+            turnL(layer: .three,
+                  isPrime: true)
+            return
+        case Scramble3Layers._3Lw2.rawValue:
+            turnL(layer: .three,
+                  isTwo: true)
+            
             /// R
         case Scramble.R.rawValue:
             turnR()
@@ -242,6 +286,18 @@ class TimerViewModel {
                   isPrime: true)
         case Scramble2Layers.Rw2.rawValue:
             turnR(layer: .two,
+                  isTwo: true)
+            
+            ///3Rw
+        case Scramble3Layers._3Rw.rawValue:
+            turnR(layer: .three)
+            return
+        case Scramble3Layers._3RwPrime.rawValue:
+            turnR(layer: .three,
+                  isPrime: true)
+            return
+        case Scramble3Layers._3Rw2.rawValue:
+            turnR(layer: .three,
                   isTwo: true)
             
             /// D
@@ -262,6 +318,18 @@ class TimerViewModel {
             turnD(layer: .two,
                   isTwo: true)
             
+            ///3Dw
+        case Scramble3Layers._3Dw.rawValue:
+            turnD(layer: .three)
+            return
+        case Scramble3Layers._3DwPrime.rawValue:
+            turnD(layer: .three,
+                  isPrime: true)
+            return
+        case Scramble3Layers._3Dw2.rawValue:
+            turnD(layer: .three,
+                  isTwo: true)
+            
             /// B
         case Scramble.B.rawValue:
             turnB()
@@ -279,11 +347,21 @@ class TimerViewModel {
         case Scramble2Layers.Bw2.rawValue:
             turnB(layer: .two,
                   isTwo: true)
+            
+            ///3Bw
+        case Scramble3Layers._3Bw.rawValue:
+            turnB(layer: .three)
+            return
+        case Scramble3Layers._3BwPrime.rawValue:
+            turnB(layer: .three,
+                  isPrime: true)
+            return
+        case Scramble3Layers._3Bw2.rawValue:
+            turnB(layer: .three,
+                  isTwo: true)
         default:
             return
         }
-        
-        
     }
     
     func turnU(layer: Layer = .one,
@@ -464,6 +542,146 @@ class TimerViewModel {
                                               face3: yellow,
                                               face4: red))
         }
+        updateData()
+    }
+}
+
+extension ScrambleView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
+    }
+    
+    private func setupUI() {
+        addSubview(whiteCollectionView)
+        addSubview(greenCollectionView)
+        addSubview(yellowCollectionView)
+        addSubview(orangeCollectionView)
+        addSubview(redCollectionView)
+        addSubview(blueCollectionView)
+        
+        setupWhiteCollectionView()
+        setupGreenCollectionView()
+        setupYellowCollectionView()
+        setupOrangeCollectionView()
+        setupRedCollectionView()
+        setupBlueCollectionView()
+        
+        updateData()
+    }
+    
+    private func layout() {
+        blueCollectionView.snp.remakeConstraints { make in
+            make.height.width.equalTo(cubeSize)
+            make.trailing.equalToSuperview()
+        }
+        
+        redCollectionView.snp.remakeConstraints { make in
+            make.height.width.equalTo(cubeSize)
+            make.trailing.equalTo(blueCollectionView.snp.leading).offset(-4)
+            make.centerY.equalTo(blueCollectionView)
+        }
+        
+        greenCollectionView.snp.remakeConstraints { make in
+            make.width.height.equalTo(cubeSize)
+            make.centerY.equalTo(redCollectionView)
+            make.trailing.equalTo(redCollectionView.snp.leading).offset(-4)
+        }
+        
+        yellowCollectionView.snp.remakeConstraints { make in
+            make.height.width.equalTo(cubeSize)
+            make.centerX.equalTo(greenCollectionView)
+            make.top.equalTo(greenCollectionView.snp.bottom).offset(4)
+            make.bottom.equalToSuperview()
+        }
+        
+        orangeCollectionView.snp.remakeConstraints { make in
+            make.height.width.equalTo(cubeSize)
+            make.trailing.equalTo(greenCollectionView.snp.leading).offset(-4)
+            make.leading.equalToSuperview()
+            make.centerY.equalTo(greenCollectionView)
+        }
+        
+        whiteCollectionView.snp.remakeConstraints { make in
+            make.height.width.equalTo(cubeSize)
+            make.centerX.equalTo(greenCollectionView)
+            make.bottom.equalTo(greenCollectionView.snp.top).offset(-4)
+            make.top.equalToSuperview()
+        }
+    }
+}
+
+extension ScrambleView {
+    private func setupGreenCollectionView() {
+        greenCollectionView.register(PieceViewCell.self, forCellWithReuseIdentifier: PieceViewCell.reusableIdentifier)
+        
+        greenData.asObservable()
+            .bind(to: greenCollectionView.rx.items(cellIdentifier: PieceViewCell.reusableIdentifier, cellType: PieceViewCell.self)) { (index, element, cell) in
+                cell.config(color: element)
+            }.disposed(by: bag)
+        
+        greenCollectionView.rx.setDelegate(self).disposed(by: bag)
+    }
+    
+    private func setupWhiteCollectionView() {
+        whiteCollectionView.register(PieceViewCell.self, forCellWithReuseIdentifier: PieceViewCell.reusableIdentifier)
+        
+        whiteData.asObservable()
+            .bind(to: whiteCollectionView.rx.items(cellIdentifier: PieceViewCell.reusableIdentifier, cellType: PieceViewCell.self)) { (index, element, cell) in
+                cell.config(color: element)
+            }.disposed(by: bag)
+        
+        whiteCollectionView.rx.setDelegate(self).disposed(by: bag)
+    }
+    
+    private func setupYellowCollectionView() {
+        yellowCollectionView.register(PieceViewCell.self, forCellWithReuseIdentifier: PieceViewCell.reusableIdentifier)
+        
+        yellowData.asObservable()
+            .bind(to: yellowCollectionView.rx.items(cellIdentifier: PieceViewCell.reusableIdentifier, cellType: PieceViewCell.self)) { (index, element, cell) in
+                cell.config(color: element)
+            }.disposed(by: bag)
+        
+        yellowCollectionView.rx.setDelegate(self).disposed(by: bag)
+    }
+    
+    private func setupOrangeCollectionView() {
+        orangeCollectionView.register(PieceViewCell.self, forCellWithReuseIdentifier: PieceViewCell.reusableIdentifier)
+        
+        orangeData.asObservable()
+            .bind(to: orangeCollectionView.rx.items(cellIdentifier: PieceViewCell.reusableIdentifier, cellType: PieceViewCell.self)) { (index, element, cell) in
+                cell.config(color: element)
+            }.disposed(by: bag)
+        
+        orangeCollectionView.rx.setDelegate(self).disposed(by: bag)
+    }
+    
+    private func setupRedCollectionView() {
+        redCollectionView.register(PieceViewCell.self, forCellWithReuseIdentifier: PieceViewCell.reusableIdentifier)
+        
+        redData.asObservable()
+            .bind(to: redCollectionView.rx.items(cellIdentifier: PieceViewCell.reusableIdentifier, cellType: PieceViewCell.self)) { (index, element, cell) in
+                cell.config(color: element)
+            }.disposed(by: bag)
+        
+        redCollectionView.rx.setDelegate(self).disposed(by: bag)
+    }
+    
+    private func setupBlueCollectionView() {
+        blueCollectionView.register(PieceViewCell.self, forCellWithReuseIdentifier: PieceViewCell.reusableIdentifier)
+        
+        blueData.asObservable()
+            .bind(to: blueCollectionView.rx.items(cellIdentifier: PieceViewCell.reusableIdentifier, cellType: PieceViewCell.self)) { (index, element, cell) in
+                cell.config(color: element)
+            }.disposed(by: bag)
+        
+        blueCollectionView.rx.setDelegate(self).disposed(by: bag)
+    }
+}
+
+extension ScrambleView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cubeSize / CGFloat(cubeType.rawValue), height: cubeSize / CGFloat(cubeType.rawValue))
     }
 }
 
