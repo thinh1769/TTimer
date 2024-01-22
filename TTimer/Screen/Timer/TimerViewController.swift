@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SwiftUI
+import Combine
 
 class TimerViewController: TTViewController {
     lazy private var scrambleLabel = TTUtils.makeLabel(text: "",
@@ -21,6 +22,8 @@ class TimerViewController: TTViewController {
     
     private let viewModel: TimerViewModel = .init()
     
+    var cancellableSet: Set<AnyCancellable> = []
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         parseData()
@@ -29,6 +32,7 @@ class TimerViewController: TTViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupSubscription()
     }
 
     override func viewDidLayoutSubviews() {
@@ -40,7 +44,7 @@ class TimerViewController: TTViewController {
     }
     
     @objc private func didTapGenerateScramble() {
-        scrambleLabel.text = viewModel.generateRandomScrambleList()
+        scrambleLabel.text = viewModel.generateScramble()
     }
 }
 
@@ -55,8 +59,8 @@ extension TimerViewController {
         view.addSubview(scrambleView)
         view.addSubview(generateScrambleBtn)
         
-        scrambleView.cubeType = .two
-        scrambleView.turnU()
+        viewModel.cubeType = .three
+        scrambleView.cubeType = viewModel.cubeType
     }
     
     private func layout() {
@@ -76,6 +80,19 @@ extension TimerViewController {
             make.height.equalTo(50)
             make.center.equalToSuperview()
         }
+    }
+    
+    private func setupSubscription() {
+        cancellableSet = []
+        
+        viewModel.$scramble
+//            .dropFirst()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] scramble in
+                guard let self else { return }
+                self.scrambleView.scrambleList = scramble
+            }
+            .store(in: &cancellableSet)
     }
 }
 

@@ -12,6 +12,7 @@ import RxCocoa
 import RxRelay
 import SnapKit
 import SwiftUI
+import Combine
 
 class ScrambleView: UIView {
     lazy private var whiteCollectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
@@ -54,6 +55,8 @@ class ScrambleView: UIView {
     var turnDown: TurnDService?
     var turnBack: TurnBService?
     
+    @Published var scrambleList: [String] = [""]
+    var cancellableSet: Set<AnyCancellable> = []
     let bag = DisposeBag()
     var cubeSize: CGFloat
     var indexCubeType: Int
@@ -62,48 +65,7 @@ class ScrambleView: UIView {
             resetAllFacesColor()
             updateCubeSize()
             indexCubeType = cubeType.rawValue - 1
-            
-            turnUp = .init(mainFace: white,
-                           face1: green,
-                           face2: orange,
-                           face3: blue,
-                           face4: red,
-                           cubeType: cubeType)
-            
-            turnFront = .init(mainFace: green,
-                              face1: yellow,
-                              face2: orange,
-                              face3: white,
-                              face4: red,
-                              cubeType: cubeType)
-            
-            turnLeft = .init(mainFace: orange,
-                             face1: green,
-                             face2: yellow,
-                             face3: blue,
-                             face4: white,
-                             cubeType: cubeType)
-            
-            turnRight = .init(mainFace: red,
-                              face1: green,
-                              face2: white,
-                              face3: blue,
-                              face4: yellow,
-                              cubeType: cubeType)
-            
-            turnDown = .init(mainFace: yellow,
-                             face1: blue,
-                             face2: orange,
-                             face3: green,
-                             face4: red,
-                             cubeType: cubeType)
-            
-            turnBack = .init(mainFace: blue,
-                             face1: white,
-                             face2: orange,
-                             face3: yellow,
-                             face4: red,
-                             cubeType: cubeType)
+            initTurnService()
         }
     }
     
@@ -121,6 +83,50 @@ class ScrambleView: UIView {
         cubeType = .three
         indexCubeType = cubeType.rawValue - 1
         super.init(coder: coder)
+    }
+    
+    private func initTurnService() {
+        turnUp = .init(mainFace: white,
+                       face1: green,
+                       face2: orange,
+                       face3: blue,
+                       face4: red,
+                       cubeType: cubeType)
+        
+        turnFront = .init(mainFace: green,
+                          face1: yellow,
+                          face2: orange,
+                          face3: white,
+                          face4: red,
+                          cubeType: cubeType)
+        
+        turnLeft = .init(mainFace: orange,
+                         face1: green,
+                         face2: yellow,
+                         face3: blue,
+                         face4: white,
+                         cubeType: cubeType)
+        
+        turnRight = .init(mainFace: red,
+                          face1: green,
+                          face2: white,
+                          face3: blue,
+                          face4: yellow,
+                          cubeType: cubeType)
+        
+        turnDown = .init(mainFace: yellow,
+                         face1: blue,
+                         face2: orange,
+                         face3: green,
+                         face4: red,
+                         cubeType: cubeType)
+        
+        turnBack = .init(mainFace: blue,
+                         face1: white,
+                         face2: orange,
+                         face3: yellow,
+                         face4: red,
+                         cubeType: cubeType)
     }
     
     func updateData() {
@@ -154,6 +160,9 @@ class ScrambleView: UIView {
         orange = Array(repeating: Array(repeating: .orange, count: cubeType.rawValue), count: cubeType.rawValue)
         red = Array(repeating: Array(repeating: .red, count: cubeType.rawValue), count: cubeType.rawValue)
         blue = Array(repeating: Array(repeating: .blue, count: cubeType.rawValue), count: cubeType.rawValue)
+        
+        updateData()
+        initTurnService()
     }
     
     func updateCubeSize() {
@@ -175,193 +184,182 @@ class ScrambleView: UIView {
         layoutSubviews()
     }
     
-    func turnScramble(_ scrambleCharacter: String) {
-        switch scrambleCharacter {
-            /// U
-        case Scramble.U.rawValue:
-            turnU()
-        case Scramble.UPrime.rawValue:
-            turnU(isPrime: true)
-        case Scramble.U2.rawValue:
-            turnU(isTwo: true)
-            
-            /// Uw
-        case Scramble2Layers.Uw.rawValue:
-            turnU(layer: .two)
-            return
-        case Scramble2Layers.UwPrime.rawValue:
-            turnU(layer: .two,
-                  isPrime: true)
-            return
-        case Scramble2Layers.Uw2.rawValue:
-            turnU(layer: .two,
-                  isTwo: true)
-            return
-            
-            ///3Uw
-        case Scramble3Layers._3Uw.rawValue:
-            turnU(layer: .three)
-            return
-        case Scramble3Layers._3UwPrime.rawValue:
-            turnU(layer: .three,
-                  isPrime: true)
-            return
-        case Scramble3Layers._3Uw2.rawValue:
-            turnU(layer: .three,
-                  isTwo: true)
-            
-            /// F
-        case Scramble.F.rawValue:
-            turnF()
-        case Scramble.FPrime.rawValue:
-            turnF(isPrime: true)
-        case Scramble.F2.rawValue:
-            turnF(isTwo: true)
-            
-            /// Fw
-        case Scramble2Layers.Fw.rawValue:
-            turnF(layer: .two)
-        case Scramble2Layers.FwPrime.rawValue:
-            turnF(layer: .two,
-                  isPrime: true)
-        case Scramble2Layers.Fw2.rawValue:
-            turnF(layer: .two,
-                  isTwo: true)
-            
-            ///3Fw
-        case Scramble3Layers._3Fw.rawValue:
-            turnF(layer: .three)
-            return
-        case Scramble3Layers._3FwPrime.rawValue:
-            turnF(layer: .three,
-                  isPrime: true)
-            return
-        case Scramble3Layers._3Fw2.rawValue:
-            turnF(layer: .three,
-                  isTwo: true)
-            
-            /// L
-        case Scramble.L.rawValue:
-            turnL()
-        case Scramble.LPrime.rawValue:
-            turnL(isPrime: true)
-        case Scramble.L2.rawValue:
-            turnL(isTwo: true)
-            
-            /// Lw
-        case Scramble2Layers.Lw.rawValue:
-            turnL(layer: .two)
-        case Scramble2Layers.LwPrime.rawValue:
-            turnL(layer: .two,
-                  isPrime: true)
-        case Scramble2Layers.Lw2.rawValue:
-            turnL(layer: .two,
-                  isTwo: true)
-            
-            ///3Lw
-        case Scramble3Layers._3Lw.rawValue:
-            turnL(layer: .three)
-            return
-        case Scramble3Layers._3LwPrime.rawValue:
-            turnL(layer: .three,
-                  isPrime: true)
-            return
-        case Scramble3Layers._3Lw2.rawValue:
-            turnL(layer: .three,
-                  isTwo: true)
-            
-            /// R
-        case Scramble.R.rawValue:
-            turnR()
-        case Scramble.RPrime.rawValue:
-            turnR(isPrime: true)
-        case Scramble.R2.rawValue:
-            turnR(isTwo: true)
-            
-            /// Rw
-        case Scramble2Layers.Rw.rawValue:
-            turnR(layer: .two)
-        case Scramble2Layers.RwPrime.rawValue:
-            turnR(layer: .two,
-                  isPrime: true)
-        case Scramble2Layers.Rw2.rawValue:
-            turnR(layer: .two,
-                  isTwo: true)
-            
-            ///3Rw
-        case Scramble3Layers._3Rw.rawValue:
-            turnR(layer: .three)
-            return
-        case Scramble3Layers._3RwPrime.rawValue:
-            turnR(layer: .three,
-                  isPrime: true)
-            return
-        case Scramble3Layers._3Rw2.rawValue:
-            turnR(layer: .three,
-                  isTwo: true)
-            
-            /// D
-        case Scramble.D.rawValue:
-            turnD()
-        case Scramble.DPrime.rawValue:
-            turnD(isPrime: true)
-        case Scramble.D2.rawValue:
-            turnD(isTwo: true)
-            
-            /// Dw
-        case Scramble2Layers.Dw.rawValue:
-            turnD(layer: .two)
-        case Scramble2Layers.DwPrime.rawValue:
-            turnD(layer: .two,
-                  isPrime: true)
-        case Scramble2Layers.Dw2.rawValue:
-            turnD(layer: .two,
-                  isTwo: true)
-            
-            ///3Dw
-        case Scramble3Layers._3Dw.rawValue:
-            turnD(layer: .three)
-            return
-        case Scramble3Layers._3DwPrime.rawValue:
-            turnD(layer: .three,
-                  isPrime: true)
-            return
-        case Scramble3Layers._3Dw2.rawValue:
-            turnD(layer: .three,
-                  isTwo: true)
-            
-            /// B
-        case Scramble.B.rawValue:
-            turnB()
-        case Scramble.BPrime.rawValue:
-            turnB(isPrime: true)
-        case Scramble.B2.rawValue:
-            turnB(isTwo: true)
-            
-            /// Bw
-        case Scramble2Layers.Bw.rawValue:
-            turnB(layer: .two)
-        case Scramble2Layers.BwPrime.rawValue:
-            turnB(layer: .two,
-                  isPrime: true)
-        case Scramble2Layers.Bw2.rawValue:
-            turnB(layer: .two,
-                  isTwo: true)
-            
-            ///3Bw
-        case Scramble3Layers._3Bw.rawValue:
-            turnB(layer: .three)
-            return
-        case Scramble3Layers._3BwPrime.rawValue:
-            turnB(layer: .three,
-                  isPrime: true)
-            return
-        case Scramble3Layers._3Bw2.rawValue:
-            turnB(layer: .three,
-                  isTwo: true)
-        default:
-            return
+    private func turnScramble(_ scramble: [String]) {
+        for scramCharacter in scramble {
+            switch scramCharacter {
+                /// U
+            case Scramble.U.rawValue:
+                turnU()
+            case Scramble.UPrime.rawValue:
+                turnU(isPrime: true)
+            case Scramble.U2.rawValue:
+                turnU(isTwo: true)
+                
+                /// Uw
+            case Scramble2Layers.Uw.rawValue:
+                turnU(layer: .two)
+            case Scramble2Layers.UwPrime.rawValue:
+                turnU(layer: .two,
+                      isPrime: true)
+            case Scramble2Layers.Uw2.rawValue:
+                turnU(layer: .two,
+                      isTwo: true)
+                
+                ///3Uw
+            case Scramble3Layers._3Uw.rawValue:
+                turnU(layer: .three)
+            case Scramble3Layers._3UwPrime.rawValue:
+                turnU(layer: .three,
+                      isPrime: true)
+            case Scramble3Layers._3Uw2.rawValue:
+                turnU(layer: .three,
+                      isTwo: true)
+                
+                /// F
+            case Scramble.F.rawValue:
+                turnF()
+            case Scramble.FPrime.rawValue:
+                turnF(isPrime: true)
+            case Scramble.F2.rawValue:
+                turnF(isTwo: true)
+                
+                /// Fw
+            case Scramble2Layers.Fw.rawValue:
+                turnF(layer: .two)
+            case Scramble2Layers.FwPrime.rawValue:
+                turnF(layer: .two,
+                      isPrime: true)
+            case Scramble2Layers.Fw2.rawValue:
+                turnF(layer: .two,
+                      isTwo: true)
+                
+                ///3Fw
+            case Scramble3Layers._3Fw.rawValue:
+                turnF(layer: .three)
+            case Scramble3Layers._3FwPrime.rawValue:
+                turnF(layer: .three,
+                      isPrime: true)
+            case Scramble3Layers._3Fw2.rawValue:
+                turnF(layer: .three,
+                      isTwo: true)
+                
+                /// L
+            case Scramble.L.rawValue:
+                turnL()
+            case Scramble.LPrime.rawValue:
+                turnL(isPrime: true)
+            case Scramble.L2.rawValue:
+                turnL(isTwo: true)
+                
+                /// Lw
+            case Scramble2Layers.Lw.rawValue:
+                turnL(layer: .two)
+            case Scramble2Layers.LwPrime.rawValue:
+                turnL(layer: .two,
+                      isPrime: true)
+            case Scramble2Layers.Lw2.rawValue:
+                turnL(layer: .two,
+                      isTwo: true)
+                
+                ///3Lw
+            case Scramble3Layers._3Lw.rawValue:
+                turnL(layer: .three)
+            case Scramble3Layers._3LwPrime.rawValue:
+                turnL(layer: .three,
+                      isPrime: true)
+            case Scramble3Layers._3Lw2.rawValue:
+                turnL(layer: .three,
+                      isTwo: true)
+                
+                /// R
+            case Scramble.R.rawValue:
+                turnR()
+            case Scramble.RPrime.rawValue:
+                turnR(isPrime: true)
+            case Scramble.R2.rawValue:
+                turnR(isTwo: true)
+                
+                /// Rw
+            case Scramble2Layers.Rw.rawValue:
+                turnR(layer: .two)
+            case Scramble2Layers.RwPrime.rawValue:
+                turnR(layer: .two,
+                      isPrime: true)
+            case Scramble2Layers.Rw2.rawValue:
+                turnR(layer: .two,
+                      isTwo: true)
+                
+                ///3Rw
+            case Scramble3Layers._3Rw.rawValue:
+                turnR(layer: .three)
+            case Scramble3Layers._3RwPrime.rawValue:
+                turnR(layer: .three,
+                      isPrime: true)
+            case Scramble3Layers._3Rw2.rawValue:
+                turnR(layer: .three,
+                      isTwo: true)
+                
+                /// D
+            case Scramble.D.rawValue:
+                turnD()
+            case Scramble.DPrime.rawValue:
+                turnD(isPrime: true)
+            case Scramble.D2.rawValue:
+                turnD(isTwo: true)
+                
+                /// Dw
+            case Scramble2Layers.Dw.rawValue:
+                turnD(layer: .two)
+            case Scramble2Layers.DwPrime.rawValue:
+                turnD(layer: .two,
+                      isPrime: true)
+            case Scramble2Layers.Dw2.rawValue:
+                turnD(layer: .two,
+                      isTwo: true)
+                
+                ///3Dw
+            case Scramble3Layers._3Dw.rawValue:
+                turnD(layer: .three)
+            case Scramble3Layers._3DwPrime.rawValue:
+                turnD(layer: .three,
+                      isPrime: true)
+            case Scramble3Layers._3Dw2.rawValue:
+                turnD(layer: .three,
+                      isTwo: true)
+                
+                /// B
+            case Scramble.B.rawValue:
+                turnB()
+            case Scramble.BPrime.rawValue:
+                turnB(isPrime: true)
+            case Scramble.B2.rawValue:
+                turnB(isTwo: true)
+                
+                /// Bw
+            case Scramble2Layers.Bw.rawValue:
+                turnB(layer: .two)
+            case Scramble2Layers.BwPrime.rawValue:
+                turnB(layer: .two,
+                      isPrime: true)
+            case Scramble2Layers.Bw2.rawValue:
+                turnB(layer: .two,
+                      isTwo: true)
+                
+                ///3Bw
+            case Scramble3Layers._3Bw.rawValue:
+                turnB(layer: .three)
+            case Scramble3Layers._3BwPrime.rawValue:
+                turnB(layer: .three,
+                      isPrime: true)
+            case Scramble3Layers._3Bw2.rawValue:
+                turnB(layer: .three,
+                      isTwo: true)
+            default:
+                return
+            }
         }
+        
+        updateData()
     }
     
     func turnU(layer: Layer = .one,
@@ -436,8 +434,8 @@ class ScrambleView: UIView {
         reassignFace(result, face: .blue)
     }
     
-    private func reassignFace(_ result: SwapResult,
-                              face: FaceColor)
+    func reassignFace(_ result: SwapResult,
+                      face: FaceColor)
     {
         switch face {
         case .white:
@@ -542,7 +540,6 @@ class ScrambleView: UIView {
                                               face3: yellow,
                                               face4: red))
         }
-        updateData()
     }
 }
 
@@ -568,6 +565,8 @@ extension ScrambleView {
         setupBlueCollectionView()
         
         updateData()
+        
+        setupSubscription()
     }
     
     private func layout() {
@@ -608,6 +607,18 @@ extension ScrambleView {
             make.bottom.equalTo(greenCollectionView.snp.top).offset(-4)
             make.top.equalToSuperview()
         }
+    }
+    
+    private func setupSubscription() {
+        cancellableSet = []
+        
+        $scrambleList
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] scramble in
+                guard let self else { return }
+                self.resetAllFacesColor()
+                self.turnScramble(scramble)
+            }.store(in: &cancellableSet)
     }
 }
 

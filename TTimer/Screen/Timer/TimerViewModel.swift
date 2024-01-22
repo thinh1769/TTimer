@@ -10,57 +10,28 @@ import RxCocoa
 import RxRelay
 import RxSwift
 import SwiftUI
+import Combine
 
 class TimerViewModel {
     let bag = DisposeBag()
-    var scrambleList: [String]
     var cubeType: CubeType
+    let genScramble: GenerateScrambleService?
+    @Published var scramble: [String] = [""]
     
     init() {
-        scrambleList = [""]
         cubeType = .three
+        genScramble = .init()
     }
     
-    func generateRandomScrambleList() -> String {
-        var scramble = ""
-        var length = 0
-        let allScramble = Scramble.allCases
-        let allScramble2Layers = Scramble2Layers.allCases
-        let allScramble3Layers = Scramble3Layers.allCases
-        
-        var combinedCase = allScramble.map { "\($0.rawValue)" }
-        var usedScrambleCharacter = ""
-        
-        switch cubeType {
-        case .two:
-            length = ScrambleLength.two.rawValue
-        case .three:
-            length = ScrambleLength.three.rawValue
-        case .four:
-            length = ScrambleLength.four.rawValue
-            combinedCase += allScramble2Layers.map { "\($0.rawValue)" }
-        case .five:
-            length = ScrambleLength.five.rawValue
-            combinedCase += allScramble2Layers.map { "\($0.rawValue)" }
-        case .six:
-            length = ScrambleLength.six.rawValue
-            combinedCase += allScramble3Layers.map { "\($0.rawValue)" }
-        case .seven:
-            length = ScrambleLength.seven.rawValue
-            combinedCase += allScramble3Layers.map { "\($0.rawValue)" }
-        }
-        
-        while length > 0 {
-            let randomScramble = combinedCase.randomElement() ?? ""
-            if !randomScramble.contains(usedScrambleCharacter) {
-                scramble += "\(randomScramble) "
-                scrambleList.append(randomScramble)
-                usedScrambleCharacter = randomScramble.filter { $0.isUppercase }
-                length -= 1
+    func generateScramble() -> String {
+        var scrambleString = ""
+        if let scrambleArray = genScramble?.generateScramble(cubeType: cubeType) {
+            self.scramble = scrambleArray
+            for scramCharacter in scrambleArray {
+                scrambleString += "\(scramCharacter) "
             }
         }
-        
-        return String(scramble.dropLast())
+        return String(scrambleString.dropLast())
     }
 }
 

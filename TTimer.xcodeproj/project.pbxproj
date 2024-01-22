@@ -19,6 +19,7 @@
 		8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8FD2AE54F1600D0C155 /* TTUtils.swift */; };
 		8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */; };
 		B226EB452B5C048B00C32BE2 /* ScrambleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226EB442B5C048B00C32BE2 /* ScrambleView.swift */; };
+		B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */; };
 		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
 		B25C30652B1047CC00C46478 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */; };
 		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
@@ -55,6 +56,7 @@
 		8297B8FD2AE54F1600D0C155 /* TTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTUtils.swift; sourceTree = "<group>"; };
 		A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
 		B226EB442B5C048B00C32BE2 /* ScrambleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleView.swift; sourceTree = "<group>"; };
+		B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScrambleService.swift; sourceTree = "<group>"; };
 		B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController_Previews.swift; sourceTree = "<group>"; };
 		B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTView_Previews.swift; sourceTree = "<group>"; };
 		B2E65E4E2B51190A00FD36AA /* TurnUService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnUService.swift; sourceTree = "<group>"; };
@@ -139,7 +141,7 @@
 				828036B52AE6C9FE001B55F4 /* Cell */,
 				828036B82AE6CB9B001B55F4 /* Constant */,
 				8297B8F52AE54B8E00D0C155 /* Screen */,
-				B2E65E4D2B5118C000FD36AA /* TurnService */,
+				B25344632B5E6B33009C50EF /* Service */,
 				8297B8FC2AE54E5600D0C155 /* TTUtils */,
 				B226EB432B5C044800C32BE2 /* Views */,
 				8297B8E92AE54AD800D0C155 /* Assets.xcassets */,
@@ -210,6 +212,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B25344632B5E6B33009C50EF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B25344642B5E6B4C009C50EF /* GenerateScrambleService */,
+				B2E65E4D2B5118C000FD36AA /* TurnService */,
+			);
+			name = Service;
+			path = TurnService;
+			sourceTree = "<group>";
+		};
+		B25344642B5E6B4C009C50EF /* GenerateScrambleService */ = {
+			isa = PBXGroup;
+			children = (
+				B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */,
+			);
+			name = GenerateScrambleService;
+			sourceTree = "<group>";
+		};
 		B2E65E4D2B5118C000FD36AA /* TurnService */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,7 +240,7 @@
 				B2F21A072B5254FF0016ECCF /* TurnDService.swift */,
 				B2F21A092B5256D20016ECCF /* TurnBService.swift */,
 			);
-			path = TurnService;
+			name = TurnService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +370,7 @@
 				828036BA2AE6CBC2001B55F4 /* TTConstant.swift in Sources */,
 				B2F21A082B5254FF0016ECCF /* TurnDService.swift in Sources */,
 				8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */,
+				B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */,
 				B2F21A042B5251600016ECCF /* TurnLService.swift in Sources */,
 				B226EB452B5C048B00C32BE2 /* ScrambleView.swift in Sources */,
 				B2E65E522B51244500FD36AA /* CubeUtils.swift in Sources */,
