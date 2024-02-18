@@ -21,14 +21,18 @@
 		B226EB452B5C048B00C32BE2 /* ScrambleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226EB442B5C048B00C32BE2 /* ScrambleView.swift */; };
 		B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */; };
 		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
-		B25C30652B1047CC00C46478 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */; };
 		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
-		B25C30692B1047CC00C46478 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30682B1047CC00C46478 /* RxCocoa-Dynamic */; };
 		B25C306B2B1047CC00C46478 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306A2B1047CC00C46478 /* RxRelay */; };
 		B25C306E2B10483300C46478 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306D2B10483300C46478 /* SnapKit */; };
-		B25C30702B10483300C46478 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = B25C306F2B10483300C46478 /* SnapKit-Dynamic */; };
 		B25C30732B10489A00C46478 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */; };
 		B25C30762B10493300C46478 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30752B10493300C46478 /* MBProgressHUD */; };
+		B2BD386D2B81B34A00EE550B /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = B2BD386C2B81B34A00EE550B /* XCoordinator */; };
+		B2BD386F2B81B34A00EE550B /* XCoordinatorCombine in Frameworks */ = {isa = PBXBuildFile; productRef = B2BD386E2B81B34A00EE550B /* XCoordinatorCombine */; };
+		B2BD38712B81B34A00EE550B /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = B2BD38702B81B34A00EE550B /* XCoordinatorRx */; };
+		B2BD38742B81B7F300EE550B /* TimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38732B81B7F300EE550B /* TimeListViewController.swift */; };
+		B2BD38762B81B93100EE550B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38752B81B93100EE550B /* TabBarViewController.swift */; };
+		B2BD38782B81BD3600EE550B /* TimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38772B81BD3600EE550B /* TimeListViewModel.swift */; };
+		B2BD387A2B81BD5B00EE550B /* TimeListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38792B81BD5B00EE550B /* TimeListViewCell.swift */; };
 		B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */; };
 		B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */; };
 		B2E65E4F2B51190A00FD36AA /* TurnUService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E4E2B51190A00FD36AA /* TurnUService.swift */; };
@@ -57,6 +61,10 @@
 		A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
 		B226EB442B5C048B00C32BE2 /* ScrambleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleView.swift; sourceTree = "<group>"; };
 		B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScrambleService.swift; sourceTree = "<group>"; };
+		B2BD38732B81B7F300EE550B /* TimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewController.swift; sourceTree = "<group>"; };
+		B2BD38752B81B93100EE550B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		B2BD38772B81BD3600EE550B /* TimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewModel.swift; sourceTree = "<group>"; };
+		B2BD38792B81BD5B00EE550B /* TimeListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewCell.swift; sourceTree = "<group>"; };
 		B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController_Previews.swift; sourceTree = "<group>"; };
 		B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTView_Previews.swift; sourceTree = "<group>"; };
 		B2E65E4E2B51190A00FD36AA /* TurnUService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnUService.swift; sourceTree = "<group>"; };
@@ -74,13 +82,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2BD386F2B81B34A00EE550B /* XCoordinatorCombine in Frameworks */,
+				B2BD386D2B81B34A00EE550B /* XCoordinator in Frameworks */,
 				B25C306B2B1047CC00C46478 /* RxRelay in Frameworks */,
-				B25C30652B1047CC00C46478 /* RxBlocking-Dynamic in Frameworks */,
 				B25C30762B10493300C46478 /* MBProgressHUD in Frameworks */,
-				B25C30692B1047CC00C46478 /* RxCocoa-Dynamic in Frameworks */,
-				B25C30702B10483300C46478 /* SnapKit-Dynamic in Frameworks */,
 				B25C306E2B10483300C46478 /* SnapKit in Frameworks */,
 				B25C30732B10489A00C46478 /* IQKeyboardManagerSwift in Frameworks */,
+				B2BD38712B81B34A00EE550B /* XCoordinatorRx in Frameworks */,
 				8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */,
 				B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */,
 				B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */,
@@ -97,14 +105,6 @@
 				A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		828036B52AE6C9FE001B55F4 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				828036B62AE6CA36001B55F4 /* PieceViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		828036B82AE6CB9B001B55F4 /* Constant */ = {
@@ -138,7 +138,6 @@
 			children = (
 				8297B8F42AE54B0B00D0C155 /* Application */,
 				8297B8F92AE54C1B00D0C155 /* BaseClass */,
-				828036B52AE6C9FE001B55F4 /* Cell */,
 				828036B82AE6CB9B001B55F4 /* Constant */,
 				8297B8F52AE54B8E00D0C155 /* Screen */,
 				B25344632B5E6B33009C50EF /* Service */,
@@ -164,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				8297B8F62AE54BCA00D0C155 /* Timer */,
+				B2BD38722B81B45F00EE550B /* TimeList */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -183,6 +183,7 @@
 				8297B8FA2AE54C5900D0C155 /* TTViewController.swift */,
 				B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */,
 				B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */,
+				B2BD38752B81B93100EE550B /* TabBarViewController.swift */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -208,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				B226EB442B5C048B00C32BE2 /* ScrambleView.swift */,
+				828036B62AE6CA36001B55F4 /* PieceViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -228,6 +230,16 @@
 				B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */,
 			);
 			name = GenerateScrambleService;
+			sourceTree = "<group>";
+		};
+		B2BD38722B81B45F00EE550B /* TimeList */ = {
+			isa = PBXGroup;
+			children = (
+				B2BD38732B81B7F300EE550B /* TimeListViewController.swift */,
+				B2BD38772B81BD3600EE550B /* TimeListViewModel.swift */,
+				B2BD38792B81BD5B00EE550B /* TimeListViewCell.swift */,
+			);
+			path = TimeList;
 			sourceTree = "<group>";
 		};
 		B2E65E4D2B5118C000FD36AA /* TurnService */ = {
@@ -262,14 +274,14 @@
 			name = TTimer;
 			packageProductDependencies = (
 				B25C30622B1047CC00C46478 /* RxBlocking */,
-				B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */,
 				B25C30662B1047CC00C46478 /* RxCocoa */,
-				B25C30682B1047CC00C46478 /* RxCocoa-Dynamic */,
 				B25C306A2B1047CC00C46478 /* RxRelay */,
 				B25C306D2B10483300C46478 /* SnapKit */,
-				B25C306F2B10483300C46478 /* SnapKit-Dynamic */,
 				B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */,
 				B25C30752B10493300C46478 /* MBProgressHUD */,
+				B2BD386C2B81B34A00EE550B /* XCoordinator */,
+				B2BD386E2B81B34A00EE550B /* XCoordinatorCombine */,
+				B2BD38702B81B34A00EE550B /* XCoordinatorRx */,
 			);
 			productName = TTimer;
 			productReference = 8297B8DD2AE54AD100D0C155 /* TTimer.app */;
@@ -304,6 +316,7 @@
 				B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				B25C30712B10489A00C46478 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			productRefGroup = 8297B8DE2AE54AD100D0C155 /* Products */;
 			projectDirPath = "";
@@ -360,13 +373,17 @@
 				828036B72AE6CA36001B55F4 /* PieceViewCell.swift in Sources */,
 				B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */,
 				8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */,
+				B2BD38762B81B93100EE550B /* TabBarViewController.swift in Sources */,
+				B2BD38782B81BD3600EE550B /* TimeListViewModel.swift in Sources */,
 				B2F21A0A2B5256D20016ECCF /* TurnBService.swift in Sources */,
+				B2BD38742B81B7F300EE550B /* TimeListViewController.swift in Sources */,
 				B2F21A062B5253B10016ECCF /* TurnRService.swift in Sources */,
 				B2F21A022B51845B0016ECCF /* TurnFService.swift in Sources */,
 				8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */,
 				B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */,
 				8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */,
 				8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */,
+				B2BD387A2B81BD5B00EE550B /* TimeListViewCell.swift in Sources */,
 				828036BA2AE6CBC2001B55F4 /* TTConstant.swift in Sources */,
 				B2F21A082B5254FF0016ECCF /* TurnDService.swift in Sources */,
 				8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */,
@@ -514,7 +531,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AQKCQ33V6N;
+				DEVELOPMENT_TEAM = 5H65K5H82S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -543,7 +560,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AQKCQ33V6N;
+				DEVELOPMENT_TEAM = 5H65K5H82S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -620,6 +637,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/QuickBirdEng/XCoordinator.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -628,20 +653,10 @@
 			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxBlocking;
 		};
-		B25C30642B1047CC00C46478 /* RxBlocking-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxBlocking-Dynamic";
-		};
 		B25C30662B1047CC00C46478 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
-		};
-		B25C30682B1047CC00C46478 /* RxCocoa-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxCocoa-Dynamic";
 		};
 		B25C306A2B1047CC00C46478 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -653,11 +668,6 @@
 			package = B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		B25C306F2B10483300C46478 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B25C306C2B10483300C46478 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		B25C30722B10489A00C46478 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B25C30712B10489A00C46478 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
@@ -667,6 +677,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
 			productName = MBProgressHUD;
+		};
+		B2BD386C2B81B34A00EE550B /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinator;
+		};
+		B2BD386E2B81B34A00EE550B /* XCoordinatorCombine */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorCombine;
+		};
+		B2BD38702B81B34A00EE550B /* XCoordinatorRx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorRx;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

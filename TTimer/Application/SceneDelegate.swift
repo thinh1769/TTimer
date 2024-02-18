@@ -18,8 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
 
-        let vc = TimerViewController()
-        window?.rootViewController = vc
+        let tabBar = TabBarViewController()
+        window?.rootViewController = tabBar
         window?.makeKeyAndVisible()
     }
 

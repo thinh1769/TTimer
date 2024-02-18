@@ -59,7 +59,7 @@ extension TimerViewController {
         view.addSubview(scrambleView)
         view.addSubview(generateScrambleBtn)
         
-        viewModel.cubeType = .three
+        viewModel.cubeType = .six
         scrambleView.cubeType = viewModel.cubeType
     }
     
@@ -86,7 +86,6 @@ extension TimerViewController {
         cancellableSet = []
         
         viewModel.$scramble
-//            .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] scramble in
                 guard let self else { return }
