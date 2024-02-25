@@ -17,6 +17,9 @@ class TimerViewModel {
     var cubeType: CubeType
     let genScramble: GenerateScrambleService?
     @Published var scramble: [String] = [""]
+    var currentTime = 0
+    var previousTime = 0
+    var timeInterval = 0.01
     
     init() {
         cubeType = .three

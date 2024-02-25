@@ -55,6 +55,11 @@ enum PieceSize: CGFloat {
     case seven = 6
 }
 
+enum NumberDecimalPlaces: Int {
+    case two = 100
+    case three = 1000
+}
+
 enum ScrambleLength: Int {
     case two = 9
     case three = 20

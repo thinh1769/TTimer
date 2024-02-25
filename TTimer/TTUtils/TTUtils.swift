@@ -18,7 +18,7 @@ class TTUtils {
         let label = UILabel()
         
         label.text = text
-        label.font.withSize(size)
+        label.font = UIFont.systemFont(ofSize: size)
         label.textColor = color
         label.numberOfLines = numberOfLine
         label.textAlignment = textAlignment
@@ -98,6 +98,18 @@ class TTUtils {
             return viewController.view.safeAreaInsets.top
         } else {
             return 0
+        }
+    }
+    
+    static func convertTime(_ seconds: Int) -> String {
+        var secondsInterval = seconds / NumberDecimalPlaces.two.rawValue
+        let millisecondsInterval = seconds - secondsInterval * NumberDecimalPlaces.two.rawValue
+        if seconds > (60 * NumberDecimalPlaces.two.rawValue) {
+            let minutesInterval = secondsInterval / 60
+            secondsInterval = secondsInterval - minutesInterval * 60
+            return String(format: "%d:%02d.%02d", minutesInterval, secondsInterval, millisecondsInterval)
+        } else {
+            return String(format: "%d.%02d", secondsInterval, millisecondsInterval)
         }
     }
 }
