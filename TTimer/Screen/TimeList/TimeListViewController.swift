@@ -10,6 +10,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import SwiftUI
+import Combine
 
 class TimeListViewController: TTViewController {
     lazy private var collectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
@@ -17,12 +18,15 @@ class TimeListViewController: TTViewController {
                                                                  isScrollEnabled: false)
     
     let viewModel = TimeListViewModel()
+    var cancellableSet: Set<AnyCancellable> = []
+    @Published var time: TimeItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
         layout()
+        setupSubcriptions()
     }
     
     private func setupUI() {
@@ -31,8 +35,6 @@ class TimeListViewController: TTViewController {
         view.addSubview(collectionView)
         
         setupCollectionView()
-        
-        viewModel.time.accept(["10.89", "12.90"])
     }
     
     private func layout() {
@@ -46,10 +48,29 @@ class TimeListViewController: TTViewController {
         
         viewModel.time.asObservable()
             .bind(to: collectionView.rx.items(cellIdentifier: TimeListViewCell.reusableIdentifier, cellType: TimeListViewCell.self)) { (index, element, cell) in
-                cell.bind(time: element)
+                cell.bind(timeItem: element)
             }.disposed(by: viewModel.bag)
         
         collectionView.rx.setDelegate(self).disposed(by: viewModel.bag)
+    }
+    
+    private func setupSubcriptions() {
+        cancellableSet = []
+        
+        $time
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] newTime in
+                guard let self,
+                      let newTime
+                else { return }
+                self.updateTime(newTime: newTime)
+            }
+            .store(in: &cancellableSet)
+    }
+    
+    private func updateTime(newTime: TimeItem) {
+        viewModel.timeList.append(newTime)
+        self.viewModel.time.accept(viewModel.timeList)
     }
 }
 

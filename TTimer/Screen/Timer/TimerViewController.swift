@@ -28,8 +28,9 @@ class TimerViewController: TTViewController {
     lazy private var scrambleView = ScrambleView()
     private let viewModel: TimerViewModel = .init()
     private var cancellableSet: Set<AnyCancellable> = []
-    private var timer: Timer?
-    
+    private let timer = TimerManager.shared
+    var secondsString: [String] = []
+    @Published var time: TimeItem?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,7 +39,7 @@ class TimerViewController: TTViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        timer?.invalidate()
+        timer.stopTimer()
     }
     
     override func viewDidLoad() {
@@ -46,6 +47,7 @@ class TimerViewController: TTViewController {
         setupUI()
         setupSubscription()
         scrambleLabel.text = viewModel.generateScramble()
+        secondsString = generateSecond()
     }
 
     override func viewDidLayoutSubviews() {
@@ -56,13 +58,27 @@ class TimerViewController: TTViewController {
     private func parseData() {
     }
     
+    private func generateSecond() -> [String] {
+        var numberStrings: [String] = []
+
+        for i in 1...1000 {
+            let number = Double(i) / 100.0
+            let formattedString = String(format: "%.2f", number)
+            numberStrings.append(formattedString)
+        }
+        
+        return numberStrings
+    }
+    
     @objc private func didStartTimer(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == .ended {
             viewModel.previousTime = viewModel.currentTime
+            resultLabel.text = TTUtils.convertTime(viewModel.previousTime)
             viewModel.currentTime = 0
-            timer = Timer.scheduledTimer(timeInterval: viewModel.timeInterval, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+            timer.startTimer(timeInterval: viewModel.timeInterval, target: self, selector: #selector(timerAction))
             timerTapGesture.isEnabled = true
             timerLongPress.isEnabled = false
+            timeLabel.text = "SOLVE"
         }
     }
     
@@ -73,14 +89,14 @@ class TimerViewController: TTViewController {
     
     @objc private func didTapStopTimer(_ gestureRecognizer: UITapGestureRecognizer) {
         if gestureRecognizer.state == .ended {
-            timer?.invalidate()
-            timer = nil
+            timer.stopTimer()
             timeLabel.text = TTUtils.convertTime(viewModel.currentTime)
-            resultLabel.text = TTUtils.convertTime(viewModel.previousTime)
             timerTapGesture.isEnabled = false
             timerLongPress.isEnabled = true
             scrambleLabel.text = viewModel.generateScramble()
-            
+            viewModel.time = TimeItem(time: viewModel.currentTime,
+                                      scramble: viewModel.currentScramble,
+                                      createdDate: Date().toInt())
         }
     }
 }
@@ -131,6 +147,14 @@ extension TimerViewController {
             .sink { [weak self] scramble in
                 guard let self else { return }
                 self.scrambleView.scrambleList = scramble
+            }
+            .store(in: &cancellableSet)
+        
+        viewModel.$time
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] time in
+                guard let self else { return }
+                self.time = time
             }
             .store(in: &cancellableSet)
     }

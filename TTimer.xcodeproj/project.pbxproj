@@ -19,6 +19,7 @@
 		8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297B8FD2AE54F1600D0C155 /* TTUtils.swift */; };
 		8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */; };
 		B226EB452B5C048B00C32BE2 /* ScrambleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226EB442B5C048B00C32BE2 /* ScrambleView.swift */; };
+		B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */; };
 		B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */; };
 		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
 		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
@@ -33,6 +34,8 @@
 		B2BD38762B81B93100EE550B /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38752B81B93100EE550B /* TabBarViewController.swift */; };
 		B2BD38782B81BD3600EE550B /* TimeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38772B81BD3600EE550B /* TimeListViewModel.swift */; };
 		B2BD387A2B81BD5B00EE550B /* TimeListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD38792B81BD5B00EE550B /* TimeListViewCell.swift */; };
+		B2DD45662B943E4200A945B1 /* TimeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DD45652B943E4200A945B1 /* TimeItem.swift */; };
+		B2DD45692B943FC100A945B1 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DD45682B943FC100A945B1 /* Date+Ext.swift */; };
 		B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */; };
 		B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */; };
 		B2E65E4F2B51190A00FD36AA /* TurnUService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E65E4E2B51190A00FD36AA /* TurnUService.swift */; };
@@ -60,11 +63,14 @@
 		8297B8FD2AE54F1600D0C155 /* TTUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTUtils.swift; sourceTree = "<group>"; };
 		A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
 		B226EB442B5C048B00C32BE2 /* ScrambleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleView.swift; sourceTree = "<group>"; };
+		B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScrambleService.swift; sourceTree = "<group>"; };
 		B2BD38732B81B7F300EE550B /* TimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewController.swift; sourceTree = "<group>"; };
 		B2BD38752B81B93100EE550B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B2BD38772B81BD3600EE550B /* TimeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewModel.swift; sourceTree = "<group>"; };
 		B2BD38792B81BD5B00EE550B /* TimeListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewCell.swift; sourceTree = "<group>"; };
+		B2DD45652B943E4200A945B1 /* TimeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeItem.swift; sourceTree = "<group>"; };
+		B2DD45682B943FC100A945B1 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTViewController_Previews.swift; sourceTree = "<group>"; };
 		B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTView_Previews.swift; sourceTree = "<group>"; };
 		B2E65E4E2B51190A00FD36AA /* TurnUService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnUService.swift; sourceTree = "<group>"; };
@@ -139,6 +145,8 @@
 				8297B8F42AE54B0B00D0C155 /* Application */,
 				8297B8F92AE54C1B00D0C155 /* BaseClass */,
 				828036B82AE6CB9B001B55F4 /* Constant */,
+				B2DD45672B943FAF00A945B1 /* Extension */,
+				B2DD45642B943E2600A945B1 /* Model */,
 				8297B8F52AE54B8E00D0C155 /* Screen */,
 				B25344632B5E6B33009C50EF /* Service */,
 				8297B8FC2AE54E5600D0C155 /* TTUtils */,
@@ -214,9 +222,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B227CAEB2B8DCB5A00E29C87 /* TimerManager */ = {
+			isa = PBXGroup;
+			children = (
+				B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */,
+			);
+			name = TimerManager;
+			sourceTree = "<group>";
+		};
 		B25344632B5E6B33009C50EF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B227CAEB2B8DCB5A00E29C87 /* TimerManager */,
 				B25344642B5E6B4C009C50EF /* GenerateScrambleService */,
 				B2E65E4D2B5118C000FD36AA /* TurnService */,
 			);
@@ -240,6 +257,22 @@
 				B2BD38792B81BD5B00EE550B /* TimeListViewCell.swift */,
 			);
 			path = TimeList;
+			sourceTree = "<group>";
+		};
+		B2DD45642B943E2600A945B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2DD45652B943E4200A945B1 /* TimeItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B2DD45672B943FAF00A945B1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B2DD45682B943FC100A945B1 /* Date+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		B2E65E4D2B5118C000FD36AA /* TurnService */ = {
@@ -378,11 +411,14 @@
 				B2F21A0A2B5256D20016ECCF /* TurnBService.swift in Sources */,
 				B2BD38742B81B7F300EE550B /* TimeListViewController.swift in Sources */,
 				B2F21A062B5253B10016ECCF /* TurnRService.swift in Sources */,
+				B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */,
 				B2F21A022B51845B0016ECCF /* TurnFService.swift in Sources */,
 				8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */,
 				B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */,
 				8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */,
 				8297B8FE2AE54F1600D0C155 /* TTUtils.swift in Sources */,
+				B2DD45692B943FC100A945B1 /* Date+Ext.swift in Sources */,
+				B2DD45662B943E4200A945B1 /* TimeItem.swift in Sources */,
 				B2BD387A2B81BD5B00EE550B /* TimeListViewCell.swift in Sources */,
 				828036BA2AE6CBC2001B55F4 /* TTConstant.swift in Sources */,
 				B2F21A082B5254FF0016ECCF /* TurnDService.swift in Sources */,

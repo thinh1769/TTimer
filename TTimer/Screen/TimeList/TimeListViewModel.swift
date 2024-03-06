@@ -8,8 +8,10 @@
 import Foundation
 import RxRelay
 import RxSwift
+import Combine
 
 class TimeListViewModel {
-    let time = BehaviorRelay<[String]>(value: [])
+    var timeList: [TimeItem] = []
+    var time = BehaviorRelay<[TimeItem]>(value: [])
     let bag = DisposeBag()
 }

@@ -28,8 +28,8 @@ class TimeListViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func bind(time: String) {
-        timeLabel.text = time
+    func bind(timeItem: TimeItem) {
+        timeLabel.text = TTUtils.convertTime(timeItem.time)
     }
     
     private func setupUI() {

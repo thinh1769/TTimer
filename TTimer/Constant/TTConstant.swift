@@ -60,6 +60,19 @@ enum NumberDecimalPlaces: Int {
     case three = 1000
 }
 
+enum TimeFormat: String {
+    case second = "%d"
+    case secondMillisecond = "%d.%02d"
+    case minuteSecond = "%d:%02d"
+    case minuteSecondMillisecond = "%d:%02d.%02d"
+}
+
+enum Penalty: Int {
+    case none = 0
+    case plus2 = 1
+    case dnf = 2
+}
+
 enum ScrambleLength: Int {
     case two = 9
     case three = 20

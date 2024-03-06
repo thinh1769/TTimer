@@ -101,15 +101,28 @@ class TTUtils {
         }
     }
     
-    static func convertTime(_ seconds: Int) -> String {
+    static func convertTime(_ seconds: Int, isShowMillisecond: Bool? = true) -> String {
+        if seconds == 0 {
+            return "0.00"
+        }
         var secondsInterval = seconds / NumberDecimalPlaces.two.rawValue
         let millisecondsInterval = seconds - secondsInterval * NumberDecimalPlaces.two.rawValue
         if seconds > (60 * NumberDecimalPlaces.two.rawValue) {
             let minutesInterval = secondsInterval / 60
             secondsInterval = secondsInterval - minutesInterval * 60
-            return String(format: "%d:%02d.%02d", minutesInterval, secondsInterval, millisecondsInterval)
+            guard let isShowMillisecond else { return "" }
+            if isShowMillisecond {
+                return String(format: TimeFormat.minuteSecondMillisecond.rawValue, minutesInterval, secondsInterval, millisecondsInterval)
+            } else {
+                return String(format: TimeFormat.minuteSecond.rawValue, minutesInterval, secondsInterval)
+            }
         } else {
-            return String(format: "%d.%02d", secondsInterval, millisecondsInterval)
+            guard let isShowMillisecond else { return "" }
+            if isShowMillisecond {
+                return String(format: TimeFormat.secondMillisecond.rawValue, secondsInterval, millisecondsInterval)
+            } else {
+                return String(format: TimeFormat.second.rawValue, secondsInterval)
+            }
         }
     }
 }

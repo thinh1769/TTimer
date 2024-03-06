@@ -17,6 +17,8 @@ class TimerViewModel {
     var cubeType: CubeType
     let genScramble: GenerateScrambleService?
     @Published var scramble: [String] = [""]
+    @Published var time: TimeItem?
+    var currentScramble: [String] = []
     var currentTime = 0
     var previousTime = 0
     var timeInterval = 0.01
@@ -31,6 +33,7 @@ class TimerViewModel {
         if let scrambleArray = genScramble?.generateScramble(cubeType: cubeType) {
             self.scramble = scrambleArray
             for scramCharacter in scrambleArray {
+                currentScramble.append(scramCharacter)
                 scrambleString += "\(scramCharacter) "
             }
         }
