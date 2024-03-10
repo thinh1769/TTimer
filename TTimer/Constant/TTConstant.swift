@@ -7,6 +7,20 @@
 
 import Foundation
 
+enum TextSize: CGFloat {
+    case smallBody = 13
+    case body = 16
+    case title = 50
+}
+
+enum AverageType: Int {
+    case mo3 = 3
+    case ao5 = 5
+    case ao12 = 12
+    case ao50 = 50
+    case ao100 = 100
+}
+
 enum Layer: Int {
     case one = 0
     case two = 1

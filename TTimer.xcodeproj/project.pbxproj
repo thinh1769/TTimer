@@ -20,6 +20,8 @@
 		8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15019FA5CEE9D57E41C724D4 /* Pods_TTimer.framework */; };
 		B226EB452B5C048B00C32BE2 /* ScrambleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B226EB442B5C048B00C32BE2 /* ScrambleView.swift */; };
 		B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */; };
+		B22CD76E2B9C393F00941CD6 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */; };
+		B22CD7702B9D3B2C00941CD6 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */; };
 		B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */; };
 		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
 		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
@@ -64,6 +66,8 @@
 		A5C6A4F8BC0BB25C14357A99 /* Pods-TTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TTimer.release.xcconfig"; path = "Target Support Files/Pods-TTimer/Pods-TTimer.release.xcconfig"; sourceTree = "<group>"; };
 		B226EB442B5C048B00C32BE2 /* ScrambleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleView.swift; sourceTree = "<group>"; };
 		B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
 		B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScrambleService.swift; sourceTree = "<group>"; };
 		B2BD38732B81B7F300EE550B /* TimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewController.swift; sourceTree = "<group>"; };
 		B2BD38752B81B93100EE550B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 			isa = PBXGroup;
 			children = (
 				B2DD45682B943FC100A945B1 /* Date+Ext.swift */,
+				B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */,
+				B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 				B2BD38762B81B93100EE550B /* TabBarViewController.swift in Sources */,
 				B2BD38782B81BD3600EE550B /* TimeListViewModel.swift in Sources */,
 				B2F21A0A2B5256D20016ECCF /* TurnBService.swift in Sources */,
+				B22CD7702B9D3B2C00941CD6 /* UIStackView+Ext.swift in Sources */,
 				B2BD38742B81B7F300EE550B /* TimeListViewController.swift in Sources */,
 				B2F21A062B5253B10016ECCF /* TurnRService.swift in Sources */,
 				B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */,
@@ -425,6 +432,7 @@
 				8297B8E12AE54AD100D0C155 /* AppDelegate.swift in Sources */,
 				B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */,
 				B2F21A042B5251600016ECCF /* TurnLService.swift in Sources */,
+				B22CD76E2B9C393F00941CD6 /* Int+Ext.swift in Sources */,
 				B226EB452B5C048B00C32BE2 /* ScrambleView.swift in Sources */,
 				B2E65E522B51244500FD36AA /* CubeUtils.swift in Sources */,
 				8297B8E32AE54AD100D0C155 /* SceneDelegate.swift in Sources */,

@@ -14,12 +14,12 @@ import Combine
 
 class TimeListViewController: TTViewController {
     lazy private var collectionView = TTUtils.makeCollectionView(scrollDirection: .vertical,
-                                                                 spacing: 0,
-                                                                 isScrollEnabled: false)
+                                                                 spacing: 16,
+                                                                 isScrollEnabled: true)
     
     let viewModel = TimeListViewModel()
     var cancellableSet: Set<AnyCancellable> = []
-    @Published var time: TimeItem?
+    @Published var time: [TimeItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class TimeListViewController: TTViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = .brown
+        view.backgroundColor = .white
      
         view.addSubview(collectionView)
         
@@ -39,7 +39,9 @@ class TimeListViewController: TTViewController {
     
     private func layout() {
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.verticalEdges.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
         }
     }
     
@@ -60,22 +62,20 @@ class TimeListViewController: TTViewController {
         $time
             .receive(on: DispatchQueue.main)
             .sink { [weak self] newTime in
-                guard let self,
-                      let newTime
-                else { return }
+                guard let self else { return }
                 self.updateTime(newTime: newTime)
             }
             .store(in: &cancellableSet)
     }
     
-    private func updateTime(newTime: TimeItem) {
-        viewModel.timeList.append(newTime)
+    private func updateTime(newTime: [TimeItem]) {
+        viewModel.timeList = newTime
         self.viewModel.time.accept(viewModel.timeList)
     }
 }
 
 extension TimeListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 60)
+        return CGSize(width: (UIScreen.main.bounds.width - 64) / 3, height: 60)
     }
 }

@@ -17,11 +17,16 @@ class TimerViewModel {
     var cubeType: CubeType
     let genScramble: GenerateScrambleService?
     @Published var scramble: [String] = [""]
-    @Published var time: TimeItem?
+    @Published var time: [TimeItem] = []
     var currentScramble: [String] = []
     var currentTime = 0
     var previousTime = 0
     var timeInterval = 0.01
+    @Published var mo3: Int = 0
+    @Published var ao5: Int = 0
+    @Published var ao12: Int = 0
+    @Published var ao50: Int = 0
+    @Published var count: Int = 0
     
     init() {
         cubeType = .three
@@ -38,6 +43,23 @@ class TimerViewModel {
             }
         }
         return String(scrambleString.dropLast())
+    }
+    
+    func calculateTime() {
+        if count >= AverageType.mo3.rawValue {
+            mo3 = TTUtils.calculateTime(time, averageType: .mo3)
+        }
+        
+        if count >= AverageType.ao5.rawValue {
+            ao5 = TTUtils.calculateTime(time, averageType: .ao5)
+        }
+        
+        if count >= AverageType.ao12.rawValue {
+            ao12 = TTUtils.calculateTime(time, averageType: .ao12)
+        }
+        if count >= AverageType.ao50.rawValue {
+            ao50 = TTUtils.calculateTime(time, averageType: .ao50)
+        }
     }
 }
 

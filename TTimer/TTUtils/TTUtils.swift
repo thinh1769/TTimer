@@ -13,12 +13,17 @@ class TTUtils {
                           size: CGFloat,
                           color: UIColor,
                           numberOfLine: Int = 0,
-                          textAlignment: NSTextAlignment = .left
+                          textAlignment: NSTextAlignment = .left,
+                          isBold: Bool = false
     ) -> UILabel {
         let label = UILabel()
         
         label.text = text
-        label.font = UIFont.systemFont(ofSize: size)
+        if !isBold {
+            label.font = UIFont.systemFont(ofSize: size)
+        } else {
+            label.font = UIFont.boldSystemFont(ofSize: size)
+        }
         label.textColor = color
         label.numberOfLines = numberOfLine
         label.textAlignment = textAlignment
@@ -112,17 +117,32 @@ class TTUtils {
             secondsInterval = secondsInterval - minutesInterval * 60
             guard let isShowMillisecond else { return "" }
             if isShowMillisecond {
-                return String(format: TimeFormat.minuteSecondMillisecond.rawValue, minutesInterval, secondsInterval, millisecondsInterval)
+                return "\(minutesInterval):\(secondsInterval.toString()).\(millisecondsInterval.toString())"
             } else {
-                return String(format: TimeFormat.minuteSecond.rawValue, minutesInterval, secondsInterval)
+                return "\(minutesInterval):\(secondsInterval.toString())"
             }
         } else {
             guard let isShowMillisecond else { return "" }
             if isShowMillisecond {
-                return String(format: TimeFormat.secondMillisecond.rawValue, secondsInterval, millisecondsInterval)
+                return "\(secondsInterval).\(millisecondsInterval.toString())"
             } else {
-                return String(format: TimeFormat.second.rawValue, secondsInterval)
+                return "\(secondsInterval)"
             }
+        }
+    }
+    
+    static func calculateTime(_ timeList: [TimeItem], averageType: AverageType) -> Int {
+        let calArray = timeList.suffix(averageType.rawValue)
+        var sum = calArray.reduce(0) { $0 + $1.time }
+        if averageType != .mo3 {
+            let min = calArray.min { $0.time < $1.time }
+            let max = calArray.max { $0.time < $1.time }
+            if let min, let max {
+                sum = sum - min.time - max.time
+            }
+            return sum / (averageType.rawValue - 2)
+        } else {
+            return sum / averageType.rawValue
         }
     }
 }

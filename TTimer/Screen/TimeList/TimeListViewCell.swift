@@ -10,8 +10,9 @@ import SnapKit
 
 class TimeListViewCell: UICollectionViewCell {
     private lazy var timeLabel = TTUtils.makeLabel(text: "",
-                                               size: 12,
-                                               color: .black)
+                                                   size: 20,
+                                                   color: .black,
+                                                   textAlignment: .center)
     
     static var reusableIdentifier: String {
         return String(describing: self)
