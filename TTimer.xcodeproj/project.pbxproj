@@ -22,6 +22,7 @@
 		B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */; };
 		B22CD76E2B9C393F00941CD6 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */; };
 		B22CD7702B9D3B2C00941CD6 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */; };
+		B22CD7732B9DC81D00941CD6 /* ScrambleTypeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD7722B9DC81D00941CD6 /* ScrambleTypeBottomView.swift */; };
 		B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */; };
 		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
 		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
@@ -47,6 +48,7 @@
 		B2F21A062B5253B10016ECCF /* TurnRService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F21A052B5253B10016ECCF /* TurnRService.swift */; };
 		B2F21A082B5254FF0016ECCF /* TurnDService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F21A072B5254FF0016ECCF /* TurnDService.swift */; };
 		B2F21A0A2B5256D20016ECCF /* TurnBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F21A092B5256D20016ECCF /* TurnBService.swift */; };
+		B2FD47332BA6911300684EF7 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B2FD47322BA6911300684EF7 /* CombineCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,7 @@
 		B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
+		B22CD7722B9DC81D00941CD6 /* ScrambleTypeBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleTypeBottomView.swift; sourceTree = "<group>"; };
 		B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScrambleService.swift; sourceTree = "<group>"; };
 		B2BD38732B81B7F300EE550B /* TimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewController.swift; sourceTree = "<group>"; };
 		B2BD38752B81B93100EE550B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2FD47332BA6911300684EF7 /* CombineCocoa in Frameworks */,
 				B2BD386F2B81B34A00EE550B /* XCoordinatorCombine in Frameworks */,
 				B2BD386D2B81B34A00EE550B /* XCoordinator in Frameworks */,
 				B25C306B2B1047CC00C46478 /* RxRelay in Frameworks */,
@@ -176,6 +180,7 @@
 			children = (
 				8297B8F62AE54BCA00D0C155 /* Timer */,
 				B2BD38722B81B45F00EE550B /* TimeList */,
+				B22CD7712B9DC7E900941CD6 /* ScrambleTypeBottomView */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -232,6 +237,14 @@
 				B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */,
 			);
 			name = TimerManager;
+			sourceTree = "<group>";
+		};
+		B22CD7712B9DC7E900941CD6 /* ScrambleTypeBottomView */ = {
+			isa = PBXGroup;
+			children = (
+				B22CD7722B9DC81D00941CD6 /* ScrambleTypeBottomView.swift */,
+			);
+			path = ScrambleTypeBottomView;
 			sourceTree = "<group>";
 		};
 		B25344632B5E6B33009C50EF /* Service */ = {
@@ -321,6 +334,7 @@
 				B2BD386C2B81B34A00EE550B /* XCoordinator */,
 				B2BD386E2B81B34A00EE550B /* XCoordinatorCombine */,
 				B2BD38702B81B34A00EE550B /* XCoordinatorRx */,
+				B2FD47322BA6911300684EF7 /* CombineCocoa */,
 			);
 			productName = TTimer;
 			productReference = 8297B8DD2AE54AD100D0C155 /* TTimer.app */;
@@ -356,6 +370,7 @@
 				B25C30712B10489A00C46478 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */,
+				B2FD47312BA6911300684EF7 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			productRefGroup = 8297B8DE2AE54AD100D0C155 /* Products */;
 			projectDirPath = "";
@@ -413,6 +428,7 @@
 				B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */,
 				8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */,
 				B2BD38762B81B93100EE550B /* TabBarViewController.swift in Sources */,
+				B22CD7732B9DC81D00941CD6 /* ScrambleTypeBottomView.swift in Sources */,
 				B2BD38782B81BD3600EE550B /* TimeListViewModel.swift in Sources */,
 				B2F21A0A2B5256D20016ECCF /* TurnBService.swift in Sources */,
 				B22CD7702B9D3B2C00941CD6 /* UIStackView+Ext.swift in Sources */,
@@ -689,6 +705,14 @@
 				minimumVersion = 2.2.1;
 			};
 		};
+		B2FD47312BA6911300684EF7 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -736,6 +760,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */;
 			productName = XCoordinatorRx;
+		};
+		B2FD47322BA6911300684EF7 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B2FD47312BA6911300684EF7 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

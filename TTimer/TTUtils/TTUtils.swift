@@ -75,7 +75,8 @@ class TTUtils {
                            backgroundColor: UIColor = .clear,
                            cornerRadius: CGFloat = 0,
                            borderColor: CGColor = UIColor.clear.cgColor,
-                           borderWidth: CGFloat = 0
+                           borderWidth: CGFloat = 0,
+                           rightIcon: UIImage? = nil
     ) -> UIButton {
         let button = UIButton()
 
@@ -86,6 +87,10 @@ class TTUtils {
         button.layer.cornerRadius = cornerRadius
         button.layer.borderWidth = borderWidth
         button.layer.borderColor = borderColor
+        
+        if let image = rightIcon {
+            button.setImage(image, for: .normal)
+        }
         
         return button
     }
@@ -143,6 +148,23 @@ class TTUtils {
             return sum / (averageType.rawValue - 2)
         } else {
             return sum / averageType.rawValue
+        }
+    }
+    
+    static func getCubeTypeString(_ cubeType: CubeType) -> String {
+        switch cubeType {
+        case .two:
+            return "2x2"
+        case .three:
+            return "3x3"
+        case .four:
+            return "4x4"
+        case .five:
+            return "5x5"
+        case .six:
+            return "6x6"
+        case .seven:
+            return "7x7"
         }
     }
 }

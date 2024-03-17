@@ -11,8 +11,13 @@ import SwiftUI
 import Combine
 
 class TimerViewController: TTViewController {
+    lazy private var scrambleTypeButton = TTUtils.makeButton(title: "3x3",
+                                                             textSize: 20,
+                                                             backgroundColor: .lightGray,
+                                                             cornerRadius: 8,
+                                                             rightIcon: UIImage(systemName: "chevron.down"))
     lazy private var scrambleLabel = TTUtils.makeLabel(text: "",
-                                                       size: 20,
+                                                       size: 18,
                                                        color: .black,
                                                        textAlignment: .center)
     lazy private var timeLabel = TTUtils.makeLabel(text: "0.00",
@@ -54,6 +59,7 @@ class TimerViewController: TTViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
         parseData()
     }
     
@@ -120,26 +126,35 @@ extension TimerViewController {
         
         view.backgroundColor = .white
         
+        view.addSubview(scrambleTypeButton)
         view.addSubview(scrambleLabel)
         view.addSubview(scrambleView)
         view.addSubview(timeLabel)
         view.addSubview(timeResultStackView)
         
-        viewModel.cubeType = .six
-        scrambleView.cubeType = viewModel.cubeType
+        viewModel.cubeType = .three
         
         UIApplication.shared.isIdleTimerDisabled = true
         impactFeedbackGenerator.prepare()
+        
+        scrambleTypeButton.addTarget(self, action: #selector(showScrambleTypeBottomView), for: .touchUpInside)
     }
     
     private func layout() {
+        scrambleTypeButton.snp.makeConstraints { make in
+            make.height.equalTo(24)
+            make.width.equalTo(60)
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(TTUtils.topPadding(in: self) + 16)
+        }
+        
         scrambleView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.bottom.equalToSuperview().offset(-TTUtils.bottomPadding(in: self) - 16)
         }
         
         scrambleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(TTUtils.topPadding(in: self) + 16)
+            make.top.equalTo(scrambleTypeButton.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
         }
@@ -154,8 +169,24 @@ extension TimerViewController {
         }
     }
     
+    @objc private func showScrambleTypeBottomView() {
+        addBlurEffect()
+        let scrambleTypeBottomView = ScrambleTypeBottomView(frame: CGRect(x: 16, y: 321, width: 350, height: 300))
+        scrambleTypeBottomView.delegate = self
+        view.addSubview(scrambleTypeBottomView)
+    }
+    
     private func setupSubscription() {
         cancellableSet = []
+        
+        viewModel.$cubeType
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] cubeType in
+                guard let self else { return }
+                self.scrambleView.cubeType = cubeType
+                self.scrambleLabel.text = self.viewModel.generateScramble()
+            }
+            .store(in: &cancellableSet)
         
         viewModel.$scramble
             .receive(on: DispatchQueue.main)
@@ -274,6 +305,23 @@ extension TimerViewController {
                                     axis: .horizontal,
                                     spacing: 8)
         return stackView
+    }
+}
+
+extension TimerViewController: ScrambleTypeBottomViewDelegate {
+    func didSelectItem(_ item: CubeType) {
+        scrambleTypeButton.setTitle(TTUtils.getCubeTypeString(item), for: .normal)
+        viewModel.cubeType = item
+    }
+    
+    func dismissPopup() {
+        removeBlurEffect()
+        
+        for subview in view.subviews {
+            if subview is ScrambleTypeBottomView {
+                subview.removeFromSuperview()
+            }
+        }
     }
 }
 

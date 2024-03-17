@@ -14,14 +14,14 @@ import Combine
 
 class TimerViewModel {
     let bag = DisposeBag()
-    var cubeType: CubeType
     let genScramble: GenerateScrambleService?
-    @Published var scramble: [String] = [""]
-    @Published var time: [TimeItem] = []
     var currentScramble: [String] = []
     var currentTime = 0
     var previousTime = 0
     var timeInterval = 0.01
+    @Published var cubeType: CubeType
+    @Published var scramble: [String] = [""]
+    @Published var time: [TimeItem] = []
     @Published var mo3: Int = 0
     @Published var ao5: Int = 0
     @Published var ao12: Int = 0

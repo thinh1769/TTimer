@@ -51,7 +51,7 @@ enum PieceColor: String {
     case blue = "blue_piece"
 }
 
-enum CubeType: Int {
+enum CubeType: Int, CaseIterable {
     case two = 2
     case three = 3
     case four = 4
