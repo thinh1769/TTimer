@@ -10,7 +10,6 @@ import SwiftUI
 
 protocol GenerateScramble {
     func generateScramble(cubeType: CubeType) -> [String]
-    func detectLayer(_ scrambleCharacter: String) -> Layer
 }
 
 struct GenerateScrambleService: GenerateScramble {
@@ -22,7 +21,8 @@ struct GenerateScrambleService: GenerateScramble {
         let allScramble3Layers = Scramble3Layers.allCases
         
         var combinedCase = allScramble1Layer.map { "\($0.rawValue)" }
-        var usedScrambleCharacter = ""
+        var currentScrambleCharacter = ""
+        var previousScrambleCharacter = ""
         
         switch cubeType {
         case .two:
@@ -46,11 +46,14 @@ struct GenerateScrambleService: GenerateScramble {
         }
         
         while length > 0 {
+            previousScrambleCharacter = currentScrambleCharacter
             let randomScramble = combinedCase.randomElement() ?? ""
-            if getMainCharacter(randomScramble) != getMainCharacter(usedScrambleCharacter) ||
-                detectLayer(randomScramble) != detectLayer(usedScrambleCharacter) {
+            if isMatchConditions(ScrambleCharacterSet(previous: previousScrambleCharacter,
+                                                      current: currentScrambleCharacter,
+                                                      next: randomScramble),
+                                 cubeType) {
                 scrambleList.append(randomScramble)
-                usedScrambleCharacter = randomScramble
+                currentScrambleCharacter = randomScramble
                 length -= 1
             }
         }
@@ -58,7 +61,51 @@ struct GenerateScrambleService: GenerateScramble {
         return scrambleList
     }
     
-    func detectLayer(_ scrambleCharacter: String) -> Layer {
+    private func isMatchConditions(_ scramCharacterSet: ScrambleCharacterSet, _ cubeType: CubeType) -> Bool {
+        switch cubeType {
+        case .two:
+            return match2x2Conditions(scramCharacterSet)
+        case .three:
+            return matchMainCharacterCondition(scramCharacterSet)
+        case .four:
+            return matchMainCharacterCondition(scramCharacterSet)
+        case .five:
+            return matchMainCharacterCondition(scramCharacterSet)
+        case .six:
+            return matchMainCharacterCondition(scramCharacterSet)
+        case .seven:
+            return matchMainCharacterCondition(scramCharacterSet)
+        }
+        
+//        return getMainCharacter(nextCharacter) != getMainCharacter(usedCharacter) ||
+//        detectLayer(nextCharacter) != detectLayer(usedCharacter)
+    }
+    
+    private func getMainCharacter(_ scrambleCharacter: String) -> String {
+        return scrambleCharacter.filter { $0.isUppercase }
+    }
+    
+    private func matchMainCharacterCondition(_ scramCharacterSet: ScrambleCharacterSet) -> Bool {
+        return getMainCharacter(scramCharacterSet.next) != getMainCharacter(scramCharacterSet.current)
+    }
+    
+    private func match2x2Conditions(_ scramCharacterSet: ScrambleCharacterSet) -> Bool {
+        if ["D", "L", "B"].contains(getMainCharacter(scramCharacterSet.next)) {
+            return false
+        } else {
+            return matchMainCharacterCondition(scramCharacterSet)
+        }
+    }
+
+//    private func isOppositeSides(_ scramCharacterSet: ScrambleCharacterSet) -> Bool {
+//        if getMainCharacter(scramCharacterSet.previous) == "U" || getMainCharacter(scramCharacterSet.previous == "D") {
+//            
+//        }
+//        
+//        return true
+//    }
+//    
+    private func detectLayer(_ scrambleCharacter: String) -> Layer {
         if !scrambleCharacter.contains("w") && !scrambleCharacter.contains("3") {
             return .one
         } else if scrambleCharacter.contains("w") && !scrambleCharacter.contains("3") {
@@ -68,11 +115,21 @@ struct GenerateScrambleService: GenerateScramble {
         }
     }
     
-    func getMainCharacter(_ scrambleCharacter: String) -> String {
-        return scrambleCharacter.filter { $0.isUppercase }
-    }
-    
     init() {
+    }
+}
+
+extension GenerateScrambleService {
+    struct ScrambleCharacterSet {
+        var previous: String?
+        var current: String
+        var next: String
+        
+        init(previous: String? = nil, current: String, next: String) {
+            self.previous = previous
+            self.current = current
+            self.next = next
+        }
     }
 }
 

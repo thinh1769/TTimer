@@ -10,12 +10,12 @@ protocol ScrambleTypeBottomViewDelegate: AnyObject {
 
 class ScrambleTypeBottomView: UIView {
     private lazy var okButton = TTUtils.makeButton(title: "OK",
-                                                   backgroundColor: .blue,
+                                                   backgroundColor: .link,
                                                    cornerRadius: 8)
     private lazy var cancelButton = TTUtils.makeButton(title: "Cancel",
                                                        backgroundColor: .white,
                                                        cornerRadius: 8, 
-                                                       borderColor: UIColor.blue.cgColor,
+                                                       borderColor: UIColor.link.cgColor,
                                                        borderWidth: 1)
     private let pickerView = UIPickerView()
     
