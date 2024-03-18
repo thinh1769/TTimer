@@ -7,6 +7,13 @@
 
 import Foundation
 
+struct Constants {
+    static public let ignore2x2ScrambleCharacterSet = [Scramble.D.rawValue, Scramble.B.rawValue, Scramble.L.rawValue]
+    static public let upDownScrambleCharacterSet = [Scramble.U.rawValue, Scramble.D.rawValue]
+    static public let leftRightScrambleCharacterSet = [Scramble.L.rawValue, Scramble.R.rawValue]
+    static public let frontBackScrambleCharacterSet = [Scramble.F.rawValue, Scramble.B.rawValue]
+}
+
 enum TextSize: CGFloat {
     case smallBody = 13
     case body = 16
