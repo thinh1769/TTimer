@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import SwiftUI
 import Combine
+import FloatingPanel
 
 class TimerViewController: TTViewController {
     lazy private var scrambleTypeButton = TTUtils.makeButton(title: "3x3",
@@ -47,6 +48,7 @@ class TimerViewController: TTViewController {
     lazy private var timeTitleStackView = makeTimeTitleStackView()
     lazy private var timeStackView = makeTimeStackView()
     lazy private var timeResultStackView = makeTimeResultStackView()
+    lazy private var scrambleTypeVC = ScrambleTypeViewController(selectedItem: viewModel.cubeType)
     
     lazy private var timerLongPress = makeTimerLongPressGesture()
     lazy private var timerTapGesture = makeTimerTapGesture()
@@ -93,6 +95,7 @@ class TimerViewController: TTViewController {
             timerLongPress.isEnabled = false
             timeLabel.text = "SOLVE"
             timeLabel.textColor = .black
+            handleHiddenWhenSolving(true)
         } else if gestureRecognizer.state == .began {
             impactFeedbackGenerator.impactOccurred()
             timeLabel.textColor = .green
@@ -115,7 +118,17 @@ class TimerViewController: TTViewController {
                                            createdDate: Date().toInt()))
             
             viewModel.count = viewModel.time.count
+            handleHiddenWhenSolving(false)
         }
+    }
+    
+    private func handleHiddenWhenSolving(_ isHidden: Bool) {
+        scrambleTypeButton.isHidden = isHidden
+        scrambleLabel.isHidden = isHidden
+        scrambleView.isHidden = isHidden
+        timeStackView.isHidden = isHidden
+        timeTitleStackView.isHidden = isHidden
+        tabBarController?.tabBar.isHidden = isHidden
     }
 }
 
@@ -138,6 +151,8 @@ extension TimerViewController {
         impactFeedbackGenerator.prepare()
         
         scrambleTypeButton.addTarget(self, action: #selector(showScrambleTypeBottomView), for: .touchUpInside)
+        
+        scrambleTypeVC.delegate = self
     }
     
     private func layout() {
@@ -170,10 +185,19 @@ extension TimerViewController {
     }
     
     @objc private func showScrambleTypeBottomView() {
-        addBlurEffect()
-        let scrambleTypeBottomView = ScrambleTypeBottomView(frame: CGRect(x: 16, y: 321, width: 350, height: 300))
-        scrambleTypeBottomView.delegate = self
-        view.addSubview(scrambleTypeBottomView)
+        let fpc = FloatingPanelController()
+        fpc.surfaceView.appearance = {
+            let appearance = SurfaceAppearance()
+            appearance.cornerRadius = 16
+            return appearance
+        }()
+        fpc.surfaceView.grabberHandle.isHidden = true
+        fpc.backdropView.dismissalTapGestureRecognizer.isEnabled = true
+        fpc.panGestureRecognizer.isEnabled = false
+        
+        fpc.layout = BottomSheetLayout(ratio: (scrambleTypeVC.preferredHeight + TTUtils.bottomPadding(in: self)) / UIScreen.main.bounds.height)
+        fpc.set(contentViewController: scrambleTypeVC)
+        self.present(fpc, animated: true)
     }
     
     private func setupSubscription() {
@@ -308,20 +332,10 @@ extension TimerViewController {
     }
 }
 
-extension TimerViewController: ScrambleTypeBottomViewDelegate {
+extension TimerViewController: ScrambleTypeViewControllerDelegate {
     func didSelectItem(_ item: CubeType) {
         scrambleTypeButton.setTitle(TTUtils.getCubeTypeString(item), for: .normal)
         viewModel.cubeType = item
-    }
-    
-    func dismissPopup() {
-        removeBlurEffect()
-        
-        for subview in view.subviews {
-            if subview is ScrambleTypeBottomView {
-                subview.removeFromSuperview()
-            }
-        }
     }
 }
 

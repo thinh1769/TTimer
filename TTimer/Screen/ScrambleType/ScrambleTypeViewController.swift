@@ -1,69 +1,63 @@
+//
+//  ScrambleTypeViewController.swift
+//  TTimer
+//
+//  Created by Thịnh Nguyễn on 23/03/2024.
+//
+
 import UIKit
 import Combine
 import SnapKit
 import CombineCocoa
 
-protocol ScrambleTypeBottomViewDelegate: AnyObject {
-    func dismissPopup()
+protocol ScrambleTypeViewControllerDelegate: AnyObject {
     func didSelectItem(_ item: CubeType)
 }
-
-class ScrambleTypeBottomView: UIView {
+class ScrambleTypeViewController: TTViewController {
+    public let preferredHeight: CGFloat = 265
+    
     private lazy var okButton = TTUtils.makeButton(title: "OK",
                                                    backgroundColor: .link,
                                                    cornerRadius: 8)
-    private lazy var cancelButton = TTUtils.makeButton(title: "Cancel",
-                                                       backgroundColor: .white,
-                                                       cornerRadius: 8, 
-                                                       borderColor: UIColor.link.cgColor,
-                                                       borderWidth: 1)
     private let pickerView = UIPickerView()
     
-    weak var delegate: ScrambleTypeBottomViewDelegate?
+    weak var delegate: ScrambleTypeViewControllerDelegate?
     private var cancellableSet: Set<AnyCancellable> = .init()
     private let items = CubeType.allCases
     private var selectedItem = CubeType.three
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupSubView()
-        setupSubscriptions()
+    init(selectedItem: CubeType) {
+        self.selectedItem = selectedItem
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
     
-    func setupSubView() {
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 8
-        self.layer.masksToBounds = true
-        self.backgroundColor = .white
-        self.layer.borderWidth = 1
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+        setupSubscriptions()
+    }
+    
+    func setupUI() {
+        self.view.backgroundColor = .white
         
-        addSubview(pickerView)
-        addSubview(okButton)
-        addSubview(cancelButton)
-        
-        let buttonWidth = (self.bounds.width - 16 * 3) / 2
-        okButton.snp.makeConstraints { make in
-            make.height.equalTo(48)
-            make.width.equalTo(buttonWidth)
-            make.leading.equalTo(16)
-            make.bottom.equalTo(-16)
-        }
-        
-        cancelButton.snp.makeConstraints { make in
-            make.height.equalTo(48)
-            make.width.equalTo(buttonWidth)
-            make.trailing.equalTo(-16)
-            make.bottom.equalTo(-16)
-        }
+        view.addSubview(pickerView)
+        view.addSubview(okButton)
         
         pickerView.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.bottom.equalTo(okButton.snp.top).offset(-16)
+        }
+        
+        okButton.snp.makeConstraints { make in
+            make.height.equalTo(48)
+            make.leading.equalToSuperview().offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalTo(pickerView.snp.bottom).offset(20)
         }
     }
     
@@ -78,22 +72,13 @@ class ScrambleTypeBottomView: UIView {
             .sink { [weak self] _ in
                 guard let self else { return }
                 self.delegate?.didSelectItem(selectedItem)
-                self.delegate?.dismissPopup()
-            }
-            .store(in: &cancellableSet)
-        
-        cancelButton.tapPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
-                guard let self else { return }
-                self.delegate?.dismissPopup()
+                self.dismiss(animated: true)
             }
             .store(in: &cancellableSet)
     }
-    
 }
 
-extension ScrambleTypeBottomView: UIPickerViewDelegate, UIPickerViewDataSource {
+extension ScrambleTypeViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

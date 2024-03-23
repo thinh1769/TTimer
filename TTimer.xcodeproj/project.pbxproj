@@ -22,7 +22,9 @@
 		B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */; };
 		B22CD76E2B9C393F00941CD6 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */; };
 		B22CD7702B9D3B2C00941CD6 /* UIStackView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */; };
-		B22CD7732B9DC81D00941CD6 /* ScrambleTypeBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22CD7722B9DC81D00941CD6 /* ScrambleTypeBottomView.swift */; };
+		B22F238F2BAEC5C000CEC449 /* ScrambleTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22F238E2BAEC5C000CEC449 /* ScrambleTypeViewController.swift */; };
+		B22F23922BAEC69000CEC449 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = B22F23912BAEC69000CEC449 /* FloatingPanel */; };
+		B22F23942BAEC79500CEC449 /* BottomSheetLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22F23932BAEC79500CEC449 /* BottomSheetLayout.swift */; };
 		B25344662B5E6B6B009C50EF /* GenerateScrambleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */; };
 		B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30622B1047CC00C46478 /* RxBlocking */; };
 		B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B25C30662B1047CC00C46478 /* RxCocoa */; };
@@ -70,7 +72,8 @@
 		B227CAEC2B8DCB9500E29C87 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		B22CD76D2B9C393F00941CD6 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		B22CD76F2B9D3B2C00941CD6 /* UIStackView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Ext.swift"; sourceTree = "<group>"; };
-		B22CD7722B9DC81D00941CD6 /* ScrambleTypeBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleTypeBottomView.swift; sourceTree = "<group>"; };
+		B22F238E2BAEC5C000CEC449 /* ScrambleTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrambleTypeViewController.swift; sourceTree = "<group>"; };
+		B22F23932BAEC79500CEC449 /* BottomSheetLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetLayout.swift; sourceTree = "<group>"; };
 		B25344652B5E6B6B009C50EF /* GenerateScrambleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateScrambleService.swift; sourceTree = "<group>"; };
 		B2BD38732B81B7F300EE550B /* TimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeListViewController.swift; sourceTree = "<group>"; };
 		B2BD38752B81B93100EE550B /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 				B25C30732B10489A00C46478 /* IQKeyboardManagerSwift in Frameworks */,
 				B2BD38712B81B34A00EE550B /* XCoordinatorRx in Frameworks */,
 				8AFFF63BE5633495C834617C /* Pods_TTimer.framework in Frameworks */,
+				B22F23922BAEC69000CEC449 /* FloatingPanel in Frameworks */,
 				B25C30672B1047CC00C46478 /* RxCocoa in Frameworks */,
 				B25C30632B1047CC00C46478 /* RxBlocking in Frameworks */,
 			);
@@ -180,7 +184,7 @@
 			children = (
 				8297B8F62AE54BCA00D0C155 /* Timer */,
 				B2BD38722B81B45F00EE550B /* TimeList */,
-				B22CD7712B9DC7E900941CD6 /* ScrambleTypeBottomView */,
+				B22CD7712B9DC7E900941CD6 /* ScrambleType */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -201,6 +205,7 @@
 				B2E65E492B4FA55C00FD36AA /* TTViewController_Previews.swift */,
 				B2E65E4B2B4FAA8800FD36AA /* TTView_Previews.swift */,
 				B2BD38752B81B93100EE550B /* TabBarViewController.swift */,
+				B22F23932BAEC79500CEC449 /* BottomSheetLayout.swift */,
 			);
 			path = BaseClass;
 			sourceTree = "<group>";
@@ -239,12 +244,12 @@
 			name = TimerManager;
 			sourceTree = "<group>";
 		};
-		B22CD7712B9DC7E900941CD6 /* ScrambleTypeBottomView */ = {
+		B22CD7712B9DC7E900941CD6 /* ScrambleType */ = {
 			isa = PBXGroup;
 			children = (
-				B22CD7722B9DC81D00941CD6 /* ScrambleTypeBottomView.swift */,
+				B22F238E2BAEC5C000CEC449 /* ScrambleTypeViewController.swift */,
 			);
-			path = ScrambleTypeBottomView;
+			path = ScrambleType;
 			sourceTree = "<group>";
 		};
 		B25344632B5E6B33009C50EF /* Service */ = {
@@ -335,6 +340,7 @@
 				B2BD386E2B81B34A00EE550B /* XCoordinatorCombine */,
 				B2BD38702B81B34A00EE550B /* XCoordinatorRx */,
 				B2FD47322BA6911300684EF7 /* CombineCocoa */,
+				B22F23912BAEC69000CEC449 /* FloatingPanel */,
 			);
 			productName = TTimer;
 			productReference = 8297B8DD2AE54AD100D0C155 /* TTimer.app */;
@@ -371,6 +377,7 @@
 				B25C30742B10493300C46478 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				B2BD386B2B81B34A00EE550B /* XCRemoteSwiftPackageReference "XCoordinator" */,
 				B2FD47312BA6911300684EF7 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+				B22F23902BAEC69000CEC449 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 8297B8DE2AE54AD100D0C155 /* Products */;
 			projectDirPath = "";
@@ -428,14 +435,15 @@
 				B2E65E4C2B4FAA8800FD36AA /* TTView_Previews.swift in Sources */,
 				8297B8F82AE54C0800D0C155 /* TimerViewModel.swift in Sources */,
 				B2BD38762B81B93100EE550B /* TabBarViewController.swift in Sources */,
-				B22CD7732B9DC81D00941CD6 /* ScrambleTypeBottomView.swift in Sources */,
 				B2BD38782B81BD3600EE550B /* TimeListViewModel.swift in Sources */,
 				B2F21A0A2B5256D20016ECCF /* TurnBService.swift in Sources */,
 				B22CD7702B9D3B2C00941CD6 /* UIStackView+Ext.swift in Sources */,
 				B2BD38742B81B7F300EE550B /* TimeListViewController.swift in Sources */,
+				B22F238F2BAEC5C000CEC449 /* ScrambleTypeViewController.swift in Sources */,
 				B2F21A062B5253B10016ECCF /* TurnRService.swift in Sources */,
 				B227CAED2B8DCB9500E29C87 /* TimerManager.swift in Sources */,
 				B2F21A022B51845B0016ECCF /* TurnFService.swift in Sources */,
+				B22F23942BAEC79500CEC449 /* BottomSheetLayout.swift in Sources */,
 				8297B8FB2AE54C5900D0C155 /* TTViewController.swift in Sources */,
 				B2E65E4A2B4FA55C00FD36AA /* TTViewController_Previews.swift in Sources */,
 				8297B8E52AE54AD100D0C155 /* TimerViewController.swift in Sources */,
@@ -589,9 +597,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5H65K5H82S;
+				DEVELOPMENT_TEAM = AQKCQ33V6N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -604,8 +613,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thinh.TTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinhnguyenphuc.TTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -618,9 +628,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5H65K5H82S;
+				DEVELOPMENT_TEAM = AQKCQ33V6N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TTimer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -633,8 +644,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thinh.TTimer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thinhnguyenphuc.TTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -665,6 +677,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		B22F23902BAEC69000CEC449 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.2;
+			};
+		};
 		B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -716,6 +736,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B22F23912BAEC69000CEC449 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B22F23902BAEC69000CEC449 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
 		B25C30622B1047CC00C46478 /* RxBlocking */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B25C30612B1047CC00C46478 /* XCRemoteSwiftPackageReference "RxSwift" */;
