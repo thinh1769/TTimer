@@ -74,6 +74,13 @@ class TimeListViewController: TTViewController {
     }
 }
 
+extension TimeListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = TimeDetailViewController(context: .init(time: viewModel.time.value[indexPath.item]))
+        self.navigateTo(vc)
+    }
+}
+
 extension TimeListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (UIScreen.main.bounds.width - 64) / 3, height: 60)

@@ -51,7 +51,7 @@ class TimerViewController: TTViewController {
     lazy private var scrambleTypeVC = ScrambleTypeViewController(selectedItem: viewModel.cubeType)
     
     lazy private var timerLongPress = makeTimerLongPressGesture()
-    lazy private var timerTapGesture = makeTimerTapGesture()
+    lazy private var timerStopButton = TTUtils.makeButton()
     lazy private var scrambleView = ScrambleView()
     private let viewModel: TimerViewModel = .init()
     private var cancellableSet: Set<AnyCancellable> = []
@@ -91,7 +91,7 @@ class TimerViewController: TTViewController {
             viewModel.previousTime = viewModel.currentTime
             viewModel.currentTime = 0
             timer.startTimer(timeInterval: viewModel.timeInterval, target: self, selector: #selector(timerAction))
-            timerTapGesture.isEnabled = true
+            timerStopButton.isEnabled = true
             timerLongPress.isEnabled = false
             timeLabel.text = "SOLVE"
             timeLabel.textColor = .black
@@ -106,20 +106,17 @@ class TimerViewController: TTViewController {
         viewModel.currentTime += 1
     }
     
-    @objc private func didTapStopTimer(_ gestureRecognizer: UITapGestureRecognizer) {
-        if gestureRecognizer.state == .ended {
-            timer.stopTimer()
-            timeLabel.text = TTUtils.convertTime(viewModel.currentTime)
-            timerTapGesture.isEnabled = false
-            timerLongPress.isEnabled = true
-            scrambleLabel.text = viewModel.generateScramble()
-            viewModel.time.append(TimeItem(time: viewModel.currentTime,
-                                           scramble: viewModel.currentScramble,
-                                           createdDate: Date().toInt()))
-            
-            viewModel.count = viewModel.time.count
-            handleHiddenWhenSolving(false)
-        }
+    @objc private func didTapStopTimer() {
+        timer.stopTimer()
+        timeLabel.text = TTUtils.convertTime(viewModel.currentTime)
+        timerStopButton.isEnabled = false
+        timerLongPress.isEnabled = true
+        viewModel.time.append(TimeItem(time: viewModel.currentTime,
+                                       scramble: viewModel.currentScramble,
+                                       createdDate: Date().toInt()))
+        scrambleLabel.text = viewModel.generateScramble()
+        viewModel.count = viewModel.time.count
+        handleHiddenWhenSolving(false)
     }
     
     private func handleHiddenWhenSolving(_ isHidden: Bool) {
@@ -135,10 +132,10 @@ class TimerViewController: TTViewController {
 extension TimerViewController {
     private func setupUI() {
         view.addGestureRecognizer(timerLongPress)
-        view.addGestureRecognizer(timerTapGesture)
         
         view.backgroundColor = .white
         
+        view.addSubview(timerStopButton)
         view.addSubview(scrambleTypeButton)
         view.addSubview(scrambleLabel)
         view.addSubview(scrambleView)
@@ -151,11 +148,17 @@ extension TimerViewController {
         impactFeedbackGenerator.prepare()
         
         scrambleTypeButton.addTarget(self, action: #selector(showScrambleTypeBottomView), for: .touchUpInside)
+        timerStopButton.addTarget(self, action: #selector(didTapStopTimer), for: .touchDown)
+        timerStopButton.isEnabled = false
         
         scrambleTypeVC.delegate = self
     }
     
     private func layout() {
+        timerStopButton.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         scrambleTypeButton.snp.makeConstraints { make in
             make.height.equalTo(24)
             make.width.equalTo(60)
@@ -203,6 +206,14 @@ extension TimerViewController {
     private func setupSubscription() {
         cancellableSet = []
         
+//        timerStopButton.tapPublisher
+//            .receive(on: DispatchQueue.main)
+//            .sink { [weak self] in
+//                guard let self else { return }
+//                self.didTapStopTimer()
+//            }
+//            .store(in: &cancellableSet)
+//        
         viewModel.$cubeType
             .receive(on: DispatchQueue.main)
             .sink { [weak self] cubeType in
@@ -276,12 +287,6 @@ extension TimerViewController {
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(didStartTimer(_:)))
         longPress.minimumPressDuration = 0.1
         return longPress
-    }
-    
-    private func makeTimerTapGesture() -> UITapGestureRecognizer {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapStopTimer(_:)))
-        tapGesture.isEnabled = false
-        return tapGesture
     }
     
     private func makeTimeStackView() -> UIStackView {

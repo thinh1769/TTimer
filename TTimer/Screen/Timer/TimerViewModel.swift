@@ -34,6 +34,7 @@ class TimerViewModel {
     }
     
     func generateScramble() -> String {
+        currentScramble = []
         var scrambleString = ""
         if let scrambleArray = genScramble?.generateScramble(cubeType: cubeType) {
             self.scramble = scrambleArray

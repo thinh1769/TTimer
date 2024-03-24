@@ -13,6 +13,10 @@ public class TTViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    public func navigateTo(_ vc: UIViewController) {
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     public func handleBack() {
         self.navigationController?.popViewController(animated: true)
     }

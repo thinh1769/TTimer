@@ -9,6 +9,6 @@ import Foundation
 
 extension Date {
     func toInt() -> Int {
-        return Int(self.timeIntervalSinceReferenceDate)
+        return Int(self.timeIntervalSince1970)
     }
 }
